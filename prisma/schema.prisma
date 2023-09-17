@@ -1,0 +1,53 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "postgresql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model User {
+  id               Int     @id @default(autoincrement())
+  address          String  @unique
+  telegramUsername String? @unique
+  upline           String
+  blockNumber      Int     @default(0)
+  rank             Int?
+
+  @@index([telegramUsername])
+  @@index([address])
+}
+
+model Config {
+  id    Int    @id @default(autoincrement())
+  key   String @unique
+  value String @default("")
+
+  @@index([key])
+}
+
+model NftMetadata {
+  id             String   @id @default(uuid())
+  tokenId        String   @unique
+  farmPercentage Decimal
+  cardId         String
+  mintingPrice   Decimal
+  mintedAt       DateTime
+  isBlackListed  Boolean  @default(false)
+
+  @@index([tokenId])
+  @@index([cardId])
+}
+
+model Event {
+  id              String    @id @default(uuid())
+  transactionHash String
+  address         String
+  event           String?
+  eventSignature  String?
+  args            Json
+  blockNumber     Decimal
+  createdAt       DateTime?
+}
