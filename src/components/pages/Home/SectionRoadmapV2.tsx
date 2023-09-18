@@ -5,7 +5,7 @@ import React from "react";
 
 export const SectionRoadmapV2 = () => {
   return (
-    <Box textAlign="center" pos={"relative"}>
+    <Box textAlign="center" pos={"relative"} mt="10rem">
       <Heading
         fontWeight="black"
         fontSize={{ base: "3xl", md: "7xl" }}

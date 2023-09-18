@@ -43,9 +43,9 @@ export const NavbarMenu: React.FC<NavItemProps> = props => {
                       ? isHasRoleAdmin
                         ? `/admin/dashboard`
                         : {
-                            pathname: item.href,
-                            query: { address },
-                          }
+                          pathname: item.href,
+                          query: { address },
+                        }
                       : item.href ?? "#"
                   }
                   key={idx}
@@ -60,7 +60,7 @@ export const NavbarMenu: React.FC<NavItemProps> = props => {
                 <PopoverContent
                   border="0"
                   boxShadow="xl"
-                  bg="#191272"
+                  bg="#0B4649"
                   p="4"
                   rounded="xl"
                   maxW="xs"

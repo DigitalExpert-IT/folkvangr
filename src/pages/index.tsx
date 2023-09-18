@@ -16,33 +16,34 @@ import {
   SectionFeaturesV2,
 } from "components";
 
-
 export default function Home() {
   const { t } = useTranslation();
   return (
     <LayoutMainV2>
       <SectionHeaderV2 />
-      <SectionNFTList />
+
       <Container maxW="container.xxl">
-        <SectionProject />
-        <SectionFeaturesV2 />
+        {/* <SectionProject /> */}
+        <SectionNFTList />
+        {/* <SectionFeaturesV2 /> */}
       </Container>
-      <SectionFeaturedPopulationV2 />
-      <Box bgGradient="linear-gradient(180deg, #2C1FA7 0%, #6D02C9 100%)">
+      {/* <SectionFeaturedPopulationV2 /> */}
+      <Box bgGradient="linear-gradient(180deg, #0A1424 56.97%, #092B31 149.83%)">
         <TableRankNetworkV2 />
-      </Box>
-      <Box bgColor="#6D02C9">
-        <TableRankBonusV2 />
-      </Box>
-      <Box bgGradient="linear(#6D02C9 0%, #8500b1 50%, #2C1FA7 100%)">
-        <SectionMatchingBonusV2 />
-      </Box>
-      <Box bgGradient="linear(#2C1FA7 0%, #401fa7 5%, #2C1FA7 30%)">
         <SectionRoadmapV2 />
       </Box>
+      {/* <Box bgColor="#6D02C9">
+        <TableRankBonusV2 />
+      </Box> */}
+      {/* <Box bgGradient="linear(#6D02C9 0%, #8500b1 50%, #2C1FA7 100%)">
+        <SectionMatchingBonusV2 />
+      </Box> */}
+      {/* <Box bgGradient="linear(#2C1FA7 0%, #401fa7 5%, #2C1FA7 30%)">
+        <SectionRoadmapV2 />
+      </Box> */}
       <Box
         textAlign="center"
-        bgGradient="linear-gradient(180deg,#2C1FA7 0%, #6D02C9 10%, #6D02C9 100%)"
+        bgGradient="linear-gradient(180deg, #0A2830 -39.17%, #0A1424 46.16%, #092A31 100.87%)"
       >
         <SectionTeamV3
           image={OURTEAMV3.image}

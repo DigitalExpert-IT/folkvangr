@@ -23,7 +23,7 @@ interface IOurTeamV3 {
   social: ISocial[];
 }
 
-export const SectionTeamV3: React.FC<IOurTeamV3> = (props) => {
+export const SectionTeamV3: React.FC<IOurTeamV3> = props => {
   const [isLargerThan2000] = useMediaQuery("(min-width: 2000px)");
 
   return (
@@ -38,15 +38,15 @@ export const SectionTeamV3: React.FC<IOurTeamV3> = (props) => {
       >
         <AspectRatio ratio={1} w="full" h="auto">
           <Image
-            src="https://ik.imagekit.io/msxxxaegj/folkvangr/artboard1.avif?updatedAt=1695014855521"
+            src="https://ik.imagekit.io/msxxxaegj/folkvangr/pattern3.png?updatedAt=1695030667190"
             alt="art-board"
             loading="lazy"
             style={{
               alignSelf: "center",
               position: "absolute",
               objectFit: "contain",
+              flexShrink: 0,
             }}
-            // priority={false}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 20vw, 33vw"
             fill
           />
@@ -60,7 +60,6 @@ export const SectionTeamV3: React.FC<IOurTeamV3> = (props) => {
             alignSelf: "center",
             objectFit: "contain",
           }}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 20vw, 33vw"
           loading="lazy"
           priority={false}
           fill

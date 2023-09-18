@@ -18,8 +18,8 @@ export const LayoutFooterV2 = () => {
   const { t } = useTranslation();
 
   return (
-    <Box as="footer" w="full" position={"relative"} bg={"#6D02C9"}>
-      <Box bg="#370065" w="full" h="full" position="static" overflow={"hidden"}>
+    <Box as="footer" w="full" position={"relative"} bg={"#092A31"}>
+      <Box bg="#0B4649" w="full" h="full" position="static" overflow={"hidden"}>
         {/* <Image
           src={pattern}
           alt="background-footer"
