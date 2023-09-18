@@ -15,11 +15,7 @@ export const SectionNFTList = () => {
   const { data, isLoading } = useCardList();
 
   return (
-    <Box
-      bgImage="url('assets/pattern-2.png')"
-      backgroundPosition="center"
-      backgroundRepeat="no-repeat"
-    >
+    <>
       <Box
         justifyContent="center"
         alignItems="center"
@@ -28,7 +24,7 @@ export const SectionNFTList = () => {
         display="flex"
         w="full"
         pt="40"
-        // h={{ md: "50vh", base: "40vh" }}
+      // h={{ md: "50vh", base: "40vh" }}
       >
         <Heading
           _after={{
@@ -45,7 +41,7 @@ export const SectionNFTList = () => {
           textTransform="uppercase"
           fontSize={{ md: "6xl", base: "4xl" }}
         >
-          NFT FARMING
+          trending nft
         </Heading>
       </Box>
       <Container maxW={"container.xxl"}>
@@ -73,6 +69,6 @@ export const SectionNFTList = () => {
           ))}
         </Wrap>
       </Container>
-    </Box>
+    </>
   );
 };

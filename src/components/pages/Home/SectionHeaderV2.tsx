@@ -23,9 +23,9 @@ export const SectionHeaderV2 = () => {
   const accountMap = useAccountMap();
 
   return (
-    <Flex h="100vh" pos="relative" align="center" justify="center" gap="10">
+    <Flex h="100vh" pos="relative" align="center" justify="center" gap="10" bgGradient="linear( to-t, #0A1022 9.97%, #0A1022 12.48%, #092930 124.52%)">
       <Image
-        src="https://ik.imagekit.io/folkvangr/folkvangr/bg-header.png?updatedAt=1694862667727"
+        src="https://ik.imagekit.io/msxxxaegj/folkvangr/patternfolk-1.png?updatedAt=1695013533247"
         alt="img-header"
         loading="lazy"
         sizes="100vw"
@@ -44,9 +44,12 @@ export const SectionHeaderV2 = () => {
         overflow="hidden"
       >
         <AspectRatio w={{ base: "none", md: "md", xl: " xl" }} ratio={1}>
-          <LazyVideo
-            src="https://ik.imagekit.io/msxxxaegj/video_gn/LOGO_I%CC%87NTRO.mp4?updatedAt=1686299614129"
-            objectFit="cover"
+          <Image
+            src="https://ik.imagekit.io/msxxxaegj/folkvangr/header-illustration.png?updatedAt=1695013206001"
+            alt="img-header"
+            style={{ objectFit: 'cover' }}
+            fill
+            loading="lazy"
           />
         </AspectRatio>
       </Box>
@@ -60,8 +63,8 @@ export const SectionHeaderV2 = () => {
           fontWeight="black"
           textShadow={{ base: "0px 4px 4px rgba(0, 0, 0, 0.25)", md: "none" }}
           fontSize={{ base: "4xl", xs: "5xl", md: "5xl", lg: "7xl" }}
-          lineHeight="101%"
-          bgGradient="linear(to-r, #9C29FF, #ffffff)"
+          lineHeight="150%"
+          bgGradient="linear-gradient(to-r, #1B7DCA 2.72%, #02E2A5 98.31%)"
           bgClip="text"
         >
           <Trans i18nKey="pages.home.headerv2.title" />

@@ -59,7 +59,7 @@ export const SectionPartnershipV2: React.FC<SectionPartnershipV2Props> = (
           fill
         />
         <Image
-          src="https://ik.imagekit.io/folkvangr/folkvangr/pattern1.png?updatedAt=1694941828435"
+          src="https://ik.imagekit.io/msxxxaegj/folkvangr/pattern1.png?updatedAt=1695015530575"
           alt="background partnership"
           loading="lazy"
           style={{

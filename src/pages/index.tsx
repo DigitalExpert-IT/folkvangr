@@ -1,6 +1,7 @@
 import { PARTNERSHIP, OURTEAMV3 } from "constant/pages/home";
 import { useTranslation } from "react-i18next";
 import { Box, Container } from "@chakra-ui/react";
+import { SectionNFTList } from "components/pages/NFTFarm";
 import {
   SectionHeaderV2,
   SectionProject,
@@ -15,11 +16,13 @@ import {
   SectionFeaturesV2,
 } from "components";
 
+
 export default function Home() {
   const { t } = useTranslation();
   return (
     <LayoutMainV2>
       <SectionHeaderV2 />
+      <SectionNFTList />
       <Container maxW="container.xxl">
         <SectionProject />
         <SectionFeaturesV2 />

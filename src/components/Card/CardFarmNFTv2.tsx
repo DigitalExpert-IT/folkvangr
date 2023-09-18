@@ -28,11 +28,11 @@ export const CardFarmNFTV2: React.FC<CardNFTV2Props> = props => {
       <Stack
         rounded="xl"
         color="white"
-        bgGradient="linear(130deg, purple, blue.500)"
+        bgGradient="linear(130deg, #1C77CC, #02E5A3)"
         p="3px"
       >
         <Stack
-          bgGradient="linear-gradient(360deg, #2C1FA7 0%, #6D02C9 100%)"
+          bgColor="#0A1022"
           p="1.4rem"
           rounded="xl"
         >
@@ -44,7 +44,7 @@ export const CardFarmNFTV2: React.FC<CardNFTV2Props> = props => {
               <Text fontWeight="600">
                 Farm Level {props.title} Total Return (200 Days)
               </Text>
-              <Text color="#FF00FF" fontSize="md">
+              <Text color="#03E1A5" fontSize="md">
                 Gacha: 1%, 1.1%, 1.2%, 1.3%, 1.5%, 2%
               </Text>
               <Stack alignItems="center" py="1rem">
@@ -53,7 +53,7 @@ export const CardFarmNFTV2: React.FC<CardNFTV2Props> = props => {
                   label={t("common.buy")}
                   onClick={handleBuy}
                   isLoading={buyAsync.isLoading}
-                ></UglyButton>
+                />
               </Stack>
             </Box>
           </Stack>

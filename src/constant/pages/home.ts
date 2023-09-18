@@ -37,30 +37,30 @@ export const PROMOTION_IMAGE_DATA = [
 
 export const PROMOTION_IMAGE_DATAV2 = [
   {
-    uri: "https://ik.imagekit.io/folkvangr/folkvangr/feature-5.png?updatedAt=1694939811983",
+    uri: "https://ik.imagekit.io/msxxxaegj/folkvangr/feature-5.png?updatedAt=1695013823159",
     title: t("pages.home.sectionFeature.fullTransparency.title"),
     subtitle: t("pages.home.sectionFeature.fullTransparency.subtitle"),
     bgColor: "#1A192B",
     imgCenter: false,
   },
   {
-    uri: "https://ik.imagekit.io/folkvangr/folkvangr/features-6.png?updatedAt=1694940281870",
+    uri: "https://ik.imagekit.io/msxxxaegj/folkvangr/features-6.png?updatedAt=1695013892613",
     title: t("pages.home.sectionFeature.fullAutomation.title"),
     subtitle: t("pages.home.sectionFeature.fullAutomation.subtitle"),
     bgColor: "#6D2076",
     imgCenter: false,
     bgImg:
-      "https://ik.imagekit.io/folkvangr/folkvangr/features-6.png?updatedAt=1694940281870",
+      "https://ik.imagekit.io/msxxxaegj/folkvangr/feature6-bg.png?updatedAt=1695013929319",
   },
   {
-    uri: "https://ik.imagekit.io/folkvangr/folkvangr/features-7.png?updatedAt=1694940580268",
+    uri: "https://ik.imagekit.io/msxxxaegj/folkvangr/features-7.png?updatedAt=1695014086089",
     title: t("pages.home.sectionFeature.smartContract.title"),
     subtitle: t("pages.home.sectionFeature.smartContract.subtitle"),
     bgColor: "#080058",
     imgCenter: true,
   },
   {
-    uri: "https://ik.imagekit.io/folkvangr/folkvangr/features-8.png?updatedAt=1694940676886",
+    uri: "https://ik.imagekit.io/msxxxaegj/folkvangr/features-8.png?updatedAt=1695014086028",
     title: t("pages.home.sectionFeature.decentralized.title"),
     subtitle: t("pages.home.sectionFeature.decentralized.subtitle"),
     bgColor: "#8E59FF",
@@ -84,7 +84,7 @@ export const OURTEAM = [
 export const OURTEAMV3 = {
   name: "Yusuf Kenan Can",
   image:
-    "https://ik.imagekit.io/folkvangr/folkvangr/yusuf-caknan.png?updatedAt=1694940787183",
+    "https://ik.imagekit.io/msxxxaegj/folkvangr/yusuf-caknan.png?updatedAt=1695015035002",
   occupation: "Founder & President",
   social: [
     {
@@ -106,18 +106,18 @@ export const PARTNERSHIP = [
   {
     name: "partner1",
     image:
-      "https://ik.imagekit.io/folkvangr/folkvangr/sponsor-polygon.png?updatedAt=1694941044732",
+      "https://ik.imagekit.io/msxxxaegj/folkvangr/sponsor-polygon.png?updatedAt=1695015631892",
   },
   {
     name: "partner2",
     image:
-      "https://ik.imagekit.io/folkvangr/folkvangr/solidproofV2.png?updatedAt=1694942095177",
+      "https://ik.imagekit.io/msxxxaegj/folkvangr/solidproofV2.png?updatedAt=1695015631926",
     link: "https://github.com/solidproof/projects/tree/main/GNET",
   },
   {
     name: "partner3",
     image:
-      "https://ik.imagekit.io/folkvangr/folkvangr/globalnetwork-logo.png?updatedAt=1694942301980",
+      "https://ik.imagekit.io/msxxxaegj/folkvangr/gn-logo.png?updatedAt=1695015631848",
   },
 ];
 

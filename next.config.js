@@ -9,7 +9,7 @@ const nextConfig = {
         protocol: "https",
         hostname: "ik.imagekit.io",
         port: "",
-        pathname: "/folkvangr/**",
+        pathname: "/msxxxaegj/**",
       },
     ],
   },

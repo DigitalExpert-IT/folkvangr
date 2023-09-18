@@ -38,7 +38,7 @@ export const SectionTeamV3: React.FC<IOurTeamV3> = (props) => {
       >
         <AspectRatio ratio={1} w="full" h="auto">
           <Image
-            src="https://ik.imagekit.io/folkvangr/folkvangr/artboard1.avif?updatedAt=1694941693315"
+            src="https://ik.imagekit.io/msxxxaegj/folkvangr/artboard1.avif?updatedAt=1695014855521"
             alt="art-board"
             loading="lazy"
             style={{
