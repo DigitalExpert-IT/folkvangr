@@ -23,7 +23,14 @@ export const SectionHeaderV2 = () => {
   const accountMap = useAccountMap();
 
   return (
-    <Flex h="100vh" pos="relative" align="center" justify="center" gap="10" bgGradient="linear( to-t, #0A1022 9.97%, #0A1022 12.48%, #092930 124.52%)">
+    <Flex
+      h="100vh"
+      pos="relative"
+      align="center"
+      justify="center"
+      gap="10"
+      bgGradient="linear( to-t, #0A1022 9.97%, #0A1022 12.48%, #092930 124.52%)"
+    >
       <Image
         src="https://ik.imagekit.io/msxxxaegj/folkvangr/patternfolk-1.png?updatedAt=1695013533247"
         alt="img-header"
@@ -47,9 +54,10 @@ export const SectionHeaderV2 = () => {
           <Image
             src="https://ik.imagekit.io/msxxxaegj/folkvangr/header-illustration.png?updatedAt=1695013206001"
             alt="img-header"
-            style={{ objectFit: 'cover' }}
+            style={{ objectFit: "contain" }}
+            priority
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             fill
-            loading="lazy"
           />
         </AspectRatio>
       </Box>

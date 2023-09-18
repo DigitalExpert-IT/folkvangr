@@ -26,28 +26,29 @@ export const useCardList = () => {
   const buyNft = useContractWrite(nft.contract, "buy");
   const { data: account } = useAccountMap();
   const [data, setData] = useState<CardType[]>([]);
-  const [isLoading, setLoading] = useState(false);
-
-  const init = async () => {
-    if (!nft.contract) return;
-    try {
-      setLoading(true);
-      const cardList = await Promise.all(
-        CARD_IDS.map(async cardId => {
-          const card = await nft.contract!.call("cardMap", [cardId]);
-          return { ...card, id: BigNumber.from(cardId) };
-        })
-      );
-      setData(cardList);
-    } catch (error) {
-    } finally {
-      setLoading(false);
-    }
-  };
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    init();
-  }, []);
+    const fetchData = async () => {
+      if (!nft.contract) return;
+
+      try {
+        const cardList = await Promise.all(
+          CARD_IDS.map(async cardId => {
+            const card = await nft.contract!.call("cardMap", [cardId]);
+            return { ...card, id: BigNumber.from(cardId) };
+          })
+        );
+        setData(cardList);
+      } catch (error) {
+        console.error("Error fetching card data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [nft.contract]);
 
   const buy = async (tokenId: BigNumberish) => {
     if (!gnet.contract || !nft.contract || !address) return;
