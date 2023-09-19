@@ -29,7 +29,7 @@ export const SectionHeaderV2 = () => {
       align="center"
       justify="center"
       gap="10"
-      bgGradient="linear( to-t, #0A1022 9.97%, #0A1022 12.48%, #092930 124.52%)"
+      bgGradient="linear( to-t, #0A1424 9.97%, #0A1022 12.48%, #092930 124.52%)"
     >
       <Image
         src="https://ik.imagekit.io/msxxxaegj/folkvangr/patternfolk-1.png?updatedAt=1695013533247"

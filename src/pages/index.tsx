@@ -9,6 +9,8 @@ import {
   SectionTeamV3,
   SectionPartnershipV2,
   TableRankNetworkV2,
+  SectionFeaturesV2,
+  SectionFeaturedPopulationV2,
 } from "components";
 
 export default function Home() {
@@ -17,17 +19,21 @@ export default function Home() {
   return (
     <LayoutMainV2>
       <SectionHeaderV2 />
-
-      <Container maxW="container.xxl">
+      <Container
+        maxW="container.2xl"
+        bgGradient="linear-gradient(to-b, #0A1424 56.97%, #092B31 149.83%)"
+      >
         <SectionNFTList />
+        <SectionFeaturesV2 />
+        <SectionFeaturedPopulationV2 />
       </Container>
-      <Box bgGradient="linear-gradient(180deg, #0A1424 56.97%, #092B31 149.83%)">
+      <Box bgGradient="linear-gradient(180deg, #0A2830 -39.17%, #0A1424 46.16%, #092A31 100.87%)">
         <TableRankNetworkV2 />
         <SectionRoadmapV2 />
       </Box>
       <Box
         textAlign="center"
-        bgGradient="linear-gradient(180deg, #0A2830 -39.17%, #0A1424 46.16%, #092A31 100.87%)"
+        bgGradient="linear-gradient(180deg, #092A31 1.17%, #0A1424 46.16%, #092A31 140.87%)"
       >
         <SectionTeamV3
           image={OURTEAMV3.image}

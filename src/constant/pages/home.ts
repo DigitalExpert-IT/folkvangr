@@ -40,14 +40,14 @@ export const PROMOTION_IMAGE_DATAV2 = [
     uri: "https://ik.imagekit.io/msxxxaegj/folkvangr/feature-5.png?updatedAt=1695013823159",
     title: t("pages.home.sectionFeature.fullTransparency.title"),
     subtitle: t("pages.home.sectionFeature.fullTransparency.subtitle"),
-    bgColor: "#1A192B",
+    bgColor: "#0B5454",
     imgCenter: false,
   },
   {
     uri: "https://ik.imagekit.io/msxxxaegj/folkvangr/features-6.png?updatedAt=1695013892613",
     title: t("pages.home.sectionFeature.fullAutomation.title"),
     subtitle: t("pages.home.sectionFeature.fullAutomation.subtitle"),
-    bgColor: "#6D2076",
+    bgColor: "#005AB8",
     imgCenter: false,
     bgImg:
       "https://ik.imagekit.io/msxxxaegj/folkvangr/feature6-bg.png?updatedAt=1695013929319",
@@ -56,14 +56,14 @@ export const PROMOTION_IMAGE_DATAV2 = [
     uri: "https://ik.imagekit.io/msxxxaegj/folkvangr/features-7.png?updatedAt=1695014086089",
     title: t("pages.home.sectionFeature.smartContract.title"),
     subtitle: t("pages.home.sectionFeature.smartContract.subtitle"),
-    bgColor: "#080058",
+    bgColor: "#18072F",
     imgCenter: true,
   },
   {
     uri: "https://ik.imagekit.io/msxxxaegj/folkvangr/features-8.png?updatedAt=1695014086028",
     title: t("pages.home.sectionFeature.decentralized.title"),
     subtitle: t("pages.home.sectionFeature.decentralized.subtitle"),
-    bgColor: "#8E59FF",
+    bgColor: "#AA59FB",
     imgCenter: true,
   },
 ];

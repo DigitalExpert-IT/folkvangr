@@ -1,14 +1,14 @@
-import { Box, Heading, Text, Stack, Container } from "@chakra-ui/react";
-import { WidgetHomeFeaturesV2 } from "components/Widget";
 import React from "react";
-import { Trans } from "react-i18next";
-import { PROMOTION_IMAGE_DATAV2 } from "constant/pages/home";
 import { t } from "i18next";
+import { Trans } from "react-i18next";
+import { WidgetHomeFeaturesV2 } from "components/Widget";
+import { PROMOTION_IMAGE_DATAV2 } from "constant/pages/home";
+import { Box, Heading, Text, Stack } from "@chakra-ui/react";
 
 export const SectionFeaturesV2 = () => {
   return (
     <Box
-      pt="20"
+      py="10rem"
       alignItems="center"
       display="flex"
       flexDir="column"

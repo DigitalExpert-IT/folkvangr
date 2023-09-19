@@ -15,7 +15,7 @@ export const WidgetHomeFeaturesV2 = (props: CardProps) => {
       spacing={{ base: 4, lg: 8 }}
       my={"4"}
       mx={"auto"}
-      maxW={{ base: "2xl", lg: "full" }}
+      maxW={{ base: "2xl", lg: "82%" }}
     >
       {cardData.map((data, idx) => (
         <Box key={idx} mt={{ base: "0", lg: idx % 2 != 0 ? "20" : "0" }}>
