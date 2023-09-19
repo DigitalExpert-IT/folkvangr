@@ -32,10 +32,10 @@ export const styles: Styles = {
     },
     "&::-webkit-scrollbar-track": {
       width: { base: "-moz-initial", md: "6px" },
-      background: { base: "-moz-initial", md: "#191272" },
+      background: { base: "-moz-initial", md: "#092A31" },
     },
     "&::-webkit-scrollbar-thumb": {
-      background: { base: "-moz-initial", md: "#7246fc" },
+      background: { base: "-moz-initial", md: "#0B5454" },
       borderRadius: { base: "-moz-initial", md: "50px" },
     },
   },

@@ -55,7 +55,8 @@ export const SectionHeaderV2 = () => {
             src="https://ik.imagekit.io/msxxxaegj/folkvangr/header-illustration.png?updatedAt=1695013206001"
             alt="img-header"
             style={{ objectFit: "contain" }}
-            priority
+            loading="lazy"
+            priority={false}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             fill
           />
