@@ -22,23 +22,23 @@ export const NAVIGATION: Array<INavigation> = [
     name: "home",
     href: "/",
   },
-  {
-    name: "project",
-    children: [
-      {
-        title: "nftFarming",
-        link: "/nft-farming",
-      },
-      {
-        title: "genesis",
-        link: "/genesis",
-      },
-      {
-        title: "sharetoearn",
-        link: "/share",
-      },
-    ],
-  },
+  // {
+  //   name: "project",
+  //   children: [
+  //     {
+  //       title: "nftFarming",
+  //       link: "/nft-farming",
+  //     },
+  //     {
+  //       title: "genesis",
+  //       link: "/genesis",
+  //     },
+  //     {
+  //       title: "sharetoearn",
+  //       link: "/share",
+  //     },
+  //   ],
+  // },
   {
     name: "swap",
     href: "/swap",
@@ -47,10 +47,10 @@ export const NAVIGATION: Array<INavigation> = [
     name: "profile",
     href: "/profile",
   },
-  {
-    name: "myNetwork",
-    href: "/dashboard-v2/[address]",
-  },
+  // {
+  //   name: "myNetwork",
+  //   href: "/dashboard-v2/[address]",
+  // },
 ];
 
 export const SOCIAL: Array<ISocial> = [
