@@ -11,6 +11,7 @@ import {
   TableRankNetworkV2,
   SectionFeaturesV2,
   SectionFeaturedPopulationV2,
+  SectionMatchingBonusV2,
 } from "components";
 
 export default function Home() {
@@ -29,7 +30,7 @@ export default function Home() {
       </Container>
       <Box bgGradient="linear-gradient(180deg, #0A2830 -39.17%, #0A1424 46.16%, #092A31 100.87%)">
         <TableRankNetworkV2 />
-        <SectionRoadmapV2 />
+        <SectionMatchingBonusV2 />
       </Box>
       <Box
         textAlign="center"

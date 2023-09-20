@@ -46,7 +46,7 @@ export const SectionMyNFTV2 = () => {
       <Container maxW="container.xl">
         <Stack align="center" justify="center" py="20">
           <Wrap
-            bg="#6D02C9BF"
+            bg="rgba(11, 84, 84, 0.75)"
             w="100%"
             align="center"
             justify="center"

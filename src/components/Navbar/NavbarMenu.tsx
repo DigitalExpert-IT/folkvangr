@@ -43,9 +43,9 @@ export const NavbarMenu: React.FC<NavItemProps> = props => {
                       ? isHasRoleAdmin
                         ? `/admin/dashboard`
                         : {
-                          pathname: item.href,
-                          query: { address },
-                        }
+                            pathname: item.href,
+                            query: { address },
+                          }
                       : item.href ?? "#"
                   }
                   key={idx}
@@ -74,7 +74,7 @@ export const NavbarMenu: React.FC<NavItemProps> = props => {
                           role="group"
                           rounded="md"
                           p="2"
-                          _hover={{ bg: "brand.300" }}
+                          _hover={{ bg: "#04A87B" }}
                         >
                           <Text
                             transition="all .3s ease"
@@ -94,7 +94,7 @@ export const NavbarMenu: React.FC<NavItemProps> = props => {
                             flex={1}
                           >
                             <Icon
-                              color="valhalla.500"
+                              color="#1E6ECF"
                               w={5}
                               h={5}
                               as={ChevronRightIcon}

@@ -31,7 +31,7 @@ export const WidgetProfileBalace = (props: FlexProps) => {
 export const WidgetProfileBtn = (props: ButtonProps) => {
   const { children, ...rest } = props;
   return (
-    <Button bg={"#9F2FFF"} {...rest}>
+    <Button bg={"blue.400"} {...rest}>
       {children}
     </Button>
   );
@@ -49,7 +49,7 @@ export const WidgetProfileMember = (props: IPropsMember) => {
     <HStack
       w={{ base: "96", lg: "60" }}
       h={"14"}
-      bg={"#33056C"}
+      bg={"#0A1022"}
       justify={"center"}
       roundedRight={"full"}
       roundedLeft={"full"}
@@ -62,7 +62,7 @@ export const WidgetProfileMember = (props: IPropsMember) => {
         minW={"55%"}
         textAlign={"center"}
         placeContent={"center"}
-        bg={"#6705C6"}
+        bg={"#0B5454"}
         roundedRight={"full"}
       >
         <Text lineHeight={"4"}>

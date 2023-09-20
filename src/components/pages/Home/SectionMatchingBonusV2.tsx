@@ -21,7 +21,7 @@ export const SectionMatchingBonusV2 = () => {
         w="full"
       >
         <Image
-          src="https://ik.imagekit.io/msxxxaegj/folkvangr/matchingBonusBG.png?updatedAt=1695014359303"
+          src="https://ik.imagekit.io/msxxxaegj/folkvangr/folkMatchingBonus.png?updatedAt=1695193793067"
           alt="matching-bonus"
           loading="lazy"
           style={{
