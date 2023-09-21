@@ -34,7 +34,7 @@ const columns = [
         </Text>
       </Stack>
     ),
-    header: t("common.levelBonus") ?? "",
+    header: t("common.rank") ?? "",
   }),
   columnHelper.accessor("percent", {
     cell: info => (
@@ -46,7 +46,7 @@ const columns = [
         {info.getValue()}
       </Text>
     ),
-    header: t("common.percent") ?? "",
+    header: t("common.sponsor") ?? "",
   }),
   columnHelper.accessor("value", {
     cell: info => (
@@ -58,7 +58,7 @@ const columns = [
         {info.getValue()}
       </Text>
     ),
-    header: t("common.value") ?? "",
+    header: t("common.matchingBonus") ?? "",
   }),
 ];
 
@@ -114,7 +114,7 @@ export const TableRankNetworkV2 = () => {
         columns={columns}
         tableCustom={{
           variant: "valhallaV2",
-          maxWidth: "80%",
+          maxWidth: "100%",
           zIndex: "2",
         }}
       />

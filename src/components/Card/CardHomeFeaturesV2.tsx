@@ -53,8 +53,8 @@ export const CardHomeFeaturesV2 = (props: CardData) => {
         maxH="50%"
         opacity={{ base: "0.2", md: "unset" }}
         position="absolute"
-        bottom="0"
-        right={{ base: "-2rem", md: "0" }}
+        bottom={{ base: 0, md: 8 }}
+        right={{ base: "-8rem", md: "0" }}
       >
         <Image
           src={uri}

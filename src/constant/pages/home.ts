@@ -37,30 +37,30 @@ export const PROMOTION_IMAGE_DATA = [
 
 export const PROMOTION_IMAGE_DATAV2 = [
   {
-    uri: "https://ik.imagekit.io/msxxxaegj/folkvangr/feature-5.png?updatedAt=1695013823159",
+    uri: "https://ik.imagekit.io/msxxxaegj/folkvangr/feature1.png?updatedAt=1695276346436",
     title: t("pages.home.sectionFeature.fullTransparency.title"),
     subtitle: t("pages.home.sectionFeature.fullTransparency.subtitle"),
     bgColor: "#0B5454",
     imgCenter: false,
   },
   {
-    uri: "https://ik.imagekit.io/msxxxaegj/folkvangr/features-6.png?updatedAt=1695013892613",
+    uri: "https://ik.imagekit.io/msxxxaegj/folkvangr/feature2.png?updatedAt=1695276346397",
     title: t("pages.home.sectionFeature.fullAutomation.title"),
     subtitle: t("pages.home.sectionFeature.fullAutomation.subtitle"),
     bgColor: "#005AB8",
     imgCenter: false,
-    bgImg:
-      "https://ik.imagekit.io/msxxxaegj/folkvangr/feature6-bg.png?updatedAt=1695013929319",
+    // bgImg:
+    //   "https://ik.imagekit.io/msxxxaegj/folkvangr/feature6-bg.png?updatedAt=1695013929319",
   },
   {
-    uri: "https://ik.imagekit.io/msxxxaegj/folkvangr/features-7.png?updatedAt=1695014086089",
+    uri: "https://ik.imagekit.io/msxxxaegj/folkvangr/feature3.png?updatedAt=1695276346467",
     title: t("pages.home.sectionFeature.smartContract.title"),
     subtitle: t("pages.home.sectionFeature.smartContract.subtitle"),
     bgColor: "#18072F",
     imgCenter: true,
   },
   {
-    uri: "https://ik.imagekit.io/msxxxaegj/folkvangr/features-8.png?updatedAt=1695014086028",
+    uri: "https://ik.imagekit.io/msxxxaegj/folkvangr/feature4.png?updatedAt=1695276346424",
     title: t("pages.home.sectionFeature.decentralized.title"),
     subtitle: t("pages.home.sectionFeature.decentralized.subtitle"),
     bgColor: "#AA59FB",
@@ -162,54 +162,54 @@ export interface ITokenomics {
 export const RANKNETWORK = [
   {
     levelBonus: "level 1",
-    percent: "30%",
-    value: "15 USDT",
+    percent: "10%",
+    value: "10%",
   },
   {
     levelBonus: "level 2",
-    percent: "8%",
-    value: "4 USDT",
+    percent: "1.3%",
+    value: "5.5%",
   },
   {
     levelBonus: "level 3",
-    percent: "3%",
-    value: "1.5 USDT",
+    percent: "1.5%",
+    value: "5.4%",
   },
   {
     levelBonus: "level 4",
-    percent: "2%",
-    value: "1 USDT",
+    percent: "1.7%",
+    value: "5.1%",
   },
   {
     levelBonus: "level 5",
-    percent: "2%",
-    value: "1 USDT",
+    percent: "1.2%",
+    value: "4.5%",
   },
   {
-    levelBonus: "level 6 - 15",
-    percent: "1%",
-    value: "0.5 USDT",
+    levelBonus: "level 6",
+    percent: "",
+    value: "4.1%",
   },
   {
-    levelBonus: "Reserve",
-    percent: "3%",
-    value: "1.5 USDT",
+    levelBonus: "level 7",
+    percent: "",
+    value: "3.8%",
   },
   {
-    levelBonus: "Global Bonus",
-    percent: "17%",
-    value: "8.5 USDT",
+    levelBonus: "level 8",
+    percent: "",
+    value: "3.5%",
   },
   {
-    levelBonus: "Development / Marketing",
-    percent: "25%",
-    value: "12.5 USDT",
+    levelBonus: "level 9",
+    percent: "",
+    value: "3.1%",
   },
 
   {
-    levelBonus: "Total",
-    percent: "100%",
-    value: "50 USDT",
+    levelBonus: "level 10",
+    percent: "",
+    value: "2.9%",
   },
 ];
 
