@@ -91,7 +91,7 @@ export const TableRankNetworkV2 = () => {
             "linear-gradient(90deg, rgba(156, 41, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%)",
           backgroundClip: "text",
           WebkitTextFillColor: "transparent",
-          content: `'${t("pages.home.maticPlan")}'`,
+          content: `'${t("pages.home.bnbPlan")}'`,
           display: "block",
           textAlign: "center",
           alignSelf: "center",

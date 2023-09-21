@@ -13,11 +13,11 @@ import { Trans } from "react-i18next";
 const Registerv2 = () => {
   return (
     <LayoutMainV2>
-      <Stack bgGradient="linear(#2C1FA7 0%, #6D02C9 100%)">
+      <Stack bgGradient="linear-gradient(180deg, #0E222F 0%, #0A1525 100%)">
         <Stack
           alignItems={"center"}
           minH={"100vh"}
-          bgImage="url('/images/bgHeader_home.png')"
+          // bgImage="url('/images/bgHeader_home.png')"
           gap={"8"}
           pb={"10"}
         >
@@ -75,15 +75,14 @@ const Registerv2 = () => {
                 zIndex={"1"}
               >
                 <Box
-                  bg={"#682EFD"}
+                  bgGradient="linear-gradient(90deg, #1C79CC 0%, #04DFA7 100%)"
                   py={"20"}
                   zIndex={"99"}
-                  bgImage="url('/images/img-register-clipPath.png')"
                   backgroundPosition={"center"}
                   backgroundSize={"contain"}
                 >
                   <Image
-                    src="/images/image_register.png"
+                    src="/images/register-image.png"
                     alt="pattern2"
                     mx={"auto"}
                   />
@@ -93,7 +92,7 @@ const Registerv2 = () => {
                 w={{ base: "full", lg: "50%" }}
                 minH={"sm"}
                 px={{ base: "4", md: "12" }}
-                color={"brand.400"}
+                color={"black"}
                 borderLeft={{ base: "8px", lg: "none" }}
                 borderColor={"blackAlpha.300"}
                 pos={"relative"}
