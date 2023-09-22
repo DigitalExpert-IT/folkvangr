@@ -1,4 +1,4 @@
-import { Heading, Container, Box, Text, Image } from "@chakra-ui/react";
+import { Heading, Container, Box, Text, Image, Stack } from "@chakra-ui/react";
 
 type Props = {
   illustrationUri: string;
@@ -10,19 +10,7 @@ type Props = {
 export const LayoutIllustration = (props: Props) => {
   const { illustrationUri, title, description, children } = props;
   return (
-    <Box
-      bgGradient="linear-gradient(180deg, #2C1FA7 0%, #6D02C9 100%)"
-      pos="relative"
-      display="flex"
-    >
-      <Image
-        src="/images/bgHeader_home.png"
-        alt="background"
-        pos="absolute"
-        zIndex={1}
-        objectFit="cover"
-        h="100vh"
-      />
+    <Box bgGradient="#0B1A29" pos="relative" display="flex">
       <Container
         zIndex={1000}
         display="flex"
@@ -33,11 +21,11 @@ export const LayoutIllustration = (props: Props) => {
         h="100vh"
       >
         <Image mb="6" w="64" src={illustrationUri} alt={title} />
-        <Box textAlign="center">
-          <Heading>{title}</Heading>
-          <Text>{description}</Text>
+        <Stack textAlign="center" spacing={4}>
+          <Heading size="lg">{title}</Heading>
+          <Text fontSize="xl">{description}</Text>
           {children}
-        </Box>
+        </Stack>
       </Container>
     </Box>
   );
