@@ -67,7 +67,7 @@ export const LayoutFooterV2 = () => {
                   sizes="(max-width: 768px) 100vw,"
                   fill
                   loading="lazy"
-                  src={"/assets/logo/gnLogo-2.png"}
+                  src={"/assets/logo/folkvangr-logo3.png"}
                   alt="logo-image"
                   priority={false}
                 />
@@ -87,7 +87,7 @@ export const LayoutFooterV2 = () => {
       </Box>
       <Flex justify={"center"} py={2}>
         <Text fontSize={{ base: "sm", sm: "md" }}>
-          &#169; {new Date().getFullYear()} Global Network, All right reserved
+          &#169; {new Date().getFullYear()} Falcon Defi, All right reserved
         </Text>
       </Flex>
     </Box>

@@ -106,7 +106,7 @@ export const PARTNERSHIP = [
   {
     name: "partner1",
     image:
-      "https://ik.imagekit.io/msxxxaegj/folkvangr/sponsor-polygon.png?updatedAt=1695015631892",
+      "https://ik.imagekit.io/msxxxaegj/folkvangr/binance-logo.png?updatedAt=1695370706279",
   },
   {
     name: "partner2",
@@ -116,8 +116,7 @@ export const PARTNERSHIP = [
   },
   {
     name: "partner3",
-    image:
-      "https://ik.imagekit.io/msxxxaegj/folkvangr/gn-logo.png?updatedAt=1695015631848",
+    image: "/assets/logo/folkvangr-logo.svg",
   },
 ];
 
