@@ -25,11 +25,11 @@ interface IOurTeamV3 {
 
 export const SectionTeamV3: React.FC<IOurTeamV3> = props => {
   const [isLargerThan2000] = useMediaQuery("(min-width: 2000px)");
+  const [isLargerThan1440] = useMediaQuery("(min-width: 780px)");
 
   return (
     <Stack direction={{ base: "column", md: "row" }} mb="10" align="center">
       <Stack
-        mt="10rem"
         w={{ base: "100%", md: "xs" }}
         flex={1}
         position="relative"
@@ -38,7 +38,7 @@ export const SectionTeamV3: React.FC<IOurTeamV3> = props => {
       >
         <AspectRatio ratio={1} w="full" h="auto">
           <Image
-            src="https://ik.imagekit.io/msxxxaegj/folkvangr/pattern3.png?updatedAt=1695030667190"
+            src="https://ik.imagekit.io/msxxxaegj/folkvangr/circlefolk.png?updatedAt=1695363266692"
             alt="art-board"
             loading="lazy"
             style={{
@@ -59,11 +59,14 @@ export const SectionTeamV3: React.FC<IOurTeamV3> = props => {
             position: "absolute",
             alignSelf: "center",
             objectFit: "contain",
+            top: "10px",
           }}
+          width={isLargerThan1440 ? 600 : 250}
+          height={isLargerThan1440 ? 600 : 280}
           loading="lazy"
           priority={false}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          fill
+          // fill
         />
       </Stack>
       <Stack

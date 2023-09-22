@@ -20,7 +20,7 @@ const SwapV2 = () => {
         px={"4"}
         pb={"10"}
         placeContent={"center"}
-        bgGradient="linear(#2C1FA7 0%, #6D02C9 100%)"
+        bgGradient="linear-gradient(180deg, #0A232D 0%, #0A1022 100%)"
         overflow="hidden"
       >
         <Heading
@@ -48,30 +48,17 @@ const SwapV2 = () => {
           {t("common.swap").toUpperCase()}
         </Heading>
         <Card
-          bg={"#6d02c9eb"}
+          bgGradient="linear-gradient(91deg, rgba(18, 95, 139, 0.75) 5.23%, rgba(4, 158, 118, 0.75) 99.35%)"
           mx="auto"
-          py={"8"}
           w={"full"}
           px={{ sm: "8" }}
           rounded={"3xl"}
           maxW="4xl"
           shadow={"none"}
           zIndex={"3"}
+          mb="10rem"
         >
           <CardBody>
-            <Stack textAlign="center" mb="10" spacing="5">
-              <Image
-                src="/assets/partnership/global-network.png"
-                alt="Bg Swap"
-                width="80px"
-                margin="auto"
-                opacity="0.8"
-              />
-              <Text fontWeight="bold" fontSize={{ base: "sm", md: "lg" }}>
-                1 GNET = 0.015 USDT
-              </Text>
-            </Stack>
-
             <FormSwap />
           </CardBody>
         </Card>

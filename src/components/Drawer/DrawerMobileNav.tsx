@@ -41,12 +41,12 @@ export const DrawerMobileNav: React.FC<MobileDrawerProps> = props => {
   return (
     <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
       <DrawerOverlay />
-      <DrawerContent bgColor="#191272">
+      <DrawerContent bgColor="#0B4649">
         <DrawerCloseButton />
         <DrawerHeader justifyContent="center" display="flex">
-          <AspectRatio ratio={9 / 1.5} minWidth="190">
+          <AspectRatio ratio={9 / 3} minWidth="190">
             <Image
-              src={"/assets/logo/gnLogo.png"}
+              src={"/assets/logo/folkvangr-logo2.png"}
               alt="logo-image"
               style={{
                 objectFit: "cover",
@@ -142,10 +142,11 @@ export const DrawerMobileNav: React.FC<MobileDrawerProps> = props => {
           <Stack align={"center"}>
             <AspectRatio ratio={1} minWidth="190">
               <Image
-                alt="Global Network"
-                src="/assets/logo/logo-type-big.svg"
+                alt="Falcon Defi"
+                src="/assets/logo/folkvangr-logo.svg"
                 style={{
                   objectFit: "contain",
+                  opacity: 0.1,
                 }}
                 sizes="(max-width: 768px) 100vw,"
                 fill

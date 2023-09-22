@@ -38,7 +38,7 @@ export const Navbar = () => {
   return (
     <Box
       pt={{ base: "2", lg: "2" }}
-      pb="2"
+      pb={{ base: "8", lg: "2" }}
       w="full"
       zIndex={1000}
       bg={isOpen ? "#0B4649" : scrolled ? "#0B4649" : "transparent"}
@@ -63,7 +63,7 @@ export const Navbar = () => {
             <Link href="/">
               <AspectRatio
                 w={{ base: 200, lg: 250 }}
-                ratio={16 / 3}
+                ratio={16 / 5}
                 my={2}
                 mx={{ sm: "auto" }}
                 pos={{ base: "absolute", lg: "sticky" }}
@@ -72,7 +72,7 @@ export const Navbar = () => {
                 top={"-2"}
               >
                 <Image
-                  src="/assets/logo/gnLogo.png"
+                  src="/assets/logo/folkvangr-logo2.png"
                   alt="logo-image"
                   width={500}
                   loading="lazy"
@@ -87,6 +87,7 @@ export const Navbar = () => {
               aria-label="open-menu"
               display={{ base: "flex", md: "flex", lg: "none" }}
               onClick={onOpen}
+              pt="6"
             />
           </Stack>
           <Stack

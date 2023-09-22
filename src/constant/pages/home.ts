@@ -82,9 +82,9 @@ export const OURTEAM = [
 ];
 
 export const OURTEAMV3 = {
-  name: "Yusuf Kenan Can",
+  name: "Snoop Dogg",
   image:
-    "https://ik.imagekit.io/msxxxaegj/folkvangr/yusuf-caknan.png?updatedAt=1695015035002",
+    "https://ik.imagekit.io/msxxxaegj/folkvangr/Snoop.png?updatedAt=1695364465770",
   occupation: "Founder & President",
   social: [
     {

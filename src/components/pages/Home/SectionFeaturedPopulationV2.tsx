@@ -16,7 +16,7 @@ export const SectionFeaturedPopulationV2 = () => {
         mb="10"
       >
         <Image
-          src="https://ik.imagekit.io/msxxxaegj/folkvangr/folkGlobe.png?updatedAt=1695138118458"
+          src="https://ik.imagekit.io/msxxxaegj/folkvangr/folkvangr-globe.png?updatedAt=1695362919472"
           alt="folk-globe"
           w={{ base: "100%", md: "500px", xl: "600px", lg: "600px" }}
           height="auto"
