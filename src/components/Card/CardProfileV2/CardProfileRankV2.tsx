@@ -14,7 +14,10 @@ export const CardProfileRankV2 = () => {
   if (accountMap.isLoading) return <Spinner />;
 
   return (
-    <CardProfileV2 py={"4"}>
+    <CardProfileV2
+      py={"4"}
+      bgGradient="linear-gradient(118deg, #1D73CD 4.67%, #02E4A4 97.62%)"
+    >
       <Stack
         flexDir={{ base: "row", lg: "column" }}
         gap={{ base: "4", sm: "8", lg: "0" }}

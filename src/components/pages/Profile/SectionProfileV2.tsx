@@ -105,71 +105,48 @@ export const SectionProfileV2 = () => {
         {t("pages.profile.header")}
       </Heading>
 
-      <Flex direction="column" gap="10" p="2">
-        <Stack
-          w="100%"
-          direction={{ base: "column", md: "column", lg: "row", xl: "row" }}
-          spacing="10"
+      <Flex direction={{ base: "column", lg: "row" }} gap="10" p="2">
+        <Box
+          flex={0}
+          bgGradient="linear-gradient(118deg, #1D73CD 4.67%, #02E4A4 97.62%)"
+          rounded="2.5rem"
+          p="1"
         >
-          <Box flex="1" minW={{ base: "100%", md: "35%" }}>
-            <CardProfileRankV2 />
-          </Box>
-          <Box w="100%">
-            <CardProfileBalanceV2 />
-          </Box>
-        </Stack>
-        <Stack
-          w="100%"
-          direction={{
-            base: "column-reverse",
-            md: "column-reverse",
-            lg: "row",
-            xl: "row",
-          }}
-          spacing="10"
-        >
-          <Box flex="1" minW={{ base: "100%", md: "35%" }}>
-            <CardProfileAddress />
-          </Box>
-          <Box w="100%">
-            <CardProfileBonus />
-          </Box>
-        </Stack>
-      </Flex>
+          <Stack
+            h="100%"
+            w="100%"
+            rounded="2.5rem"
+            // direction={{ base: "column", md: "column", lg: "row", xl: "row" }}
+            direction="column"
+            justify="space-between"
+            background="#091E2A"
+          >
+            <Box minW={{ base: "100%", md: "35%" }}>
+              <CardProfileRankV2 />
+            </Box>
+            <Box w="100%">
+              <CardProfileAddress />
+              {/* <CardProfileBalanceV2 /> */}
+            </Box>
+          </Stack>
+        </Box>
 
-      <Flex
-        py={"6"}
-        justify={{ base: "center", xl: "space-between" }}
-        wrap={"wrap"}
-        gap={{ base: "2", lg: "8" }}
-        zIndex={"1"}
-      >
-        <WidgetProfileMember
-          label={"common.networkMembers"}
-          value={accountMap.data?.downlineCount.toString() ?? "0"}
-        />
-        <WidgetProfileMember
-          label={"common.directReferrals"}
-          value={accountMap.data?.directDownlineCount.toString() ?? "0"}
-        />
-        <WidgetProfileMember
-          label={"common.totalPotentialProfit"}
-          isLoading={summaryLoading}
-          value={`${summaryData?.totalPotentialProfit ?? 0} GNET`}
-        />
-        <WidgetProfileMember
-          isLoading={
-            isLoading ||
-            telegramInvite.isFetching ||
-            telegramInviteMutate.isLoading
-          }
-          label={"common.telegramOnlyMember"}
-          cursor={!user?.telegramUsername ? "pointer" : "default"}
-          value={
-            user?.telegramUsername ? `@${user?.telegramUsername}` : "@username"
-          }
-          onClick={user?.telegramUsername ? () => null : createSignature}
-        />
+        <Stack
+          w="100%"
+          // direction={{
+          //   base: "column-reverse",
+          //   md: "column-reverse",
+          //   lg: "row",
+          //   xl: "row",
+          // }}
+          flex={2}
+          p="1"
+          background="green"
+          bgGradient="linear-gradient(118deg, #1D73CD 4.67%, #02E4A4 97.62%)"
+          rounded="2.5rem"
+        >
+          <CardProfileBalanceV2 />
+        </Stack>
       </Flex>
     </Stack>
   );

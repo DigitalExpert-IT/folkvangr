@@ -45,9 +45,9 @@ export const CardProfileBonus = () => {
   };
 
   return (
-    <CardProfileV2>
-      <Stack gap={"3"} px={"4"} mx={"auto"} w={"full"} maxW={"2xl"}>
-        <WidgetProfileBalace>
+    <Stack>
+      <Stack gap={"3"} w={"full"}>
+        <WidgetProfileBalace bg="#0B5454" px="1rem" rounded="xl">
           <HStack w={"full"} justifyContent={"space-between"}>
             <Text>{t("common.globalBonus")}</Text>
             <Text textAlign={"end"}>
@@ -69,7 +69,14 @@ export const CardProfileBonus = () => {
             </Text>
           </HStack>
         </WidgetProfileBalace>
-        <WidgetProfileBalace>
+        <WidgetProfileBalace bg="#0B5454" px="1rem" rounded="xl">
+          <HStack w={"full"} justifyContent={"space-between"}>
+            <Text>{t("common.PrivateSalePool")}</Text>
+            {/* <Text textAlign={"end"}>{prettyBn(ipoPool.claimable)} MATIC</Text> */}
+            <Text textAlign={"end"}>TBA</Text>
+          </HStack>
+        </WidgetProfileBalace>
+        <WidgetProfileBalace bg="#0B5454" px="1rem" rounded="xl">
           <HStack w={"full"} justifyContent={"space-between"}>
             <Stack>
               <Text>{t("common.referralBonus")}</Text>
@@ -86,7 +93,7 @@ export const CardProfileBonus = () => {
             </WidgetProfileBtn>
           </HStack>
         </WidgetProfileBalace>
-        <WidgetProfileBalace>
+        <WidgetProfileBalace bg="#0B5454" px="1rem" rounded="xl">
           <HStack w={"full"} justifyContent={"space-between"}>
             <Stack>
               <Text>{t("common.rankReward")}</Text>
@@ -103,14 +110,7 @@ export const CardProfileBonus = () => {
             </WidgetProfileBtn>
           </HStack>
         </WidgetProfileBalace>
-        <WidgetProfileBalace>
-          <HStack w={"full"} justifyContent={"space-between"}>
-            <Text>{t("common.PrivateSalePool")}</Text>
-            {/* <Text textAlign={"end"}>{prettyBn(ipoPool.claimable)} MATIC</Text> */}
-            <Text textAlign={"end"}>TBA</Text>
-          </HStack>
-        </WidgetProfileBalace>
       </Stack>
-    </CardProfileV2>
+    </Stack>
   );
 };

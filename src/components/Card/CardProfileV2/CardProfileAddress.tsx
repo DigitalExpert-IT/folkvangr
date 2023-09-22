@@ -1,4 +1,4 @@
-import { Center, Text, VStack } from "@chakra-ui/react";
+import { Center, Text, VStack, Box, Heading } from "@chakra-ui/react";
 import { useAddress } from "@thirdweb-dev/react";
 import { CopiableText } from "components/CopiableText";
 import { WidgetProfileBalace } from "components/Widget/WidgetProfile";
@@ -26,13 +26,23 @@ export const CardProfileAddress = () => {
     }
   }, [router.isReady]);
   return (
-    <CardProfileV2>
-      <VStack gap={"8"}>
-        <WidgetProfileBalace justifyContent={"center"}>
+    <CardProfileV2 placeContent="left" align="left">
+      <Box
+        w="100%"
+        px="2"
+        display="flex"
+        flexDirection="column"
+        textAlign="center"
+      >
+        <Heading size="lg">Total Turnover</Heading>
+        <Text fontSize="lg">0</Text>
+      </Box>
+      <VStack gap={"8"} mt="3rem">
+        <WidgetProfileBalace w="full" justifyContent="center">
           <Center py={"2"}>
             <CopiableText
-              alignItems={"center"}
-              textAlign={"center"}
+              alignItems={"left"}
+              textAlign={"left"}
               gap={2}
               fontSize={{ base: "2xs", sm: "xs", xl: "sm" }}
               value={ContractGnet}
@@ -40,8 +50,8 @@ export const CardProfileAddress = () => {
               <Text
                 as={"span"}
                 display={"flex"}
-                justifyContent={"center"}
-                alignItems={"center"}
+                justifyContent={"left"}
+                alignItems={"left"}
                 gap={"2"}
                 fontSize={"lg"}
               >
@@ -52,7 +62,7 @@ export const CardProfileAddress = () => {
             </CopiableText>
           </Center>
         </WidgetProfileBalace>
-        <WidgetProfileBalace justifyContent={"center"}>
+        <WidgetProfileBalace justifyContent={"center"} w="full">
           <Center py={"2"}>
             <CopiableText
               alignItems={"center"}
@@ -64,8 +74,8 @@ export const CardProfileAddress = () => {
               <Text
                 as={"span"}
                 display={"flex"}
-                justifyContent={"center"}
-                alignItems={"center"}
+                justifyContent={"left"}
+                alignItems={"left"}
                 gap={"2"}
                 fontSize={"lg"}
               >
@@ -76,7 +86,7 @@ export const CardProfileAddress = () => {
             </CopiableText>
           </Center>
         </WidgetProfileBalace>
-        <WidgetProfileBalace justifyContent={"center"}>
+        <WidgetProfileBalace justifyContent={"center"} w="full">
           <Center py={"2"}>
             <Text
               alignItems={"center"}
@@ -87,10 +97,10 @@ export const CardProfileAddress = () => {
               <Text
                 as={"span"}
                 display={"flex"}
-                justifyContent={"center"}
-                alignItems={"center"}
+                justifyContent={"left"}
+                alignItems={"left"}
                 gap={"2"}
-                fontSize={"lg"}
+                fontSize={"xl"}
               >
                 {t("common.myReferrer")}
               </Text>

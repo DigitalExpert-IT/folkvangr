@@ -1,6 +1,7 @@
 import { HStack, Image, Stack, Text } from "@chakra-ui/react";
 import { useAddress, useBalance } from "@thirdweb-dev/react";
 import { WidgetProfileBalace } from "components/Widget/WidgetProfile";
+import { CardProfileBonus } from "components/Card";
 import { GNET_CONTRACT, USDT_CONTRACT, ZERO_ADDRESS } from "constant/address";
 import { Trans } from "react-i18next";
 import { prettyBn } from "utils";
@@ -30,29 +31,38 @@ export const CardProfileBalanceV2 = () => {
   }, [address]);
 
   return (
-    <CardProfileV2>
-      <Text fontSize={"xl"} textAlign={"center"}>
+    <Stack
+      bg="#091E2A"
+      rounded="2.5rem"
+      p={{ base: "5", lg: "10" }}
+      height="full"
+      justify="center"
+    >
+      <Text fontSize={"xl"} textAlign={"left"}>
         <Trans i18nKey="common.balance" />
       </Text>
       <Stack gap={"2"} w={"full"}>
-        <WidgetProfileBalace pos={"relative"}>
-          <Image
-            src="/assets/logo/logo-white.png"
-            alt="Logo GN"
-            w={10}
-            pos={"absolute"}
-            left={"0"}
-          />
+        <WidgetProfileBalace
+          bg="transparent"
+          border="1px solid white"
+          px="1rem"
+          rounded="xl"
+        >
+          <Image src="/assets/logo/folkvangr-mini.png" alt="Logo FLD" w={10} />
           <HStack w={"full"} justifyContent={{ base: "end", xs: "center" }}>
-            <Text>{prettyBn(gnetBalance, 9)} GNET</Text>
+            <Text>{prettyBn(gnetBalance, 9)} FLD</Text>
           </HStack>
         </WidgetProfileBalace>
-        <WidgetProfileBalace pos={"relative"}>
+        <WidgetProfileBalace
+          bg="transparent"
+          border="1px solid white"
+          px="1rem"
+          rounded="xl"
+        >
           <Image
-            src="/assets/logo/polygon-logo-white.png"
+            src="/assets/logo/bnb-logo.png"
             alt="Logo Polygon"
             w={10}
-            pos={"absolute"}
             left={"0"}
           />
           <HStack w={"full"} justifyContent={{ base: "end", xs: "center" }}>
@@ -61,12 +71,16 @@ export const CardProfileBalanceV2 = () => {
             </Text>
           </HStack>
         </WidgetProfileBalace>
-        <WidgetProfileBalace pos={"relative"}>
+        <WidgetProfileBalace
+          bg="transparent"
+          border="1px solid white"
+          px="1rem"
+          rounded="xl"
+        >
           <Image
             src="/assets/logo/tether-logo-white.png"
             alt="Logo Tether"
             w={10}
-            pos={"absolute"}
             left={"0"}
           />
           <HStack w={"full"} justifyContent={{ base: "end", xs: "center" }}>
@@ -74,6 +88,7 @@ export const CardProfileBalanceV2 = () => {
           </HStack>
         </WidgetProfileBalace>
       </Stack>
-    </CardProfileV2>
+      <CardProfileBonus />
+    </Stack>
   );
 };

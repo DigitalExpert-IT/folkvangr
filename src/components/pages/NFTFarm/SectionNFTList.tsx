@@ -40,7 +40,7 @@ export const SectionNFTList = () => {
           textTransform="uppercase"
           fontSize={{ md: "6xl", base: "4xl" }}
         >
-          trending nft
+          nft pocket
         </Heading>
       </Box>
       <Container maxW={"container.xxl"}>
@@ -60,7 +60,7 @@ export const SectionNFTList = () => {
             <WrapItem w={{ md: "25%", sm: "45%", base: "100%" }} key={idx}>
               <CardFarmNFTV2
                 contentTitle={e.halfingPercentage.toString()}
-                title={`Grind ${e.id.add(1)}`}
+                title={`Falcon ${e.id.add(1)}`}
                 price={prettyBn(e.price, 9)}
                 id={e.id.toString()}
               />

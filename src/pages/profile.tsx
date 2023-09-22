@@ -11,7 +11,7 @@ const ProfileV2 = () => {
         pt="40"
         bgGradient="linear-gradient(180deg, #0A232D 0%, #0A1424 23.05%, #0A2830 71.87%, #0A1424 100%)"
       >
-        {/* <Box
+        <Box
           position={"absolute"}
           w={"full"}
           pt="36"
@@ -25,7 +25,7 @@ const ProfileV2 = () => {
             w={"full"}
             minH={"100vh"}
           />
-        </Box> */}
+        </Box>
         <SectionProfileV2 />
         <SectionMyNFTV2 />
       </Box>

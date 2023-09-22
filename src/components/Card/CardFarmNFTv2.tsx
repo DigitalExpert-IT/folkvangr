@@ -44,12 +44,30 @@ export const CardFarmNFTV2: React.FC<CardNFTV2Props> = props => {
                 Gacha: 0.7%, 0.8%, 0.9%, 1%, 1.1%, 1.3%, 1.5%
               </Text>
               <Stack alignItems="center" py="1rem">
-                <UglyButton
+                {/* <UglyButton
                   price={props.price}
                   label={t("common.buy")}
                   onClick={handleBuy}
                   isLoading={buyAsync.isLoading}
-                />
+                /> */}
+                <Button
+                  w="100%"
+                  rounded="lg"
+                  background="#0B5454"
+                  _hover={{ background: "#073c3c" }}
+                  // onClick={props.onClick}
+                >
+                  Buy with {props.price} USDT
+                </Button>
+                <Button
+                  w="100%"
+                  rounded="lg"
+                  background="#0B5454"
+                  _hover={{ background: "#073c3c" }}
+                  // onClick={props.onClick}
+                >
+                  Buy with {props.price} FLD
+                </Button>
               </Stack>
             </Box>
           </Stack>
