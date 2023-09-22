@@ -20,7 +20,7 @@ export const LayoutFooterV2 = () => {
   return (
     <Box as="footer" w="full" position={"relative"} bg={"#092A31"}>
       <Box bg="#0B4649" w="full" h="full" position="static" overflow={"hidden"}>
-        {/* <Image
+        <Image
           src={pattern}
           alt="background-footer"
           loading="lazy"
@@ -28,7 +28,7 @@ export const LayoutFooterV2 = () => {
           style={{ objectFit: "cover" }}
           priority={false}
           fill
-        /> */}
+        />
         <Container maxW="container.lg" py={"2rem"} px={30}>
           <Flex
             justify={"center"}

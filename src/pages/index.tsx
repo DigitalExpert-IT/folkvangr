@@ -5,10 +5,10 @@ import { SectionNFTList } from "components/pages/NFTFarm";
 import {
   SectionHeaderV2,
   LayoutMainV2,
-  SectionRoadmapV2,
   SectionTeamV3,
   SectionPartnershipV2,
   TableRankNetworkV2,
+  TableRankBonusV2,
   SectionFeaturesV2,
   SectionFeaturedPopulationV2,
   SectionMatchingBonusV2,
@@ -30,6 +30,7 @@ export default function Home() {
       </Container>
       <Box bgGradient="linear-gradient(180deg, #0A2830 -39.17%, #0A1424 46.16%, #092A31 100.87%)">
         <TableRankNetworkV2 />
+        <TableRankBonusV2 />
         <SectionMatchingBonusV2 />
       </Box>
       <Box

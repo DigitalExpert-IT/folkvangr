@@ -3,53 +3,41 @@ import { IRankBonusV2, RANKBONUSV2 } from "constant/pages/home";
 import { createColumnHelper } from "@tanstack/react-table";
 import { Trans } from "react-i18next";
 import { TableData } from "components/TableUtils";
-import {
-  Stack,
-  Image as Chakra,
-  Heading,
-  Text,
-  AspectRatio,
-} from "@chakra-ui/react";
-import Image from "next/image";
+import { Stack, Heading, Text, Icon } from "@chakra-ui/react";
 import { t } from "i18next";
+import { MdOutlineDoubleArrow } from "react-icons/md";
 import { WidgetSwipe } from "components/Widget";
 
 const columnHelper = createColumnHelper<IRankBonusV2>();
 
 const columns = [
-  columnHelper.accessor("rankData", {
+  columnHelper.accessor("share", {
     cell: info => (
       <Stack
         direction="row"
         align="center"
-        mx="2"
-        my={{ base: "2", md: "3" }}
-        w={{ base: "4xs", md: "4xs", xl: "2xs" }}
+        w={{ base: 40, md: 80 }}
+        whiteSpace="pre-wrap"
       >
-        {info.getValue().image ? (
-          <AspectRatio ratio={1} w={10} h={10}>
-            <Image
-              src={info.getValue().image}
-              alt="rank-image"
-              loading="lazy"
-              style={{ objectFit: "contain" }}
-              fill
-            />
-          </AspectRatio>
-        ) : null}
+        <Icon
+          as={MdOutlineDoubleArrow}
+          color="teal.400"
+          w={{ base: "3", md: "5" }}
+          h={{ base: "3", md: "7" }}
+        />
         <Text
-          fontSize="lg"
+          fontSize={{ base: "sm", md: "xl" }}
           textTransform="capitalize"
-          color={info.cell.row.original.color}
+          color="gray.300"
         >
-          {info.getValue().rank}
+          {info.getValue()}
         </Text>
       </Stack>
     ),
-    header: t("common.rank") ?? "",
+    header: t("common.nftAllocation") ?? "",
   }),
 
-  columnHelper.accessor("pool", {
+  columnHelper.accessor("percent", {
     cell: info => (
       <Text
         fontSize="md"
@@ -60,60 +48,22 @@ const columns = [
         {info.getValue().length !== 0 ? info.getValue() : "-"}
       </Text>
     ),
-    header: t("common.maticBonus") ?? "",
-  }),
-
-  columnHelper.accessor("downline", {
-    cell: info => (
-      <Text
-        fontSize="md"
-        textTransform="capitalize"
-        textAlign="center"
-        w={{ base: "4xs", md: "4xs", lg: "3xs", xl: "3xs" }}
-      >
-        {info.getValue().length !== 0 ? info.getValue() : "-"}
-      </Text>
-    ),
-    header: t("common.15Leveldown") ?? "",
-  }),
-
-  columnHelper.accessor("requirement", {
-    cell: info => (
-      <Text
-        fontSize="md"
-        textTransform="capitalize"
-        textAlign="center"
-        mx="2"
-        w={{ base: "5xs", md: "5xs", xl: "4xs" }}
-      >
-        {info.getValue().length !== 0 ? info.getValue() : "-"}
-      </Text>
-    ),
-    header: t("common.rankreq") ?? "",
+    header: t("common.percent") ?? "",
   }),
 ];
 
 export const TableRankBonusV2 = () => {
   return (
     <Stack
+      mt="10rem"
       display="flex"
       align="center"
       textAlign="center"
       pos="relative"
-      pt={40}
       overflow="hidden"
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
     >
-      <Stack pos="absolute" w="full" h="full" zIndex="1">
-        <Image
-          src="/assets/project/pattern2.png"
-          alt="pattern2"
-          style={{ objectFit: "contain" }}
-          loading="lazy"
-          fill
-        />
-      </Stack>
       <Heading
         fontWeight="black"
         fontSize={{ base: "3xl", md: "7xl" }}
@@ -124,7 +74,7 @@ export const TableRankBonusV2 = () => {
             "linear-gradient(90deg, rgba(156, 41, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%)",
           backgroundClip: "text",
           WebkitTextFillColor: "transparent",
-          content: `'${t("pages.home.bonus")}'`,
+          content: `'${t("pages.dashboard.title.nft")}'`,
           display: "block",
           textAlign: "center",
           alignSelf: "center",
@@ -137,7 +87,7 @@ export const TableRankBonusV2 = () => {
           },
         }}
       >
-        <Trans i18nKey="pages.home.globalrankbonus" />
+        <Trans i18nKey="pages.home.falconDefiNftSystem" />
       </Heading>
 
       <TableData

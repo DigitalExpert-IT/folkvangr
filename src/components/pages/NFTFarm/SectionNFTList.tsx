@@ -24,7 +24,6 @@ export const SectionNFTList = () => {
         display="flex"
         w="full"
         pt="40"
-      // h={{ md: "50vh", base: "40vh" }}
       >
         <Heading
           _after={{

@@ -11,7 +11,7 @@ import { t } from "i18next";
 const columnHelper = createColumnHelper<IRankNetwork>();
 
 const columns = [
-  columnHelper.accessor("levelBonus", {
+  columnHelper.accessor("rank", {
     cell: info => (
       <Stack
         direction="row"
@@ -36,7 +36,19 @@ const columns = [
     ),
     header: t("common.rank") ?? "",
   }),
-  columnHelper.accessor("percent", {
+  columnHelper.accessor("turnover", {
+    cell: info => (
+      <Text
+        fontSize={{ base: "sm", md: "xl" }}
+        textTransform="capitalize"
+        textAlign="center"
+      >
+        {info.getValue()}
+      </Text>
+    ),
+    header: t("common.turnover") ?? "",
+  }),
+  columnHelper.accessor("sponsor", {
     cell: info => (
       <Text
         fontSize={{ base: "sm", md: "xl" }}
@@ -48,7 +60,7 @@ const columns = [
     ),
     header: t("common.sponsor") ?? "",
   }),
-  columnHelper.accessor("value", {
+  columnHelper.accessor("matching", {
     cell: info => (
       <Text
         fontSize={{ base: "sm", md: "xl" }}
@@ -59,6 +71,18 @@ const columns = [
       </Text>
     ),
     header: t("common.matchingBonus") ?? "",
+  }),
+  columnHelper.accessor("personalBuy", {
+    cell: info => (
+      <Text
+        fontSize={{ base: "sm", md: "xl" }}
+        textTransform="capitalize"
+        textAlign="center"
+      >
+        {info.getValue()}
+      </Text>
+    ),
+    header: t("common.personalBuy") ?? "",
   }),
 ];
 

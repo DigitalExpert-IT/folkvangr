@@ -21,7 +21,7 @@
     "maticPlan": "Matic plan",
     "bnbPlan": "BNB Plan",
     "bonus": "Bonus",
-    "globalrankbonus": "<strong>Global Rank</strong> Bonus System",
+    "falconDefiNftSystem": "<strong>Falcon Defi</strong> NFT System",
     "tokenomics": "Tokenomics",
     "quotes": "We will always do the right thing and work together to succeed. By constantly improving ourselves, we aim to achieve even greater things as a community",
     "roadmap": [
@@ -291,14 +291,9 @@
         "subtitle": "All data is stored in the blockchain in the public domain and can be verified!"
       }
     },
-    "matchingBonus": {
-      "title": "100 <strong>Level</strong>",
-      "subtitle": "Matching bonus",
-      "description": "Get matching up to 100 levels for any project issued by the decentralized global network marketing team"
-    },
     "matchingBonusv2": {
-      "title": "Rank <br/> Matching bonus",
-      "description": "Get matching up to 100 levels for any project issued by the decentralized global network marketing team"
+      "title": "World <br/> Community",
+      "description": "Falcon Defi Network community members are around the world. You are welcome to join our community, building team on Falcon Defi Network. Join the growing Falcon Defi Network community"
     },
     "populationSection": {
       "title": "<strong>Falcon Defi</strong> Network Marketing",
