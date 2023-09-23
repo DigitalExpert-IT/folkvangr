@@ -47,7 +47,7 @@ export const CardProfileBonus = () => {
   return (
     <Stack>
       <Stack gap={"3"} w={"full"}>
-        <WidgetProfileBalace bg="#0B5454" px="1rem" rounded="xl">
+        {/* <WidgetProfileBalace bg="#0B5454" px="1rem" rounded="xl">
           <HStack w={"full"} justifyContent={"space-between"}>
             <Text>{t("common.globalBonus")}</Text>
             <Text textAlign={"end"}>
@@ -68,12 +68,17 @@ export const CardProfileBonus = () => {
               {usdt.data?.symbol}
             </Text>
           </HStack>
+        </WidgetProfileBalace> */}
+        <WidgetProfileBalace bg="#0B5454" px="1rem" rounded="xl">
+          <HStack w={"full"} justifyContent={"space-between"}>
+            <Text>{t("common.PersonalBuy")}</Text>
+            <Text textAlign={"end"}>7000</Text>
+          </HStack>
         </WidgetProfileBalace>
         <WidgetProfileBalace bg="#0B5454" px="1rem" rounded="xl">
           <HStack w={"full"} justifyContent={"space-between"}>
-            <Text>{t("common.PrivateSalePool")}</Text>
-            {/* <Text textAlign={"end"}>{prettyBn(ipoPool.claimable)} MATIC</Text> */}
-            <Text textAlign={"end"}>TBA</Text>
+            <Text>{t("common.TotalNetworkMember")}</Text>
+            <Text textAlign={"end"}>0 Member</Text>
           </HStack>
         </WidgetProfileBalace>
         <WidgetProfileBalace bg="#0B5454" px="1rem" rounded="xl">

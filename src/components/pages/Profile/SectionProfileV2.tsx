@@ -126,24 +126,16 @@ export const SectionProfileV2 = () => {
             </Box>
             <Box w="100%">
               <CardProfileAddress />
-              {/* <CardProfileBalanceV2 /> */}
             </Box>
           </Stack>
         </Box>
 
         <Stack
-          w="100%"
-          // direction={{
-          //   base: "column-reverse",
-          //   md: "column-reverse",
-          //   lg: "row",
-          //   xl: "row",
-          // }}
-          flex={2}
-          p="1"
-          background="green"
           bgGradient="linear-gradient(118deg, #1D73CD 4.67%, #02E4A4 97.62%)"
           rounded="2.5rem"
+          w="100%"
+          flex={2}
+          p="1"
         >
           <CardProfileBalanceV2 />
         </Stack>

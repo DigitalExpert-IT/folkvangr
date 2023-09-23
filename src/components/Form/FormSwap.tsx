@@ -171,11 +171,11 @@ export const FormSwap = () => {
     const feePercentage = 500;
     // This percentage is to provide a swap tolerance range,
     // in order to avoid a lack of result from swaps
-    const tolerancePercentage = 2;
+    const tolerancePercentage = 3;
 
     if (!val) return toBn("0");
 
-    // tolerance 502 === 0.00502 or 0.502%
+    // tolerance 503 === 0.00503 or 0.503%
     // check div 1e5 shouldbe 509 / 1e5
     return val.mul(feePercentage + tolerancePercentage).div(1e5);
   };
@@ -204,7 +204,7 @@ export const FormSwap = () => {
 
   useEffect(() => {
     const currency = watchCurrency;
-    if (currency === "GNET") setSymbol(true);
+    if (currency === "FLD") setSymbol(true);
     else setSymbol(false);
 
     // should reset amountTop and amountBottom
@@ -266,191 +266,310 @@ export const FormSwap = () => {
   });
 
   return (
-    <Stack
-      direction={{ base: "column-reverse", md: "row" }}
-      align="center"
-      justify="center"
+    <SimpleGrid
+      columns={{ base: 1, md: 2 }}
+      gap={{ base: "8", md: "20" }}
+      pos={"relative"}
     >
       <Stack
         as="form"
         onSubmit={onSubmit}
         align="center"
-        flex={2}
-        spacing={"3"}
+        order={{ base: 2, md: 1 }}
       >
-        <HStack w="full">
-          <Box
-            position={"relative"}
-            border={"1px"}
-            borderColor="#091E2A"
-            borderRadius={"lg"}
-            overflow={"hidden"}
-            w="100%"
-          >
-            <Text
-              position={"absolute"}
-              textAlign={"center"}
-              fontWeight={"bold"}
-              bg="#091E2A"
-              py={"2"}
-              px={"6"}
-              borderLeftRadius="lg"
-              zIndex={"3"}
+        <Stack alignItems="center" mb="5" spacing={"3"}>
+          <HStack w="full">
+            <Box
+              position={"relative"}
+              border={"1px"}
+              borderColor="#091E2A"
+              borderRadius={"lg"}
+              overflow={"hidden"}
+              w="100%"
             >
-              {t("form.label.from")}
-            </Text>
-            <FormInput
-              flex={1}
-              ml={"10"}
-              textAlign="center"
-              textColor={"white"}
-              borderRadius={"3xl"}
-              bg="#091e2abd"
-              _focus={{
-                border: "none",
-                bg: "whiteAlpha.200",
-              }}
+              <Text
+                position={"absolute"}
+                textAlign={"center"}
+                fontWeight={"bold"}
+                bg="#091E2A"
+                py={"2"}
+                px={"6"}
+                borderLeftRadius="lg"
+                zIndex={"3"}
+              >
+                {t("form.label.from")}
+              </Text>
+              <FormInput
+                flex={1}
+                ml={"10"}
+                textAlign="center"
+                textColor={"white"}
+                borderRadius={"3xl"}
+                bg="#091e2abd"
+                _focus={{
+                  border: "none",
+                  bg: "whiteAlpha.200",
+                }}
+                _hover={{
+                  border: "none",
+                  bg: "whiteAlpha.300",
+                }}
+                control={control}
+                onKeyUp={() => handleChangeInput("amountTop")}
+                name="amountTop"
+                placeholder={"0.0"}
+                type="number"
+                isDisabled={swap.isLoading}
+              />
+            </Box>
+            <Button
+              backgroundColor={"#091E2A"}
+              rounded="lg"
               _hover={{
-                border: "none",
-                bg: "whiteAlpha.300",
+                opacity: 0.6,
               }}
-              control={control}
-              onKeyUp={() => handleChangeInput("amountTop")}
-              name="amountTop"
-              placeholder={"0.0"}
-              type="number"
-              isDisabled={swap.isLoading}
-            />
-          </Box>
-          <Button
-            backgroundColor={"#091E2A"}
-            rounded="lg"
-            _hover={{
-              opacity: 0.6,
-            }}
-            onClick={inputMax}
+              onClick={inputMax}
+            >
+              {t("common.max")}
+            </Button>
+          </HStack>
+          <Text
+            as={"span"}
+            fontSize={"sm"}
+            color={"whiteAlpha.700"}
+            textAlign={"center"}
           >
-            {t("common.max")}
-          </Button>
-        </HStack>
-        <Text
-          as={"span"}
-          fontSize={"sm"}
-          color={"whiteAlpha.700"}
-          textAlign={"center"}
-        >
-          {t("form.helperText.afterFee", {
-            value: fromBn(amountAfterFee, 9),
-            symbol: symbol ? "USDT" : "GNET",
-          })}
-        </Text>
+            {t("form.helperText.afterFee", {
+              value: fromBn(amountAfterFee, 9),
+              symbol: symbol ? "USDT" : "FLD",
+            })}
+          </Text>
 
-        {/* Swap pandom */}
-        <Stack py={"2"} w={"full"}>
-          <SimpleGrid
-            columns={2}
-            placeItems={"center"}
-            bg="#091E2A"
-            w={"full"}
-            rounded={"lg"}
-            overflow={"hidden"}
-            textColor={"white"}
-            pos={"relative"}
-          >
-            <Text fontWeight={"bold"}>{t("form.label.swap")}</Text>
-            <Icon pos={"absolute"} zIndex={"3"} fontSize={"xl"}>
-              <AiOutlineArrowRight />
-            </Icon>
-            <FormSelect
-              bg={"#091e2abd"}
-              textAlign={"center"}
-              control={control}
-              _focus={{
-                border: "none",
-                bg: "gray.700",
-              }}
-              _hover={{
-                border: "none",
-                bg: "gray.600",
-              }}
-              name="currency"
-              // option={normalizeCurrencies}
-              option={[
-                { value: "USDT", label: "USDT" },
-                { value: "GNET", label: "GNET" },
-              ]}
-              isDisabled={swap.isLoading}
-              defaultValue="USDT"
-            />
-          </SimpleGrid>
-        </Stack>
-        <Stack w={"full"} pt={"4"}>
-          <Box
-            position={"relative"}
-            w={"full"}
-            border={"1px"}
-            borderColor="#091E2A"
-            borderRadius={"lg"}
-            overflow={"hidden"}
-          >
-            <Text
-              position={"absolute"}
-              textAlign={"center"}
-              fontWeight={"bold"}
-              py={"2"}
-              px={"6"}
-              borderRadius={"md"}
-              bg="#091E2A"
-              zIndex={"3"}
+          <Stack py={"2"} w={"full"}>
+            <SimpleGrid
+              columns={2}
+              placeItems={"center"}
+              bg={"#091E2A"}
+              w={"full"}
+              rounded={"xl"}
+              overflow={"hidden"}
+              pos={"relative"}
             >
-              {t("form.label.to")}
-            </Text>
-            <FormInput
-              ml={"10"}
-              textAlign="center"
-              textColor={"gray.100"}
-              borderRadius={"3xl"}
-              bg="#091e2abd"
-              _focus={{
-                border: "none",
-                bg: "whiteAlpha.200",
-              }}
+              <Text fontWeight={"bold"}>{t("form.label.swap")}</Text>
+              <Icon pos={"absolute"} zIndex={"3"} fontSize={"xl"} color="white">
+                <AiOutlineArrowRight />
+              </Icon>
+              <FormSelect
+                bg={"#091e2abd"}
+                textAlign={"center"}
+                control={control}
+                _focus={{
+                  border: "none",
+                  bg: "gray.700",
+                }}
+                _hover={{
+                  border: "none",
+                  bg: "gray.600",
+                }}
+                name="currency"
+                // option={normalizeCurrencies}
+                option={[
+                  { value: "USDT", label: "USDT" },
+                  { value: "FLD", label: "FLD" },
+                ]}
+                isDisabled={swap.isLoading}
+                defaultValue="USDT"
+              />
+            </SimpleGrid>
+          </Stack>
+
+          <Stack w={"full"} pt={"4"}>
+            <Box
+              position={"relative"}
+              w={"full"}
+              border={"1px"}
+              borderColor="#091E2A"
+              borderRadius={"lg"}
+              overflow={"hidden"}
+            >
+              <Text
+                position={"absolute"}
+                textAlign={"center"}
+                fontWeight={"bold"}
+                py={"2"}
+                px={"6"}
+                borderRadius={"md"}
+                bg="#091E2A"
+                zIndex={"3"}
+              >
+                {t("form.label.to")}
+              </Text>
+              <FormInput
+                ml={"10"}
+                textAlign="center"
+                textColor={"gray.100"}
+                borderRadius={"3xl"}
+                bg="#091e2abd"
+                _focus={{
+                  border: "none",
+                  bg: "whiteAlpha.200",
+                }}
+                _hover={{
+                  border: "none",
+                  bg: "whiteAlpha.300",
+                }}
+                control={control}
+                onKeyUp={() => handleChangeInput("amountBottom")}
+                name="amountBottom"
+                placeholder={"0.0"}
+                type="number"
+                isDisabled={swap.isLoading}
+              />
+            </Box>
+          </Stack>
+          <ButtonConnectWrapper>
+            <Button
+              type="submit"
+              w="100%"
+              isLoading={isSwapLoading}
+              bgGradient="linear-gradient(92deg, #1D76CD 4.65%, #06C196 96.4%)"
               _hover={{
-                border: "none",
-                bg: "whiteAlpha.300",
+                bg: "linear-gradient(92deg, #135186 4.65%, #0B4649 96.4%)",
               }}
-              control={control}
-              onKeyUp={() => handleChangeInput("amountBottom")}
-              name="amountBottom"
-              placeholder={"0.0"}
-              type="number"
-              isDisabled={swap.isLoading}
-            />
-          </Box>
+            >
+              {t("common.swap")}
+            </Button>
+          </ButtonConnectWrapper>
         </Stack>
-        <ButtonConnectWrapper>
-          <Button
-            type="submit"
-            w="100%"
-            isLoading={isSwapLoading}
-            bgGradient="linear-gradient(92deg, #1D76CD 4.65%, #06C196 96.4%)"
-            _hover={{
-              bg: "linear-gradient(92deg, #135186 4.65%, #0B4649 96.4%)",
-            }}
-          >
-            {t("common.swap")}
-          </Button>
-        </ButtonConnectWrapper>
       </Stack>
-
+      <Box
+        display={{ base: "none", md: "block" }}
+        pos={"absolute"}
+        right={"0"}
+        left={"0"}
+        my={"8"}
+        w={"0.5"}
+        h={"40"}
+        mx={"auto"}
+        borderRight={"1px"}
+        borderColor="gray.400"
+      />
       <Stack
+        height={"fit-content"}
+        pos="relative"
         mb={{ base: 10, md: 0 }}
-        flex={1}
-        align="center"
-        w={{ base: "200px", md: "50%" }}
+        px="3"
+        order={{ base: 1, md: 2 }}
       >
-        <Image src="/images/swap-logo.png" alt="swap-image" objectFit="cover" />
+        <Box zIndex={1}>
+          {/* <Text as="h3" textAlign="center" mb="3">
+            {t("common.balance")}
+          </Text> */}
+          <Stack
+            direction="column"
+            p={2}
+            rounded="xl"
+            backgroundColor="#091E2A"
+            my="4"
+            boxShadow="lg"
+            justifyContent="space-between"
+          >
+            <Stack
+              direction="row"
+              justifyContent="space-between"
+              w="full"
+              px="8"
+              pt="3"
+            >
+              <AspectRatio ratio={1} width="24px">
+                <Image src="/assets/logo/folkvangr-mini.png" alt="logo-image" />
+              </AspectRatio>
+              <Text
+                as={"span"}
+                fontSize={"sm"}
+                color={"whiteAlpha.700"}
+                textAlign={"center"}
+              >
+                {/* TODO: already delete if this calculation good */}
+                {/* {fromBn(balanceGNET ?? 0, 9)} GNET */}
+                {prettyBn(balanceGNET, 9)} FLD
+              </Text>
+            </Stack>
+            <HStack
+              borderTop="1px"
+              borderColor="gray.500"
+              textAlign="center"
+              p="3"
+              justifyContent="space-between"
+            >
+              <Text fontSize="sm">Import FLD</Text>
+              <Box display="flex" alignItems="center">
+                <CopiableText
+                  value={addressGnet}
+                  display="flex"
+                  alignItems="center"
+                  gap="2"
+                >
+                  {shortenAddress(addressGnet)}
+                  <IoCopyOutline />
+                </CopiableText>
+              </Box>
+            </HStack>
+          </Stack>
+          <Stack
+            direction="column"
+            rounded="xl"
+            p={2}
+            backgroundColor="#091E2A"
+            my="4"
+            boxShadow="lg"
+            justifyContent="space-between"
+          >
+            <Stack
+              direction="row"
+              justifyContent="space-between"
+              w="full"
+              px="8"
+              pt="3"
+            >
+              <AspectRatio ratio={1} width="24px">
+                <Image
+                  src="/assets/logo/tether-logo-white.png"
+                  alt="logo-image"
+                />
+              </AspectRatio>
+              <Text
+                as={"span"}
+                fontSize={"sm"}
+                color={"whiteAlpha.700"}
+                textAlign={"center"}
+              >
+                {fromBn(balanceUSDT ?? 0, 6)} USDT
+              </Text>
+            </Stack>
+            <HStack
+              borderTop="1px"
+              borderColor="gray.500"
+              textAlign="center"
+              p="3"
+              justifyContent="space-between"
+            >
+              <Text fontSize="sm">Import USDT</Text>
+              <Box display="flex" alignItems="center">
+                <CopiableText
+                  value={addressUsdt}
+                  display="flex"
+                  alignItems="center"
+                  gap="2"
+                >
+                  {shortenAddress(addressUsdt)}
+                  <IoCopyOutline />
+                </CopiableText>
+              </Box>
+            </HStack>
+          </Stack>
+        </Box>
       </Stack>
-    </Stack>
+    </SimpleGrid>
   );
 };
