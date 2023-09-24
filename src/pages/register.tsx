@@ -18,6 +18,7 @@ const Registerv2 = () => {
           alignItems={"center"}
           minH={"100vh"}
           // bgImage="url('/images/bgHeader_home.png')"
+          bgImage="url('/images/bg-failconnect.png')"
           gap={"8"}
           pb={"10"}
         >

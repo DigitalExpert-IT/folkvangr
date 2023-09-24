@@ -67,7 +67,8 @@ export const CardProfileBalanceV2 = () => {
           />
           <HStack w={"full"} justifyContent={{ base: "end", xs: "center" }}>
             <Text>
-              {prettyBn(balance.data?.value, 18)} {balance.data?.symbol}
+              {prettyBn(balance.data?.value, 18)} BNB
+              {/* {balance.data?.symbol} */}
             </Text>
           </HStack>
         </WidgetProfileBalace>
