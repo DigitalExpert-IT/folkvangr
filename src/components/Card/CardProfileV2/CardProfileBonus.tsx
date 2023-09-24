@@ -87,7 +87,7 @@ export const CardProfileBonus = () => {
               <Text>{t("common.referralBonus")}</Text>
               <Text>
                 {rewardMap.data && fromBn(rewardMap.data, 6)}{" "}
-                {usdt.data?.symbol}
+                {/* {usdt.data?.symbol} */} FLD
               </Text>
             </Stack>
             <WidgetProfileBtn
@@ -104,7 +104,8 @@ export const CardProfileBonus = () => {
               <Text>{t("common.rankReward")}</Text>
               <Text>
                 {rankReward.data && fromBn(rankReward.data, 6)}{" "}
-                {usdt.data?.symbol}
+                {/* {usdt.data?.symbol} */}
+                FLD
               </Text>
             </Stack>
             <WidgetProfileBtn

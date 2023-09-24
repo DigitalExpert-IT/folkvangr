@@ -51,14 +51,9 @@ export const SectionHeaderV2 = () => {
         overflow="hidden"
       >
         <AspectRatio w={{ base: "none", md: "md", xl: " xl" }} ratio={1}>
-          <Image
-            src="https://ik.imagekit.io/msxxxaegj/folkvangr/header-illustration.png?updatedAt=1695013206001"
-            alt="img-header"
-            style={{ objectFit: "contain" }}
-            loading="lazy"
-            priority={false}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            fill
+          <LazyVideo
+            src="https://ik.imagekit.io/msxxxaegj/folkvangr/480bos.mp4?updatedAt=1695574850436  "
+            objectFit="cover"
           />
         </AspectRatio>
       </Box>

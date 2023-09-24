@@ -5,6 +5,7 @@ import {
   Tooltip,
   useClipboard,
   useToast,
+  Box,
 } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 import { useScreen } from "hooks";
@@ -42,7 +43,7 @@ export const CopiableText = (props: Props) => {
       <Text
         display="inline"
         _hover={{
-          fontWeight: "bold",
+          color: "gray.500",
         }}
         {...rest}
         cursor="pointer"

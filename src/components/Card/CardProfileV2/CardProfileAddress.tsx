@@ -55,14 +55,14 @@ export const CardProfileAddress = () => {
                 gap={"2"}
                 fontSize={"lg"}
               >
-                {t("common.contractGnet")}
+                {t("common.contractFld")}
                 <IoCopyOutline />
               </Text>
               {ContractGnet?.toUpperCase()}
             </CopiableText>
           </Center>
         </WidgetProfileBalace>
-        <WidgetProfileBalace justifyContent={"center"} w="full">
+        <WidgetProfileBalace justifyContent={"center"}>
           <Center py={"2"}>
             <CopiableText
               alignItems={"center"}

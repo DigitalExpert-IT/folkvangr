@@ -18,7 +18,7 @@ const ProfileV2 = () => {
           display={{ base: "none", lg: "block" }}
         >
           <Image
-            src="/assets/profile/bg_profile.png"
+            src="https://ik.imagekit.io/msxxxaegj/folkvangr/patternfolk-1.png?updatedAt=1695013533247"
             alt="matching-image"
             mx={"auto"}
             objectFit="cover"

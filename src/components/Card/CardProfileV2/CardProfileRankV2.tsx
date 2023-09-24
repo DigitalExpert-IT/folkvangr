@@ -17,21 +17,27 @@ export const CardProfileRankV2 = () => {
     <CardProfileV2
       py={"4"}
       bgGradient="linear-gradient(118deg, #1D73CD 4.67%, #02E4A4 97.62%)"
+      height="15em"
     >
       <Stack
-        flexDir={{ base: "row", lg: "column" }}
         gap={{ base: "4", sm: "8", lg: "0" }}
         justify={"center"}
         placeItems={"center"}
+        spacing={{ base: "none", md: 5 }}
       >
-        <Image
+        {/* <Image
           src={imageUrl}
           alt="rank-image"
           mx={{ base: "0", lg: "auto" }}
           h={{ base: "24", lg: "36" }}
-        />
-        <Heading mt={"4"} textAlign={{ base: "start", lg: "center" }}>
-          {rankName}
+        /> */}
+        <Heading>Rank</Heading>
+        <Heading
+          fontSize="8xl"
+          mt={"4"}
+          textAlign={{ base: "start", lg: "center" }}
+        >
+          {/* {rankName} */}#1
         </Heading>
       </Stack>
     </CardProfileV2>

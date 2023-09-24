@@ -29,9 +29,9 @@ export default function Home() {
         <SectionFeaturedPopulationV2 />
       </Container>
       <Box bgGradient="linear-gradient(180deg, #0A2830 -39.17%, #0A1424 46.16%, #092A31 100.87%)">
-        <TableRankNetworkV2 />
-        <TableRankBonusV2 />
+        {/* <TableRankNetworkV2 /> */}
         <SectionMatchingBonusV2 />
+        <TableRankBonusV2 />
       </Box>
       <Box
         textAlign="center"
