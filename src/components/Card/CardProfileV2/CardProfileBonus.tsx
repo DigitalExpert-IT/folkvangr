@@ -84,7 +84,7 @@ export const CardProfileBonus = () => {
         <WidgetProfileBalace bg="#0B5454" px="1rem" rounded="xl">
           <HStack w={"full"} justifyContent={"space-between"}>
             <Stack>
-              <Text>{t("common.referralBonus")}</Text>
+              <Text>{t("common.sponsor")}</Text>
               <Text>
                 {rewardMap.data && fromBn(rewardMap.data, 6)}{" "}
                 {/* {usdt.data?.symbol} */} FLD
@@ -101,7 +101,7 @@ export const CardProfileBonus = () => {
         <WidgetProfileBalace bg="#0B5454" px="1rem" rounded="xl">
           <HStack w={"full"} justifyContent={"space-between"}>
             <Stack>
-              <Text>{t("common.rankReward")}</Text>
+              <Text>{t("common.matchingBonus")}</Text>
               <Text>
                 {rankReward.data && fromBn(rankReward.data, 6)}{" "}
                 {/* {usdt.data?.symbol} */}
