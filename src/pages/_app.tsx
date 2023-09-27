@@ -120,17 +120,17 @@ const Main = ({ Component, pageProps }: AppProps) => {
         ee.emit(`valhalla-${event.eventName}`, event.data);
       });
 
-    // const unsubscribeSwapEvents = swap.contract.events?.listenToAllEvents(
-    //   event => {
-    //     ee.emit(`swap-${event.eventName}`, event.data);
-    //   }
-    // );
+    const unsubscribeSwapEvents = swap.contract.events?.listenToAllEvents(
+      event => {
+        ee.emit(`swap-${event.eventName}`, event.data);
+      }
+    );
 
     return () => {
       unsubscribeGenesisEvents();
       unsubscribeNftEvents();
       unsubscribeValhallaEvents();
-      // unsubscribeSwapEvents();
+      unsubscribeSwapEvents();
     };
   }, [nft.contract, valhalla.contract, swap.contract]);
 

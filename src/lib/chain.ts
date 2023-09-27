@@ -1,10 +1,12 @@
-import { Mumbai, Polygon } from "@thirdweb-dev/chains";
+import { Binance, BinanceTestnet } from "@thirdweb-dev/chains";
 
-const CURRENT_CHAIN_ID = (process.env.NEXT_PUBLIC_CHAIN_ID || "0x89") as "0x89";
+const CURRENT_CHAIN_ID = (process.env.NEXT_PUBLIC_CHAIN_ID || "0x38") as "0x38";
 
 const chainMap = {
-  "0x13881": Mumbai,
-  "0x89": Polygon,
+  // "0x13881": Mumbai,
+  // "0x89": Polygon,
+  "0x38": Binance,
+  "0x61": BinanceTestnet,
   "0x29a": {
     chainId: 666,
     chain: "Devnet",

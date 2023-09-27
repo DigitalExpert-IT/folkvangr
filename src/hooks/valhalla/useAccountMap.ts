@@ -1,19 +1,19 @@
+import { useFolkvangrContract } from "hooks/useFolkvangrContract";
 import { useContractRead, useAddress } from "@thirdweb-dev/react";
-import { Valhalla } from "valhalla-erc20/typechain-types";
+import { Network } from "falcon-defi/typechain-types";
 import { ZERO_ADDRESS } from "constant/address";
-import ee from "ee";
-import { useValhallaContract } from "hooks/useValhallaContract";
 import { useEffect } from "react";
+import ee from "ee";
 
-type AccountMapType = Awaited<ReturnType<Valhalla["accountMap"]>>;
+type AccountMapType = Awaited<ReturnType<Network["account"]>>;
 
 export const useAccountMap = (byPasAddress?: string | null) => {
-  const contract = useValhallaContract();
+  const contract = useFolkvangrContract();
   let address = useAddress();
 
   if (byPasAddress) address = byPasAddress;
 
-  const { data, ...rest } = useContractRead(contract.contract, "accountMap", [
+  const { data, ...rest } = useContractRead(contract.contract, "account", [
     address ?? ZERO_ADDRESS,
   ]);
 
