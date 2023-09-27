@@ -15,13 +15,14 @@ import { useRouter } from "next/router";
 import { useModal } from "@ebay/nice-modal-react";
 import { validateRequired, validateAddress } from "utils";
 import { useValhallaContract } from "hooks/useValhallaContract";
+import { useFolkvangrContract } from "hooks/useFolkvangrContract";
 import { CURRENT_CHAIN_ID, useAsyncCall, useUSDTContract } from "hooks";
 import { FormInput, ModalDiscalimer, ButtonConnectWrapper } from "components";
 import { useAddress, useBalance, useContractWrite } from "@thirdweb-dev/react";
 import {
   ZERO_ADDRESS,
   USDT_CONTRACT,
-  VALHALLA_CONTRACT,
+  FOLKVANGR_CONTRACT,
 } from "constant/address";
 import { useRegistrationFee } from "hooks/valhalla";
 import { BigNumber } from "ethers";
@@ -31,19 +32,19 @@ type FormType = {
 };
 
 export const FormRegister = () => {
-  const valhalla = useValhallaContract();
+  const folkvangr = useFolkvangrContract();
   const usdt = useUSDTContract();
   const address = useAddress() ?? ZERO_ADDRESS;
   const balanceUsdt = useBalance(USDT_CONTRACT[CURRENT_CHAIN_ID]);
   const { t } = useTranslation();
-  const valhallaRegister = useContractWrite(valhalla.contract, "register");
+  const folkvangrRegister = useContractWrite(folkvangr.contract, "register");
   const usdtApproval = useContractWrite(usdt.contract, "approve");
   const registrationFee = useRegistrationFee();
 
   const approveMutation = async () => {
     const allowance = (await usdt.contract?.call("allowance", [
       address,
-      VALHALLA_CONTRACT[CURRENT_CHAIN_ID],
+      FOLKVANGR_CONTRACT[CURRENT_CHAIN_ID],
     ])) as BigNumber;
     if (!registrationFee.data) {
       return;
@@ -55,14 +56,14 @@ export const FormRegister = () => {
     }
     if (allowance.lt(registrationFee.data)) {
       await usdtApproval.mutateAsync({
-        args: [VALHALLA_CONTRACT[CURRENT_CHAIN_ID], registrationFee.data],
+        args: [FOLKVANGR_CONTRACT[CURRENT_CHAIN_ID], registrationFee.data],
       });
     }
   };
 
   const approve = useAsyncCall(approveMutation);
   const register = useAsyncCall(
-    valhallaRegister.mutateAsync,
+    folkvangrRegister.mutateAsync,
     t("form.message.registrationSuccess"),
     () => router.replace("/profile")
   );

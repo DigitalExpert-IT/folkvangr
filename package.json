@@ -42,6 +42,7 @@
     "ethers": "^5.7.2",
     "eventemitter3": "^5.0.1",
     "evm-bn": "^1.1.2",
+    "falcon-defi": "^1.0.1",
     "framer-motion": "^7.6.18",
     "global-swap": "^1.14.4",
     "globe.gl": "^2.26.11",
