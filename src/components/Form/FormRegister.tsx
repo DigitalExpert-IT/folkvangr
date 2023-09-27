@@ -14,7 +14,6 @@ import { shortenAddress } from "utils";
 import { useRouter } from "next/router";
 import { useModal } from "@ebay/nice-modal-react";
 import { validateRequired, validateAddress } from "utils";
-import { useValhallaContract } from "hooks/useValhallaContract";
 import { useFolkvangrContract } from "hooks/useFolkvangrContract";
 import { CURRENT_CHAIN_ID, useAsyncCall, useUSDTContract } from "hooks";
 import { FormInput, ModalDiscalimer, ButtonConnectWrapper } from "components";
