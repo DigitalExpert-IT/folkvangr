@@ -7,19 +7,18 @@ import { useTranslation } from "react-i18next";
 
 interface CardNFTV2Props {
   title: string;
-  contentTitle: string;
   price: string;
   id: string;
 }
 
 export const CardFarmNFTV2: React.FC<CardNFTV2Props> = props => {
   const { t } = useTranslation();
-  const { buy } = useCardList();
-  const buyAsync = useAsyncCall(buy, t("common.succesBuyNft"));
+  // const { buy } = useCardList();
+  // const buyAsync = useAsyncCall(buy, t("common.succesBuyNft"));
 
-  const handleBuy = () => {
-    buyAsync.exec(props.id);
-  };
+  // const handleBuy = () => {
+  //   buyAsync.exec(props.id);
+  // };
   return (
     <Box textAlign="center" rounded="xl" overflow="hidden">
       <Heading textTransform="uppercase" py="1">

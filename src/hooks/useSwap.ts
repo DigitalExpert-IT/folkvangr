@@ -3,7 +3,7 @@ import {
   getUSDTContract,
   getGNETContract,
   getSwapContract,
-  CURRENT_CHAIN_ID,
+  // CURRENT_CHAIN_ID,
   getSwapSignerContract,
   getGNETSignerContract,
   getUSDTSignerContract,
@@ -15,6 +15,8 @@ import { BigNumber } from "ethers";
 import { createInitiator } from "utils";
 import { SWAP_CONTRACT } from "constant/address";
 import { useWallet, useWalletStore } from "hooks";
+
+const CURRENT_CHAIN_ID = (process.env.NEXT_PUBLIC_CHAIN_ID || "0x38") as "0x38";
 interface ICurencySpec {
   pair: {
     name: string;

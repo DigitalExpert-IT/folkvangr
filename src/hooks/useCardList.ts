@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { NFT } from "valhalla-erc20/typechain-types";
 import { useNFTContract } from "./useNFTContract";
+import { useNFTFolkContract } from "./useNFTFolkContract";
 import { BigNumber, BigNumberish } from "ethers";
 import { useGNETContract } from "./useGNETContract";
 import { useAddress, useContractWrite } from "@thirdweb-dev/react";
@@ -17,7 +18,7 @@ type CardType = BaseCardType & {
 const CARD_IDS = [0, 1, 2, 3, 4, 5];
 
 export const useCardList = () => {
-  const nft = useNFTContract();
+  const nft = useNFTFolkContract();
   const gnet = useGNETContract();
   const maxBuy = useMaxBuy();
   const address = useAddress();
@@ -50,49 +51,53 @@ export const useCardList = () => {
     fetchData();
   }, [nft.contract]);
 
-  const buy = async (tokenId: BigNumberish) => {
-    if (!gnet.contract || !nft.contract || !address) return;
-    const card = await nft.contract!.call("cardMap", [tokenId]);
-    const cardPrice = card.price;
-    const gnetBalance = await gnet.contract.call("balanceOf", [address]);
-    const allowance = await gnet.contract.call("allowance", [
-      address,
-      nft.contract.getAddress(),
-    ]);
+  // const buy = async (tokenId: BigNumberish) => {
+  //   if (!gnet.contract || !nft.contract || !address) return;
+  //   const card = await nft.contract!.call("cardMap", [tokenId]);
+  //   const cardPrice = card.price;
+  //   const gnetBalance = await gnet.contract.call("balanceOf", [address]);
+  //   const allowance = await gnet.contract.call("allowance", [
+  //     address,
+  //     nft.contract.getAddress(),
+  //   ]);
 
-    if (cardPrice.gt(gnetBalance)) {
-      throw {
-        code: "NotEnoughGnetBalance",
-      };
-    }
+  //   if (cardPrice.gt(gnetBalance)) {
+  //     throw {
+  //       code: "NotEnoughGnetBalance",
+  //     };
+  //   }
 
-    if (cardPrice.gt(allowance)) {
-      await approveGnet.mutateAsync({
-        args: [nft.contract.getAddress(), cardPrice.mul(10)],
-      });
-    }
-    if (!account?.isRegistered) {
-      throw {
-        code: "RegistrationRequired",
-      };
-    }
-    if (
-      maxBuy.data
-        ?.add(cardPrice)
-        .gt(toBn(MAX_BUY[account?.rank as 0].toString(), 9))
-    ) {
-      throw {
-        code: "MaxBuy",
-      };
-    }
-    if (isRankRewardClaimable.data) {
-      throw {
-        code: "RankStarted",
-      };
-    }
-    const receipt = await buyNft.mutateAsync({ args: [tokenId] });
-    return receipt;
+  //   if (cardPrice.gt(allowance)) {
+  //     await approveGnet.mutateAsync({
+  //       args: [nft.contract.getAddress(), cardPrice.mul(10)],
+  //     });
+  //   }
+  //   if (!account?.isRegistered) {
+  //     throw {
+  //       code: "RegistrationRequired",
+  //     };
+  //   }
+  //   if (
+  //     maxBuy.data
+  //       ?.add(cardPrice)
+  //       .gt(toBn(MAX_BUY[account?.rank as 0].toString(), 9))
+  //   ) {
+  //     throw {
+  //       code: "MaxBuy",
+  //     };
+  //   }
+  //   if (isRankRewardClaimable.data) {
+  //     throw {
+  //       code: "RankStarted",
+  //     };
+  //   }
+  //   const receipt = await buyNft.mutateAsync({ args: [tokenId] });
+  //   return receipt;
+  // };
+
+  return {
+    isLoading: isLoading || nft.isLoading,
+    data,
+    // buy
   };
-
-  return { isLoading: isLoading || nft.isLoading, data, buy };
 };

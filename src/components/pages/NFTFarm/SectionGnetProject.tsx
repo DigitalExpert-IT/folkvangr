@@ -120,11 +120,11 @@ export const SectionGnetProject = () => {
             {/* RANK Image */}
             <Box>
               <AspectRatio w={{ base: "120px", md: "150px" }} ratio={15 / 17}>
-                <Image
+                {/* <Image
                   src={RANK_SYMBOL_MAP[account?.rank ?? 0]}
                   alt={rankMap[account?.rank ?? 0]}
                   objectFit="cover"
-                />
+                /> */}
               </AspectRatio>
             </Box>
 
@@ -179,7 +179,7 @@ export const SectionGnetProject = () => {
             >
               <Text>{t("pages.nftFarming.networkMembers")}</Text>
               <Badge variant="solid" rounded="full" bg="blueOcean.600">
-                {account?.downlineCount.toNumber()}
+                {/* {account?.downlineCount.toNumber()} */}
               </Badge>
             </Stack>
 

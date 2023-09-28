@@ -59,9 +59,8 @@ export const SectionNFTList = () => {
           {data.map((e, idx) => (
             <WrapItem w={{ md: "25%", sm: "45%", base: "100%" }} key={idx}>
               <CardFarmNFTV2
-                contentTitle={e.halfingPercentage.toString()}
                 title={`Falcon ${e.id.add(1)}`}
-                price={prettyBn(e.price, 9)}
+                price={prettyBn(e.price, 18)}
                 id={e.id.toString()}
               />
             </WrapItem>

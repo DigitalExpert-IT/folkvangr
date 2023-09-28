@@ -19,7 +19,12 @@ import { useAddress, useContractWrite } from "@thirdweb-dev/react";
 import { FormInput, FormSelect } from "components/FormUtils";
 import { ButtonConnectWrapper } from "components/Button";
 import { getGnetRate, getUsdtRate, prettyBn, shortenAddress } from "utils";
-import { GNET_CONTRACT, SWAP_CONTRACT, USDT_CONTRACT } from "constant/address";
+import {
+  GNET_CONTRACT,
+  SWAP_CONTRACT,
+  USDT_CONTRACT,
+  FLD_CONTRACT,
+} from "constant/address";
 import { BigNumber } from "ethers";
 import { IoCopyOutline } from "react-icons/io5";
 import {
@@ -27,10 +32,13 @@ import {
   CURRENT_CHAIN_ID,
   useUSDTBalance,
   useGNETBalance,
-  useUSDTContract,
+  // useUSDTContract,
   useAsyncCall,
   useGNETContract,
 } from "hooks";
+
+import { useUSDTContract } from "hooks/useUSDTContract";
+
 import _ from "lodash";
 import { CopiableText } from "components/CopiableText";
 
@@ -46,7 +54,7 @@ interface IFieldCurrency {
 
 export const FormSwap = () => {
   const addressSwap = SWAP_CONTRACT[CURRENT_CHAIN_ID];
-  const addressGnet = GNET_CONTRACT[CURRENT_CHAIN_ID];
+  const addressGnet = FLD_CONTRACT[CURRENT_CHAIN_ID]; // must change with LFD
   const addressUsdt = USDT_CONTRACT[CURRENT_CHAIN_ID];
   const { t } = useTranslation();
   const [symbol, setSymbol] = useState(false);

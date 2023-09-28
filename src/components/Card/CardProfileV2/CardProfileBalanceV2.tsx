@@ -7,7 +7,8 @@ import { Trans } from "react-i18next";
 import { prettyBn } from "utils";
 import { CardProfileV2 } from "./CardProfileV2";
 import { useEffect, useState } from "react";
-import { useGNETContract, useUSDTContract } from "hooks";
+import { useGNETContract } from "hooks";
+import { useUSDTContract } from "hooks/useUSDTContract";
 import { BigNumber } from "ethers";
 
 export const CardProfileBalanceV2 = () => {
