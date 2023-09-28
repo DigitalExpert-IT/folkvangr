@@ -193,15 +193,15 @@ export const useDashboard = (byPasAddress?: string) => {
   let address = useAddress();
   let { data: account } = useAccountMap(byPasAddress ? byPasAddress : null);
 
-  useEffect(() => {
-    if (byPasAddress) {
-      address = byPasAddress;
-    }
+  // useEffect(() => {
+  //   if (byPasAddress) {
+  //     address = byPasAddress;
+  //   }
 
-    if (address && !_.isNull(account?.rank)) {
-      init(address, account?.rank);
-    }
-  }, [address, account?.rank, byPasAddress]);
+  //   if (address && !_.isNull(account?.rank)) {
+  //     init(address, account?.rank);
+  //   }
+  // }, [address, account?.rank, byPasAddress]);
 
   return { ...store };
 };

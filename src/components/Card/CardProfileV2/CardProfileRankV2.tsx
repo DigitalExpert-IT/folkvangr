@@ -8,8 +8,8 @@ import { CardProfileV2 } from "./CardProfileV2";
 export const CardProfileRankV2 = () => {
   const accountMap = useAccountMap();
   const account = accountMap?.data;
-  const rankName = rankMap[account?.rank ?? 0];
-  const imageUrl = `/assets/rank/${lowerCase(rankName).replace(/\s/, "-")}.svg`;
+  // const rankName = rankMap[account?.rank ?? 0];
+  // const imageUrl = `/assets/rank/${lowerCase(rankName).replace(/\s/, "-")}.svg`;
 
   if (accountMap.isLoading) return <Spinner />;
 

@@ -104,7 +104,7 @@ export const CardProfileAddress = () => {
               >
                 {t("common.myReferrer")}
               </Text>
-              {accountMap.data?.referrer.toUpperCase()}
+              {accountMap.data?.referral.toUpperCase()}
             </Text>
           </Center>
         </WidgetProfileBalace>

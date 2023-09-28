@@ -30,6 +30,8 @@ declare module globalThis {
 
 export const CURRENT_CHAIN_ID = (process.env.NEXT_PUBLIC_CHAIN_ID ||
   "0x89") as "0x89";
+
+const CURRENT_CHAIN_ID_FOLK = process.env.NEXT_PUBLIC_CHAIN_ID as "0x38";
 const ENDPOINT = RPC_ENDPOINTS[CURRENT_CHAIN_ID];
 
 /**
@@ -158,7 +160,7 @@ export const getSwapContract = async () => {
   const contract = await getFromCache(
     async () =>
       new ethers.Contract(
-        SWAP_CONTRACT[CURRENT_CHAIN_ID],
+        SWAP_CONTRACT[CURRENT_CHAIN_ID_FOLK],
         globalExchangeJson.abi,
         provider
       ) as GlobalExchange
@@ -171,7 +173,7 @@ export const getSwapSignerContract = async () => {
   const contract = await getFromCache(
     async () =>
       new ethers.Contract(
-        SWAP_CONTRACT[CURRENT_CHAIN_ID],
+        SWAP_CONTRACT[CURRENT_CHAIN_ID_FOLK],
         globalExchangeJson.abi,
         wallet.getSigner()
       ) as GlobalExchange
@@ -195,14 +197,14 @@ export const getERC20SignerContract = async (address: string) => {
 
 export const getUSDTContract = async () => {
   const contract = await getFromCache(async () =>
-    getERC20Contract(USDT_CONTRACT[CURRENT_CHAIN_ID])
+    getERC20Contract(USDT_CONTRACT[CURRENT_CHAIN_ID_FOLK])
   );
   return contract;
 };
 
 export const getUSDTSignerContract = async () => {
   const contract = await getFromCache(async () =>
-    getERC20SignerContract(USDT_CONTRACT[CURRENT_CHAIN_ID])
+    getERC20SignerContract(USDT_CONTRACT[CURRENT_CHAIN_ID_FOLK])
   );
   return contract;
 };
