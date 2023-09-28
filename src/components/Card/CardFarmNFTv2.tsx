@@ -1,5 +1,4 @@
 import { Box, Heading, Stack, Text, Button } from "@chakra-ui/react";
-import { UglyButton } from "components/Button";
 import { CARD_IMAGE_MAP } from "constant/image";
 import { useAsyncCall } from "hooks";
 import { useCardList } from "hooks/useCardList";
@@ -43,12 +42,6 @@ export const CardFarmNFTV2: React.FC<CardNFTV2Props> = props => {
                 Gacha: 0.7%, 0.8%, 0.9%, 1%, 1.1%, 1.3%, 1.5%
               </Text>
               <Stack alignItems="center" py="1rem">
-                {/* <UglyButton
-                  price={props.price}
-                  label={t("common.buy")}
-                  onClick={handleBuy}
-                  isLoading={buyAsync.isLoading}
-                /> */}
                 <Button
                   w="100%"
                   rounded="lg"
