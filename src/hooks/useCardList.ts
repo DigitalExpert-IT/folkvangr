@@ -54,7 +54,7 @@ export const useCardList = () => {
     fetchData();
   }, [nft.contract]);
 
-  const buyWithFLD = async (tokenId: BigNumberish, currency: number) => {
+  const buy = async (tokenId: BigNumberish, currency: number) => {
     if (!fld.contract || !nft.contract || !address || !usdt.contract) return;
 
     if (currency === 1) {
@@ -100,7 +100,7 @@ export const useCardList = () => {
 
       if (cardPrice.gt(usdtBalance)) {
         throw {
-          code: "NotEnoughFldBalance",
+          code: "NotEnoughUsdtBalance",
         };
       }
 
@@ -127,7 +127,7 @@ export const useCardList = () => {
   return {
     isLoading: isLoading || nft.isLoading,
     data,
-    buyWithFLD,
+    buy,
     // buy
   };
 };

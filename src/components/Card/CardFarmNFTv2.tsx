@@ -13,8 +13,8 @@ interface CardNFTV2Props {
 
 export const CardFarmNFTV2: React.FC<CardNFTV2Props> = props => {
   const { t } = useTranslation();
-  const { buyWithFLD } = useCardList();
-  const buyAsync = useAsyncCall(buyWithFLD, t("common.succesBuyNft"));
+  const { buy } = useCardList();
+  const buyAsync = useAsyncCall(buy, t("common.succesBuyNft"));
 
   const handleBuy = (currency: number = 0) => {
     buyAsync.exec(props.id, currency);
