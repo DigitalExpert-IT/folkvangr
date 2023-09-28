@@ -14,10 +14,10 @@ interface CardNFTV2Props {
 export const CardFarmNFTV2: React.FC<CardNFTV2Props> = props => {
   const { t } = useTranslation();
   const { buy } = useCardList();
-  const buyAsync = useAsyncCall(buy, t("common.succesBuyNft"));
+  const { exec, isLoading } = useAsyncCall(buy, t("common.succesBuyNft"));
 
   const handleBuy = (currency: number = 0) => {
-    buyAsync.exec(props.id, currency);
+    exec(props.id, currency);
   };
   return (
     <Box textAlign="center" rounded="xl" overflow="hidden">
@@ -55,7 +55,7 @@ export const CardFarmNFTV2: React.FC<CardNFTV2Props> = props => {
                   background="#0B5454"
                   _hover={{ background: "#073c3c" }}
                   onClick={() => handleBuy(0)}
-                  isLoading={buyAsync.isLoading}
+                  isLoading={isLoading}
                 >
                   Buy with {props.price} USDT
                 </Button>
@@ -65,7 +65,7 @@ export const CardFarmNFTV2: React.FC<CardNFTV2Props> = props => {
                   background="#0B5454"
                   _hover={{ background: "#073c3c" }}
                   onClick={() => handleBuy(1)}
-                  isLoading={buyAsync.isLoading}
+                  isLoading={isLoading}
                 >
                   Buy with {props.price} FLD
                 </Button>

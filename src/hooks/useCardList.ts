@@ -65,12 +65,13 @@ export const useCardList = () => {
       nft.contract.getAddress(),
     ]);
 
+    if (!account?.isRegistered) {
+      throw {
+        code: "RegistrationRequired",
+      };
+    }
+
     if (currency === 0) {
-      if (!account?.isRegistered) {
-        throw {
-          code: "RegistrationRequired",
-        };
-      }
       if (cardPrice.gt(usdtBalance)) {
         throw {
           code: "NotEnoughUsdtBalance",
@@ -84,12 +85,6 @@ export const useCardList = () => {
       }
       const receipt = await buyNftWithUSDT.mutateAsync({ args: [tokenId] });
       return receipt;
-    }
-
-    if (!account?.isRegistered) {
-      throw {
-        code: "RegistrationRequired",
-      };
     }
     if (cardPrice.gt(fldBalance)) {
       throw {
