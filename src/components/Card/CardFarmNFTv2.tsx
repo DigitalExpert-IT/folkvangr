@@ -1,5 +1,4 @@
 import { Box, Heading, Stack, Text, Button } from "@chakra-ui/react";
-import { UglyButton } from "components/Button";
 import { CARD_IMAGE_MAP } from "constant/image";
 import { useAsyncCall } from "hooks";
 import { useCardList } from "hooks/useCardList";
@@ -13,12 +12,12 @@ interface CardNFTV2Props {
 
 export const CardFarmNFTV2: React.FC<CardNFTV2Props> = props => {
   const { t } = useTranslation();
-  // const { buy } = useCardList();
-  // const buyAsync = useAsyncCall(buy, t("common.succesBuyNft"));
+  const { buy } = useCardList();
+  const { exec, isLoading } = useAsyncCall(buy, t("common.succesBuyNft"));
 
-  // const handleBuy = () => {
-  //   buyAsync.exec(props.id);
-  // };
+  const handleBuy = (currency: number = 0) => {
+    exec(props.id, currency);
+  };
   return (
     <Box textAlign="center" rounded="xl" overflow="hidden">
       <Heading textTransform="uppercase" py="1">
@@ -43,18 +42,13 @@ export const CardFarmNFTV2: React.FC<CardNFTV2Props> = props => {
                 Gacha: 0.7%, 0.8%, 0.9%, 1%, 1.1%, 1.3%, 1.5%
               </Text>
               <Stack alignItems="center" py="1rem">
-                {/* <UglyButton
-                  price={props.price}
-                  label={t("common.buy")}
-                  onClick={handleBuy}
-                  isLoading={buyAsync.isLoading}
-                /> */}
                 <Button
                   w="100%"
                   rounded="lg"
                   background="#0B5454"
                   _hover={{ background: "#073c3c" }}
-                  // onClick={props.onClick}
+                  onClick={() => handleBuy(0)}
+                  isLoading={isLoading}
                 >
                   Buy with {props.price} USDT
                 </Button>
@@ -63,7 +57,8 @@ export const CardFarmNFTV2: React.FC<CardNFTV2Props> = props => {
                   rounded="lg"
                   background="#0B5454"
                   _hover={{ background: "#073c3c" }}
-                  // onClick={props.onClick}
+                  onClick={() => handleBuy(1)}
+                  isLoading={isLoading}
                 >
                   Buy with {props.price} FLD
                 </Button>
