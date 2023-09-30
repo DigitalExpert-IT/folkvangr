@@ -41,7 +41,6 @@ export const useOwnedNFTList = () => {
         })
       );
       setData(nfts);
-      console.log(data);
     } catch (error) {
     } finally {
       setLoading(false);

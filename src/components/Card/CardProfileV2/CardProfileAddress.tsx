@@ -2,16 +2,18 @@ import { Center, Text, VStack, Box, Heading } from "@chakra-ui/react";
 import { useAddress } from "@thirdweb-dev/react";
 import { CopiableText } from "components/CopiableText";
 import { WidgetProfileBalace } from "components/Widget/WidgetProfile";
-import { GNET_CONTRACT } from "constant/address";
+import { FLD_CONTRACT } from "constant/address";
 import { useAccountMap } from "hooks/valhalla";
 import { t } from "i18next";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { IoCopyOutline } from "react-icons/io5";
 import { CardProfileV2 } from "./CardProfileV2";
-import { CURRENT_CHAIN_ID } from "hooks/useValhallaContract";
+import { CURRENT_CHAIN_ID } from "hooks/useNFTFolkContract";
+import { prettyBn } from "utils";
 
-const ContractGnet = GNET_CONTRACT[CURRENT_CHAIN_ID as "0x89"];
+const contractFld = FLD_CONTRACT[CURRENT_CHAIN_ID as "0x38"];
+
 export const CardProfileAddress = () => {
   const router = useRouter();
   const [defaultHost, setDefaultHost] = useState("");
@@ -25,6 +27,7 @@ export const CardProfileAddress = () => {
       );
     }
   }, [router.isReady]);
+
   return (
     <CardProfileV2 placeContent="left" align="left">
       <Box
@@ -32,10 +35,10 @@ export const CardProfileAddress = () => {
         px="2"
         display="flex"
         flexDirection="column"
-        textAlign="center"
+        textAlign="left"
       >
-        <Heading size="lg">Total Turnover</Heading>
-        <Text fontSize="lg">0</Text>
+        <Heading size="lg">Team Performance</Heading>
+        <Text fontSize="lg">{prettyBn(accountMap.data?.omzet, 18)}</Text>
       </Box>
       <VStack gap={"8"} mt="3rem">
         <WidgetProfileBalace w="full" justifyContent="center">
@@ -45,7 +48,7 @@ export const CardProfileAddress = () => {
               textAlign={"left"}
               gap={2}
               fontSize={{ base: "2xs", sm: "xs", xl: "sm" }}
-              value={ContractGnet}
+              value={contractFld}
             >
               <Text
                 as={"span"}
@@ -58,7 +61,7 @@ export const CardProfileAddress = () => {
                 {t("common.contractFld")}
                 <IoCopyOutline />
               </Text>
-              {ContractGnet?.toUpperCase()}
+              {contractFld?.toUpperCase()}
             </CopiableText>
           </Center>
         </WidgetProfileBalace>
