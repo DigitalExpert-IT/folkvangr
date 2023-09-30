@@ -4,8 +4,8 @@ import { compareAddress } from "utils";
 import { useEffect, useState } from "react";
 import { ZERO_ADDRESS } from "constant/address";
 import { useAddress } from "@thirdweb-dev/react";
-import { useNFTContract } from "./useNFTContract";
-import { NFT } from "valhalla-erc20/typechain-types";
+import { NFT } from "falcon-defi/typechain-types";
+import { useNFTFolkContract } from "./useNFTFolkContract";
 
 type OwnedTokenMapType = Awaited<ReturnType<NFT["ownedTokenMap"]>>;
 export type OwnedNftType = OwnedTokenMapType & {
@@ -14,7 +14,7 @@ export type OwnedNftType = OwnedTokenMapType & {
 };
 
 export const useOwnedNFTList = () => {
-  const nft = useNFTContract();
+  const nft = useNFTFolkContract();
   const address = useAddress() ?? ZERO_ADDRESS;
   const [data, setData] = useState<OwnedNftType[]>([]);
   const [isLoading, setLoading] = useState(false);
@@ -41,6 +41,7 @@ export const useOwnedNFTList = () => {
         })
       );
       setData(nfts);
+      console.log(data);
     } catch (error) {
     } finally {
       setLoading(false);

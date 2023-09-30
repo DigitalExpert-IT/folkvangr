@@ -12,20 +12,20 @@ import {
 } from "@chakra-ui/react";
 import { differenceInSeconds } from "date-fns";
 import { useContractWrite } from "@thirdweb-dev/react";
-import { useNFTContract } from "hooks/useNFTContract";
+import { useNFTFolkContract } from "hooks/useNFTFolkContract";
 import { BigNumber } from "ethers";
 import { fromBn } from "evm-bn";
 
 export const CardOwnedFarmNFTV2 = (props: OwnedNftType) => {
-  const { id, mintingPrice, cardId, percentage, tokenUri, lastFarmedAt } =
+  const { id, mintingPrice, cardId, percentage, tokenUri, lastGrindedAt } =
     props;
   const { t } = useTranslation();
-  const nft = useNFTContract();
-  const farm = useContractWrite(nft.contract, "farm");
+  const nft = useNFTFolkContract();
+  const farm = useContractWrite(nft.contract, "grindingCard");
   const farmAsync = useAsyncCall(farm.mutateAsync);
   const intervalRef = useRef<NodeJS.Timer>();
   const farmTextRef = useRef<HTMLParagraphElement>(null);
-  const lastFarmedAtRef = useRef<BigNumber>(lastFarmedAt);
+  const lastFarmedAtRef = useRef<BigNumber>(lastGrindedAt);
 
   const handleFarm = async () => {
     const farm = await farmAsync.exec({ args: [id] });
@@ -48,7 +48,7 @@ export const CardOwnedFarmNFTV2 = (props: OwnedNftType) => {
         new Date(lastFarmedAtRef.current.toNumber() * 1000)
       );
       const farmValue = farmPerSec.mul(secDiff);
-      farmTextRef.current.innerText = fromBn(farmValue, 9);
+      farmTextRef.current.innerText = fromBn(farmValue, 18);
     }, 1000);
 
     return () => {
@@ -59,17 +59,17 @@ export const CardOwnedFarmNFTV2 = (props: OwnedNftType) => {
   return (
     <Box>
       <Box textAlign="center">
-        <Heading>#NFT {id.toNumber()}</Heading>
+        <Heading>Falcon {id.toNumber()}</Heading>
       </Box>
       <Stack
         p="0.5"
         mt="5"
-        bgGradient="linear(to-r, #FF00FF, blue.500)"
+        bgGradient="linear(to-r, #1D73CD, #04DDA6)"
         borderRadius="xl"
       >
         <Box
           borderRadius="xl"
-          bg="#6d02c9"
+          bg="rgba(11, 84, 84, 0.75)"
           px={{ base: 1.5, sm: 2, md: 5 }}
           py={5}
         >
@@ -83,7 +83,7 @@ export const CardOwnedFarmNFTV2 = (props: OwnedNftType) => {
           <Stack my="5">
             <Stack direction="row" spacing={1} justify="space-between">
               <Text fontWeight="bold" fontSize="16px">
-                Minting: {fromBn(mintingPrice, 9)}
+                Minting: {fromBn(mintingPrice, 18)}
               </Text>
               <Text fontWeight="bold" fontSize="lg">
                 {percentage.toNumber() / 10 + "%"}
@@ -93,7 +93,7 @@ export const CardOwnedFarmNFTV2 = (props: OwnedNftType) => {
               <Text
                 fontWeight="bold"
                 textTransform="capitalize"
-                color="#FF00FF"
+                color="#05D9A8"
                 fontSize="16px"
               >
                 {t("common.globalNetworkFarm") +
@@ -108,8 +108,8 @@ export const CardOwnedFarmNFTV2 = (props: OwnedNftType) => {
             w="full"
             rounded="lg"
             size="sm"
-            variant="gradient"
-            colorScheme="purple:blue"
+            variant="solid"
+            colorScheme="blackAlpha"
             color="white"
             onClick={handleFarm}
             isLoading={farmAsync.isLoading}
@@ -117,7 +117,7 @@ export const CardOwnedFarmNFTV2 = (props: OwnedNftType) => {
             <Text ref={farmTextRef} mr="1" as="span">
               0
             </Text>
-            Gnet Claim
+            FLD Claim
           </Button>
         </Box>
       </Stack>
