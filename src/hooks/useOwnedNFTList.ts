@@ -4,7 +4,7 @@ import { compareAddress } from "utils";
 import { useEffect, useState } from "react";
 import { ZERO_ADDRESS } from "constant/address";
 import { useAddress } from "@thirdweb-dev/react";
-import { NFT } from "falcon-defi/typechain-types";
+import { NFT } from "folkvangr/typechain-types";
 import { useNFTFolkContract } from "./useNFTFolkContract";
 
 type OwnedTokenMapType = Awaited<ReturnType<NFT["ownedTokenMap"]>>;

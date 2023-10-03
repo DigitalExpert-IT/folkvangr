@@ -1,6 +1,6 @@
 import { useContract } from "@thirdweb-dev/react";
 import { NFTFOLK_CONTRACT } from "constant/address";
-import nft from "falcon-defi/artifacts/contracts/Nft.sol/NFT.json";
+import nft from "folkvangr/artifacts/contracts/Nft.sol/NFT.json";
 export const CURRENT_CHAIN_ID = (process.env.NEXT_PUBLIC_CHAIN_ID ||
   "0x38") as "0x38";
 

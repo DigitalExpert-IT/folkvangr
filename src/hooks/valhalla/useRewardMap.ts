@@ -1,7 +1,7 @@
 import ee from "ee";
 import { useValhallaContract } from "hooks/useValhallaContract";
 import { useContractRead, useAddress } from "@thirdweb-dev/react";
-import { NFT } from "falcon-defi/typechain-types";
+import { NFT } from "folkvangr/typechain-types";
 import { ZERO_ADDRESS } from "constant/address";
 import { useEffect } from "react";
 import { useNFTFolkContract } from "hooks/useNFTFolkContract";
