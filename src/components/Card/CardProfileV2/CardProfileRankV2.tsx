@@ -1,10 +1,11 @@
 import React from "react";
+import { RANK_LEVEL } from "constant/rankLevel";
 import { useAccountMap } from "hooks/valhalla";
 import { CardProfileV2 } from "./CardProfileV2";
 import { Heading, Stack, Spinner } from "@chakra-ui/react";
-import { prettyBn } from "utils";
 import { useAddress, useContractRead } from "@thirdweb-dev/react";
 import { useNFTFolkContract } from "hooks/useNFTFolkContract";
+import { fromBn } from "evm-bn";
 
 export const CardProfileRankV2 = () => {
   const nft = useNFTFolkContract();
@@ -13,6 +14,22 @@ export const CardProfileRankV2 = () => {
   const { data: personalBuy } = useContractRead(nft.contract, "personalBuy", [
     address,
   ]);
+
+  const getRank = () => {
+    if (data === undefined || personalBuy === undefined) return 0;
+    return (
+      RANK_LEVEL.find((rank, idx) => {
+        if (idx + 1 === RANK_LEVEL.length) return RANK_LEVEL[idx];
+        return (
+          (Number(fromBn(data.omzet, 18)) >= rank.omzet &&
+            Number(fromBn(data.omzet, 18)) < RANK_LEVEL[idx + 1].omzet) ||
+          (Number(fromBn(personalBuy, 18)) >= rank.personalBuy &&
+            Number(fromBn(personalBuy, 18)) < RANK_LEVEL[idx + 1].personalBuy)
+        );
+      })?.level ?? 0
+    );
+  };
+
   if (isLoading) return <Spinner />;
 
   return (
@@ -33,7 +50,7 @@ export const CardProfileRankV2 = () => {
           mt={"4"}
           textAlign={{ base: "start", lg: "center" }}
         >
-          #1
+          #{getRank()}
         </Heading>
       </Stack>
     </CardProfileV2>
