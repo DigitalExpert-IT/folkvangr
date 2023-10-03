@@ -12,47 +12,46 @@ import {
   useContractWrite,
 } from "@thirdweb-dev/react";
 import { t } from "i18next";
-import { CardProfileV2 } from "./CardProfileV2";
 import { fromBn } from "evm-bn";
 import {
-  useRankReward,
-  useRewardMap,
-  useGlobalPool,
-  useIsRankRewardClaimable,
+  useSponsorRewardMap,
   useAccountMap,
+  useMatchingRewardMap,
 } from "hooks/valhalla";
-import { useValhallaContract } from "hooks/useValhallaContract";
-import { FLD_CONTRACT, USDT_CONTRACT } from "constant/address";
-import { BigNumber } from "ethers";
+import { FLD_CONTRACT } from "constant/address";
 import { useNFTFolkContract } from "hooks/useNFTFolkContract";
 import { prettyBn } from "utils";
 
 export const CardProfileBonus = () => {
-  const rewardMap = useRewardMap();
-  const rankReward = useRankReward();
-  const valhalla = useValhallaContract();
-  const claimReward = useContractWrite(valhalla.contract, "claimReward");
-  const claimRankReward = useContractWrite(
-    valhalla.contract,
-    "claimRankReward"
-  );
-  const claimRewardAsync = useAsyncCall(claimReward.mutateAsync);
-  const claimRankRewardAsync = useAsyncCall(claimRankReward.mutateAsync);
-
-  const handleClaimRankReward = async () => {
-    await claimRankRewardAsync.exec({ args: [] });
-    await rewardMap.refetch();
-  };
-
-  const handleClaimReward = async () => {
-    await claimRewardAsync.exec({ args: [] });
-    await rewardMap.refetch();
-  };
-
-  // my code
   const address = useAddress();
   const nftFolk = useNFTFolkContract();
   const fld = useBalance(FLD_CONTRACT[CURRENT_CHAIN_ID]);
+  const sponsorReward = useSponsorRewardMap();
+  const matchingReward = useMatchingRewardMap();
+
+  const claimSponsorReward = useContractWrite(
+    nftFolk.contract,
+    "claimSponsorReward"
+  );
+  const claimSponsorRewardAsync = useAsyncCall(claimSponsorReward.mutateAsync);
+
+  const claimMatchingReward = useContractWrite(
+    nftFolk.contract,
+    "claimMatchingReward"
+  );
+  const claimMatchingRewardAsync = useAsyncCall(
+    claimMatchingReward.mutateAsync
+  );
+
+  const handleClaimSponsorReward = async () => {
+    await claimSponsorRewardAsync.exec({ args: [] });
+    await sponsorReward.refetch();
+  };
+
+  const handleClaimMatchingReward = async () => {
+    await claimMatchingRewardAsync.exec({ args: [] });
+    await matchingReward.refetch();
+  };
 
   const { data: account } = useAccountMap();
   const { data: personalBuy } = useContractRead(
@@ -83,12 +82,14 @@ export const CardProfileBonus = () => {
             <Stack>
               <Text>{t("common.sponsor")}</Text>
               <Text>
-                {rewardMap.data && fromBn(rewardMap.data, 6)} {fld.data?.symbol}
+                {`${sponsorReward.data && fromBn(sponsorReward.data, 18)} ${
+                  fld.data?.symbol
+                }`}
               </Text>
             </Stack>
             <WidgetProfileBtn
-              onClick={handleClaimReward}
-              isLoading={claimRewardAsync.isLoading}
+              onClick={handleClaimSponsorReward}
+              isLoading={claimSponsorRewardAsync.isLoading}
             >
               {t("common.claim")}
             </WidgetProfileBtn>
@@ -99,14 +100,14 @@ export const CardProfileBonus = () => {
             <Stack>
               <Text>{t("common.matchingBonus")}</Text>
               <Text>
-                {rankReward.data && fromBn(rankReward.data, 6)}{" "}
-                {/* {usdt.data?.symbol} */}
-                FLD
+                {`${matchingReward.data && fromBn(matchingReward.data, 6)} ${
+                  fld.data?.symbol
+                }`}
               </Text>
             </Stack>
             <WidgetProfileBtn
-              onClick={handleClaimRankReward}
-              isLoading={claimRankRewardAsync.isLoading}
+              onClick={handleClaimMatchingReward}
+              isLoading={claimMatchingRewardAsync.isLoading}
             >
               {t("common.claim")}
             </WidgetProfileBtn>

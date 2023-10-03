@@ -8,9 +8,9 @@ import { useNFTFolkContract } from "hooks/useNFTFolkContract";
 
 type RewardMapType = Awaited<ReturnType<NFT["rewardSponsorMap"]>>;
 
-export const useRewardMap = () => {
-  const contract = useNFTFolkContract();
+export const useSponsorRewardMap = () => {
   const address = useAddress();
+  const contract = useNFTFolkContract();
 
   const { data, ...rest } = useContractRead(
     contract.contract,
@@ -21,10 +21,10 @@ export const useRewardMap = () => {
   // TODO: change refetch every function update data
 
   useEffect(() => {
-    ee.addListener("valhalla-Register", rest.refetch);
+    ee.addListener("nft-ClaimSponsor", rest.refetch);
 
     return () => {
-      ee.removeListener("valhalla-Register", rest.refetch);
+      ee.removeListener("nft-ClaimSponsor", rest.refetch);
     };
   }, []);
 

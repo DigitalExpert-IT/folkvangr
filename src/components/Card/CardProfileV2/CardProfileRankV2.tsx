@@ -1,17 +1,19 @@
-import { Heading, Image, Stack, Spinner } from "@chakra-ui/react";
-import { rankMap } from "constant/rank";
-import { useAccountMap } from "hooks/valhalla";
-import { lowerCase } from "lodash";
 import React from "react";
+import { useAccountMap } from "hooks/valhalla";
 import { CardProfileV2 } from "./CardProfileV2";
+import { Heading, Stack, Spinner } from "@chakra-ui/react";
+import { prettyBn } from "utils";
+import { useAddress, useContractRead } from "@thirdweb-dev/react";
+import { useNFTFolkContract } from "hooks/useNFTFolkContract";
 
 export const CardProfileRankV2 = () => {
-  const accountMap = useAccountMap();
-  const account = accountMap?.data;
-  // const rankName = rankMap[account?.rank ?? 0];
-  // const imageUrl = `/assets/rank/${lowerCase(rankName).replace(/\s/, "-")}.svg`;
-
-  if (accountMap.isLoading) return <Spinner />;
+  const nft = useNFTFolkContract();
+  const address = useAddress();
+  const { data, isLoading } = useAccountMap();
+  const { data: personalBuy } = useContractRead(nft.contract, "personalBuy", [
+    address,
+  ]);
+  if (isLoading) return <Spinner />;
 
   return (
     <CardProfileV2
@@ -25,19 +27,13 @@ export const CardProfileRankV2 = () => {
         placeItems={"center"}
         spacing={{ base: "none", md: 5 }}
       >
-        {/* <Image
-          src={imageUrl}
-          alt="rank-image"
-          mx={{ base: "0", lg: "auto" }}
-          h={{ base: "24", lg: "36" }}
-        /> */}
         <Heading>Rank</Heading>
         <Heading
           fontSize="8xl"
           mt={"4"}
           textAlign={{ base: "start", lg: "center" }}
         >
-          {/* {rankName} */}#1
+          #1
         </Heading>
       </Stack>
     </CardProfileV2>

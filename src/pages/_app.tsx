@@ -11,7 +11,7 @@ import { getActiveChain } from "lib/chain";
 import NiceModal from "@ebay/nice-modal-react";
 import { useTranslation } from "react-i18next";
 import { PROJECT_NAME } from "constant/siteConfig";
-import { useNFTContract } from "hooks/useNFTContract";
+import { useNFTFolkContract } from "hooks/useNFTFolkContract";
 import { useGenesisContract } from "hooks/useGenesisContract";
 import { useValhallaContract } from "hooks/useValhallaContract";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -81,7 +81,7 @@ export default function App(props: AppProps) {
 const Main = ({ Component, pageProps }: AppProps) => {
   const { colorMode, toggleColorMode } = useColorMode();
   const { t } = useTranslation();
-  const nft = useNFTContract();
+  const nft = useNFTFolkContract();
   const valhalla = useValhallaContract();
   const swap = useSwapContract();
   const genesis = useGenesisContract();
