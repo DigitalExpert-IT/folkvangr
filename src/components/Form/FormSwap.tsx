@@ -13,34 +13,19 @@ import { fromBn, toBn } from "evm-bn";
 import { useForm } from "react-hook-form";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { ClipPathImage } from "./ClipPathImage";
 import { AiOutlineArrowRight } from "react-icons/ai";
-import { useAddress, useContractWrite } from "@thirdweb-dev/react";
 import { FormInput, FormSelect } from "components/FormUtils";
 import { ButtonConnectWrapper } from "components/Button";
-import { getGnetRate, getUsdtRate, prettyBn, shortenAddress } from "utils";
-import {
-  GNET_CONTRACT,
-  SWAP_CONTRACT,
-  USDT_CONTRACT,
-  FLD_CONTRACT,
-} from "constant/address";
+import { getFLDRate, getUsdtRate, prettyBn, shortenAddress } from "utils";
+import { USDT_CONTRACT, FLD_CONTRACT } from "constant/address";
 import { BigNumber } from "ethers";
 import { IoCopyOutline } from "react-icons/io5";
-import {
-  useSwapContract,
-  CURRENT_CHAIN_ID,
-  useUSDTBalance,
-  useGNETBalance,
-  // useUSDTContract,
-  useAsyncCall,
-  useGNETContract,
-} from "hooks";
-
-import { useUSDTContract } from "hooks/useUSDTContract";
+import { CURRENT_CHAIN_ID, useAsyncCall } from "hooks";
 
 import _ from "lodash";
 import { CopiableText } from "components/CopiableText";
+import useAccountBalance from "hooks/useAccountBalance";
+import { useSwap } from "hooks/useSwap";
 
 interface ISwapToken {
   amountTop: string;
@@ -53,133 +38,34 @@ interface IFieldCurrency {
 }
 
 export const FormSwap = () => {
-  const addressSwap = SWAP_CONTRACT[CURRENT_CHAIN_ID];
-  const addressGnet = FLD_CONTRACT[CURRENT_CHAIN_ID]; // must change with LFD
+  const addressFLD = FLD_CONTRACT[CURRENT_CHAIN_ID];
   const addressUsdt = USDT_CONTRACT[CURRENT_CHAIN_ID];
   const { t } = useTranslation();
   const [symbol, setSymbol] = useState(false);
-  const {
-    handleSubmit,
-    control,
-    watch,
-    getValues,
-    setValue,
-    reset,
-    resetField,
-  } = useForm<ISwapToken>();
+  const { handleSubmit, control, watch, getValues, setValue, resetField } =
+    useForm<ISwapToken>();
   const watchCurrency = watch("currency");
   const watchAmountTop = watch("amountTop");
 
-  const swap = useSwapContract();
-  const gnet = useGNETContract();
-  const usdt = useUSDTContract();
-  const address = useAddress();
+  const { balanceFLD, balanceUSDT } = useAccountBalance();
 
-  const swapToUSDT = useContractWrite(swap.contract, "swapGnet");
-  const approveUSDT = useContractWrite(usdt.contract, "approve");
-
-  const swapToGNET = useContractWrite(swap.contract, "swapUsdt");
-  const approveGNET = useContractWrite(gnet.contract, "approve");
-
-  const { data: balanceGNET } = useGNETBalance();
-  const { data: balanceUSDT } = useUSDTBalance();
-
-  const approveGNETMutate = async (value: BigNumber) => {
-    const allowance: BigNumber = await gnet.contract?.call("allowance", [
-      address,
-      addressSwap,
-    ]);
-
-    // getGnetRate to check how much USDT exchange with GNET
-    const getRatio: BigNumber = await swap.contract?.call("getGnetRate", [
-      value,
-    ]);
-    const poolBalance = await usdt.contract?.call("balanceOf", [addressSwap]);
-
-    if (balanceGNET.lt(value)) {
-      throw {
-        code: "NotEnoughBalance",
-      };
-    }
-
-    if (poolBalance.lt(getRatio)) {
-      throw {
-        code: "NotEnoughPool",
-      };
-    }
-
-    if (allowance.lt(value)) {
-      const approve = await approveGNET.mutateAsync({
-        args: [addressSwap, value],
-      });
-      return approve.receipt;
-    }
-  };
-
-  const approveUSDTMutate = async (value: BigNumber) => {
-    const allowance: BigNumber = await usdt.contract?.call("allowance", [
-      address,
-      addressSwap,
-    ]);
-    // getUsdtRate to check how much gnet exchange with USDT
-    const getRatio: BigNumber = await swap.contract?.call("getUsdtRate", [
-      value,
-    ]);
-    const poolBalance = await gnet.contract?.call("balanceOf", [addressSwap]);
-
-    if (balanceUSDT.lt(value)) {
-      throw {
-        code: "NotEnoughBalance",
-      };
-    }
-
-    if (poolBalance.lt(getRatio)) {
-      throw {
-        code: "NotEnoughPool",
-      };
-    }
-
-    if (allowance.lt(value)) {
-      const approve = await approveUSDT.mutateAsync({
-        args: [addressSwap, value],
-      });
-      return approve.receipt;
-    }
-  };
-
-  const swapCurrency = async (data: { currency: string; amount: string }) => {
-    const swapToGnet = data.currency === "GNET";
-
-    if (swapToGnet) {
-      const USDValue = toBn(data.amount, 6);
-      await approveUSDTMutate(USDValue);
-
-      const swap = await swapToGNET.mutateAsync({
-        args: [USDValue],
-      });
-      const receipt = swap.receipt;
-      return receipt;
-    }
-    // default swap to USDT
-    const GNETValue = toBn(data.amount, 9);
-    await approveGNETMutate(GNETValue);
-    const swap = await swapToUSDT.mutateAsync({
-      args: [GNETValue],
-    });
-    const receipt = swap.receipt;
-    return receipt;
-  };
+  const swap = useSwap();
 
   const { exec, isLoading: isSwapLoading } = useAsyncCall(
-    swapCurrency,
+    swap.swapFLD,
+    t("form.message.swapSucces")
+  );
+
+  const { exec: execUSDT, isLoading: isSwapLoadingUSDT } = useAsyncCall(
+    swap.swapUSDT,
     t("form.message.swapSucces")
   );
 
   const getTax = (val: BigNumber) => {
-    const feePercentage = 500;
+    const feePercentage = 10000;
     // This percentage is to provide a swap tolerance range,
     // in order to avoid a lack of result from swaps
-    const tolerancePercentage = 3;
+    const tolerancePercentage = 3000;
 
     if (!val) return toBn("0");
 
@@ -192,21 +78,21 @@ export const FormSwap = () => {
     const { currency } = getValues();
     let result;
 
-    if (currency === "GNET") {
-      if (!balanceUSDT || balanceUSDT.isZero())
+    if (currency === "FLD") {
+      if (!balanceUSDT?.value || balanceFLD?.value)
         return setValue("amountTop", "0");
 
-      const tax = getTax(balanceUSDT);
-      result = balanceUSDT.sub(tax);
+      const tax = getTax(balanceUSDT.value);
+      result = balanceUSDT.value.sub(tax);
     } else {
-      if (!balanceGNET || balanceGNET.isZero())
+      if (!balanceFLD?.value || balanceFLD?.value.isZero())
         return setValue("amountTop", "0");
 
-      const tax = getTax(balanceGNET);
-      result = balanceGNET.sub(tax);
+      const tax = getTax(balanceFLD?.value);
+      result = balanceFLD?.value.sub(tax);
     }
 
-    setValue("amountTop", fromBn(result, currency === "GNET" ? 6 : 9));
+    setValue("amountTop", fromBn(result, 18));
     handleChangeInput("amountTop");
   };
 
@@ -228,19 +114,19 @@ export const FormSwap = () => {
 
       // define what the top and bottom fields are
       const fieldCurrency: IFieldCurrency = {
-        amountTop: currency === "GNET" ? "USDT" : "GNET",
-        amountBottom: currency === "GNET" ? "GNET" : "USDT",
+        amountTop: currency === "FLD" ? "USDT" : "FLD",
+        amountBottom: currency === "FLD" ? "FLD" : "USDT",
       };
       const fieldTarget = field === "amountTop" ? "amountBottom" : "amountTop";
       const currencyTarget = fieldCurrency[fieldTarget];
 
       let swapResult = "";
 
-      if (currencyTarget === "GNET") {
-        swapResult = fromBn(getUsdtRate(value ? value : "0"), 9);
+      if (currencyTarget === "FLD") {
+        swapResult = fromBn(getUsdtRate(value ? value : "0"), 18);
       }
       if (currencyTarget === "USDT") {
-        swapResult = fromBn(getGnetRate(value ? value : "0"), 6);
+        swapResult = fromBn(getFLDRate(value ? value : "0"), 18);
       }
 
       setValue(fieldTarget, swapResult);
@@ -251,26 +137,24 @@ export const FormSwap = () => {
   const amountAfterFee = useMemo(() => {
     const { amountTop } = getValues();
 
-    if (!amountTop) return toBn("0");
+    if (!amountTop) return toBn("0", 18);
 
-    const amountTopBn = toBn(amountTop, 9);
+    const amountTopBn = toBn(amountTop, 18);
 
-    const tax = getTax(amountTopBn);
+    let tax = toBn("0", 18);
+
+    if (!symbol) tax = getTax(amountTopBn);
 
     return amountTopBn.add(tax);
   }, [watchAmountTop]);
 
   const onSubmit = handleSubmit(async data => {
-    const swap = await exec({
-      currency: data.currency,
-      amount: fromBn(amountAfterFee, 9),
-    });
-
-    if (swap.status === 1) {
-      reset();
-      gnet.refetch();
-      usdt.refetch();
+    if (data.currency === "FLD") {
+      exec(amountAfterFee);
+    } else {
+      execUSDT(amountAfterFee);
     }
+    debugger;
   });
 
   return (
@@ -327,7 +211,7 @@ export const FormSwap = () => {
                 name="amountTop"
                 placeholder={"0.0"}
                 type="number"
-                isDisabled={swap.isLoading}
+                isDisabled={isSwapLoading || isSwapLoadingUSDT}
               />
             </Box>
             <Button
@@ -348,7 +232,7 @@ export const FormSwap = () => {
             textAlign={"center"}
           >
             {t("form.helperText.afterFee", {
-              value: fromBn(amountAfterFee, 9),
+              value: fromBn(amountAfterFee, 18),
               symbol: symbol ? "USDT" : "FLD",
             })}
           </Text>
@@ -380,12 +264,11 @@ export const FormSwap = () => {
                   bg: "gray.600",
                 }}
                 name="currency"
-                // option={normalizeCurrencies}
                 option={[
                   { value: "USDT", label: "USDT" },
                   { value: "FLD", label: "FLD" },
                 ]}
-                isDisabled={swap.isLoading}
+                isDisabled={isSwapLoading || isSwapLoadingUSDT}
                 defaultValue="USDT"
               />
             </SimpleGrid>
@@ -431,7 +314,7 @@ export const FormSwap = () => {
                 name="amountBottom"
                 placeholder={"0.0"}
                 type="number"
-                isDisabled={swap.isLoading}
+                isDisabled={isSwapLoading || isSwapLoadingUSDT}
               />
             </Box>
           </Stack>
@@ -439,7 +322,7 @@ export const FormSwap = () => {
             <Button
               type="submit"
               w="100%"
-              isLoading={isSwapLoading}
+              isLoading={isSwapLoading || isSwapLoadingUSDT}
               bgGradient="linear-gradient(92deg, #1D76CD 4.65%, #06C196 96.4%)"
               _hover={{
                 bg: "linear-gradient(92deg, #135186 4.65%, #0B4649 96.4%)",
@@ -500,7 +383,7 @@ export const FormSwap = () => {
               >
                 {/* TODO: already delete if this calculation good */}
                 {/* {fromBn(balanceGNET ?? 0, 9)} GNET */}
-                {prettyBn(balanceGNET, 9)} FLD
+                {prettyBn(balanceFLD?.value, 18)} FLD
               </Text>
             </Stack>
             <HStack
@@ -513,12 +396,12 @@ export const FormSwap = () => {
               <Text fontSize="sm">Import FLD</Text>
               <Box display="flex" alignItems="center">
                 <CopiableText
-                  value={addressGnet}
+                  value={addressFLD}
                   display="flex"
                   alignItems="center"
                   gap="2"
                 >
-                  {shortenAddress(addressGnet)}
+                  {shortenAddress(addressFLD)}
                   <IoCopyOutline />
                 </CopiableText>
               </Box>
@@ -552,7 +435,7 @@ export const FormSwap = () => {
                 color={"whiteAlpha.700"}
                 textAlign={"center"}
               >
-                {fromBn(balanceUSDT ?? 0, 6)} USDT
+                {fromBn(balanceUSDT?.value ?? toBn("0"), 18)} USDT
               </Text>
             </Stack>
             <HStack
