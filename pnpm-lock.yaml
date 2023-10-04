@@ -101,9 +101,9 @@ dependencies:
   evm-bn:
     specifier: ^1.1.2
     version: 1.1.2(@ethersproject/bignumber@5.7.0)
-  falcon-defi:
+  folkvangr:
     specifier: ^1.0.1
-    version: 1.0.1(@ethersproject/bignumber@5.7.0)
+    version: 1.0.1(@ethersproject/bignumber@5.7.0)(typescript@4.9.3)
   framer-motion:
     specifier: ^7.6.18
     version: 7.6.18(react-dom@18.2.0)(react@18.2.0)
@@ -7756,18 +7756,6 @@ packages:
     engines: {node: '> 0.1.90'}
     dev: false
 
-  /falcon-defi@1.0.1(@ethersproject/bignumber@5.7.0):
-    resolution: {integrity: sha512-a0I56PBMHFX0cbgalh7RM7nHfzlsp0YZtzytQeEwrIk431+dYYNwPx/D6Mw21iuOHRIdgAqAKKd8hAoKpXx+rQ==}
-    dependencies:
-      '@openzeppelin/contracts': 4.9.3
-      '@openzeppelin/contracts-upgradeable': 4.9.3
-      dotenv: 16.3.1
-      evm-bn: 1.1.2(@ethersproject/bignumber@5.7.0)
-      jsonexport: 3.2.0
-    transitivePeerDependencies:
-      - '@ethersproject/bignumber'
-    dev: false
-
   /fast-deep-equal@3.1.3:
     resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
 
@@ -7918,6 +7906,21 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       tslib: 2.6.2
+    dev: false
+
+  /folkvangr@1.0.1(@ethersproject/bignumber@5.7.0)(typescript@4.9.3):
+    resolution: {integrity: sha512-hJkzRg428JhGwX3V1s+vrwkzTr87H5K/6GJIl/wjVrZmaxtzWviS9AmE+obXkgkTLIxPaSwoKXIIFXSL2v5whA==}
+    dependencies:
+      '@openzeppelin/contracts': 4.9.3
+      '@openzeppelin/contracts-upgradeable': 4.9.3
+      dotenv: 16.3.1
+      evm-bn: 1.1.2(@ethersproject/bignumber@5.7.0)
+      jsonexport: 3.2.0
+      semantic-release: 22.0.5(typescript@4.9.3)
+    transitivePeerDependencies:
+      - '@ethersproject/bignumber'
+      - supports-color
+      - typescript
     dev: false
 
   /follow-redirects@1.15.2:
@@ -8475,6 +8478,7 @@ packages:
 
   /humanize-ms@1.2.1:
     resolution: {integrity: sha512-Fl70vYtsAFb/C06PTS9dZBo7ihau+Tu/DNCk/OyHhea07S+aeMWpFFkUaXRa8fI+ScZbEI8dfSxwY7gxZ9SAVQ==}
+    requiresBuild: true
     dependencies:
       ms: 2.1.3
     dev: false

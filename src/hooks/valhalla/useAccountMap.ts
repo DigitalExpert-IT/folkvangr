@@ -1,6 +1,6 @@
 import { useFolkvangrContract } from "hooks/useFolkvangrContract";
 import { useContractRead, useAddress } from "@thirdweb-dev/react";
-import { Network } from "falcon-defi/typechain-types";
+import { Network } from "folkvangr/typechain-types";
 import { ZERO_ADDRESS } from "constant/address";
 import { useEffect } from "react";
 import ee from "ee";
