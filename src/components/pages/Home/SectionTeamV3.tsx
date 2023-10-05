@@ -28,10 +28,15 @@ export const SectionTeamV3: React.FC<IOurTeamV3> = props => {
   const [isLargerThan1440] = useMediaQuery("(min-width: 780px)");
 
   return (
-    <Stack direction={{ base: "column", md: "row" }} mb="10" align="center">
+    <Stack
+      direction={{ base: "column", md: "row" }}
+      py="10"
+      align="center"
+      justify="center"
+    >
       <Stack
-        w={{ base: "100%", md: "xs" }}
-        flex={1}
+        w={{ base: "100%", md: "70%" }}
+        mb="2rem"
         position="relative"
         justifyContent="center"
         alignContent="center"
@@ -43,9 +48,7 @@ export const SectionTeamV3: React.FC<IOurTeamV3> = props => {
             loading="lazy"
             style={{
               alignSelf: "center",
-              position: "absolute",
               objectFit: "contain",
-              flexShrink: 0,
             }}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 20vw, 33vw"
             fill
@@ -56,26 +59,19 @@ export const SectionTeamV3: React.FC<IOurTeamV3> = props => {
           src={props.image}
           alt={`image-${props.name}`}
           style={{
-            position: "absolute",
             alignSelf: "center",
             objectFit: "contain",
             top: "10px",
           }}
-          width={isLargerThan1440 ? 600 : 250}
-          height={isLargerThan1440 ? 600 : 280}
+          // width={isLargerThan1440 ? 650 : 300}
+          // height={isLargerThan1440 ? 650 : 300}
           loading="lazy"
           priority={false}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          // fill
+          fill
         />
       </Stack>
-      <Stack
-        flex={1}
-        textAlign={{ base: "center", md: "left" }}
-        spacing="10"
-        pt={{ base: "none", md: "10rem" }}
-        w="100%"
-      >
+      <Stack textAlign={{ base: "center", md: "left" }} spacing="10" w="100%">
         <Box w={isLargerThan2000 ? "50%" : "full"}>
           <Text fontSize={{ base: "md", md: "2xl" }}>
             &ldquo;{props.quotes}&rdquo;
