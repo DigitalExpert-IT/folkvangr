@@ -1,17 +1,36 @@
-import { Heading, Image, Stack, Spinner } from "@chakra-ui/react";
-import { rankMap } from "constant/rank";
-import { useAccountMap } from "hooks/valhalla";
-import { lowerCase } from "lodash";
 import React from "react";
+import { RANK_LEVEL } from "constant/rankLevel";
+import { useAccountMap } from "hooks/valhalla";
 import { CardProfileV2 } from "./CardProfileV2";
+import { Heading, Stack, Spinner } from "@chakra-ui/react";
+import { useAddress, useContractRead } from "@thirdweb-dev/react";
+import { useNFTFolkContract } from "hooks/useNFTFolkContract";
+import { fromBn } from "evm-bn";
 
 export const CardProfileRankV2 = () => {
-  const accountMap = useAccountMap();
-  const account = accountMap?.data;
-  // const rankName = rankMap[account?.rank ?? 0];
-  // const imageUrl = `/assets/rank/${lowerCase(rankName).replace(/\s/, "-")}.svg`;
+  const nft = useNFTFolkContract();
+  const address = useAddress();
+  const { data, isLoading } = useAccountMap();
+  const { data: personalBuy } = useContractRead(nft.contract, "personalBuy", [
+    address,
+  ]);
 
-  if (accountMap.isLoading) return <Spinner />;
+  const getRank = () => {
+    if (data === undefined || personalBuy === undefined) return 0;
+    return (
+      RANK_LEVEL.find((rank, idx) => {
+        if (idx + 1 === RANK_LEVEL.length) return RANK_LEVEL[idx];
+        return (
+          (Number(fromBn(data.omzet, 18)) >= rank.omzet &&
+            Number(fromBn(data.omzet, 18)) < RANK_LEVEL[idx + 1].omzet) ||
+          (Number(fromBn(personalBuy, 18)) >= rank.personalBuy &&
+            Number(fromBn(personalBuy, 18)) < RANK_LEVEL[idx + 1].personalBuy)
+        );
+      })?.level ?? 0
+    );
+  };
+
+  if (isLoading) return <Spinner />;
 
   return (
     <CardProfileV2
@@ -25,19 +44,13 @@ export const CardProfileRankV2 = () => {
         placeItems={"center"}
         spacing={{ base: "none", md: 5 }}
       >
-        {/* <Image
-          src={imageUrl}
-          alt="rank-image"
-          mx={{ base: "0", lg: "auto" }}
-          h={{ base: "24", lg: "36" }}
-        /> */}
         <Heading>Rank</Heading>
         <Heading
           fontSize="8xl"
           mt={"4"}
           textAlign={{ base: "start", lg: "center" }}
         >
-          {/* {rankName} */}#1
+          #{getRank()}
         </Heading>
       </Stack>
     </CardProfileV2>

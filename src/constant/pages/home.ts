@@ -82,9 +82,9 @@ export const OURTEAM = [
 ];
 
 export const OURTEAMV3 = {
-  name: "Snoop Dogg",
+  name: "Jonas Van der Berg",
   image:
-    "https://ik.imagekit.io/msxxxaegj/folkvangr/Snoop.png?updatedAt=1695364465770",
+    "https://ik.imagekit.io/msxxxaegj/folkvangr/falcon-owner.png?updatedAt=1695975680437",
   occupation: "Founder & President",
   social: [
     {
@@ -153,75 +153,88 @@ export interface ITokenomics {
 
 export const RANKNETWORK = [
   {
-    rank: "Rank 1",
-    sponsor: "5%",
-    matching: "10%",
+    rank: "Rank 1 / Level 1",
+    sponsor: "10%",
+    matching: "20%",
     turnover: "",
-    personalBuy: "100",
+    personalBuy: "10",
   },
   {
-    rank: "Rank 2",
-    sponsor: "1%",
-    matching: "5.5%",
+    rank: "Rank 2 / Level 2",
+    sponsor: "",
+    matching: "10%",
     turnover: "500",
     personalBuy: "100",
   },
   {
-    rank: "Rank 3",
-    sponsor: "1%",
-    matching: "5.3%",
+    rank: "Rank 3 / Level 3",
+    sponsor: "",
+    matching: "10%",
     turnover: "2000",
     personalBuy: "100",
   },
   {
-    rank: "Rank 4",
-    sponsor: "1%",
-    matching: "5.1%",
+    rank: "Rank 4 / Level 4",
+    sponsor: "",
+    matching: "10%",
     turnover: "8000",
     personalBuy: "100",
   },
   {
-    rank: "Rank 5",
-    sponsor: "1%",
-    matching: "4.5%",
+    rank: "Rank 5 / Level 5",
+    sponsor: "",
+    matching: "10%",
     turnover: "15000",
     personalBuy: "500",
   },
   {
-    rank: "Rank 6",
-    sponsor: "1%",
-    matching: "4.1%",
+    rank: "Rank 6 / Level 6",
+    sponsor: "",
+    matching: "10%",
     turnover: "30000",
     personalBuy: "600",
   },
   {
-    rank: "Rank 7",
-    sponsor: "1%",
-    matching: "3.8%",
+    rank: "Rank 7 / Level 7",
+    sponsor: "",
+    matching: "5%",
     turnover: "45000",
     personalBuy: "1000",
   },
   {
-    rank: "Rank 8",
-    sponsor: "1%",
-    matching: "3.5%",
+    rank: "Rank 8 / Level 8",
+    sponsor: "",
+    matching: "5%",
     turnover: "65000",
     personalBuy: "1000",
   },
   {
-    rank: "Rank 9",
-    sponsor: "1%",
-    matching: "3.1%",
+    rank: "Rank 9 / Level 9",
+    sponsor: "",
+    matching: "5%",
     turnover: "75000",
     personalBuy: "2000",
   },
-
   {
-    rank: "Rank 10",
-    sponsor: "1%",
-    matching: "2.9%",
+    rank: "Rank 10 / Level 10",
+    sponsor: "",
+    matching: "5%",
     turnover: "85000",
     personalBuy: "2000",
+  },
+  {
+    rank: "Rank 11 / Level 11",
+    sponsor: "",
+    matching: "5%",
+    turnover: "100000",
+    personalBuy: "2500",
+  },
+  {
+    rank: "Rank 12 / Level 12",
+    sponsor: "",
+    matching: "5%",
+    turnover: "120000",
+    personalBuy: "3000",
   },
 ];
 
@@ -330,11 +343,11 @@ export const RANKBONUS: Array<IRankBonus> = [
 export const RANKBONUSV2: Array<IRankBonusV2> = [
   {
     share: "Contract Pool",
-    percent: "70%",
+    percent: "75%",
   },
   {
     share: "Marketing",
-    percent: "19%",
+    percent: "10%",
   },
   {
     share: "Reserve",
@@ -342,7 +355,7 @@ export const RANKBONUSV2: Array<IRankBonusV2> = [
   },
   {
     share: "Development",
-    percent: "6%",
+    percent: "10%",
   },
   {
     share: "NFT Max Claim",
