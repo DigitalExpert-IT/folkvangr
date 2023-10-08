@@ -10,6 +10,7 @@ export const RPC_ENDPOINTS = {
   "0x13881": "https://matic-mumbai.chainstacklabs.com",
   "0x539": "http://localhost:8545",
   "0x29a": "https://valhalacoin.cloud",
+  "0x38": "https://https://bsc-dataseed2.binance.org",
 };
 
 export const RPC_ENDPOINT_LIST = {
@@ -28,4 +29,5 @@ export const RPC_ENDPOINT_LIST = {
   "0x13881": ["https://matic-mumbai.chainstacklabs.com"],
   "0x539": ["http://localhost:8545"],
   "0x29a": ["https://valhalacoin.cloud"],
+  "0x38": ["https://https://bsc-dataseed2.binance.org"],
 };

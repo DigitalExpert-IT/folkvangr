@@ -9,6 +9,9 @@ import erc20Json from "valhalla-erc20/artifacts/@openzeppelin/contracts/token/ER
 import genesisJson from "valhalla-erc20/artifacts/contracts/NFTGenesis.sol/NFTGenesis.json";
 import {
   VALHALLA_CONTRACT,
+  NFTFOLK_CONTRACT,
+  FLD_CONTRACT,
+  FOLKVANGR_CONTRACT,
   NFT_CONTRACT,
   GNET_CONTRACT,
   SWAP_CONTRACT,
@@ -29,7 +32,7 @@ declare module globalThis {
 }
 
 export const CURRENT_CHAIN_ID = (process.env.NEXT_PUBLIC_CHAIN_ID ||
-  "0x89") as "0x89";
+  "0x38") as "0x38";
 
 const CURRENT_CHAIN_ID_FOLK = process.env.NEXT_PUBLIC_CHAIN_ID as "0x38";
 const ENDPOINT = RPC_ENDPOINTS[CURRENT_CHAIN_ID];
@@ -68,7 +71,7 @@ export const getValhallaContract = async () => {
   const contract = await getFromCache(
     async () =>
       new ethers.Contract(
-        VALHALLA_CONTRACT[CURRENT_CHAIN_ID],
+        FLD_CONTRACT[CURRENT_CHAIN_ID],
         valhallaJson.abi,
         provider
       ) as Valhalla
@@ -79,7 +82,7 @@ export const getValhallaContract = async () => {
 export const getValhallaSignerContract = async () => {
   const wallet = await getWallet();
   return new ethers.Contract(
-    VALHALLA_CONTRACT[CURRENT_CHAIN_ID],
+    FLD_CONTRACT[CURRENT_CHAIN_ID],
     valhallaJson.abi,
     wallet.getSigner()
   ) as Valhalla;
@@ -90,7 +93,7 @@ export const getNFTContract = async () => {
   const contract = await getFromCache(
     async () =>
       new ethers.Contract(
-        NFT_CONTRACT[CURRENT_CHAIN_ID],
+        NFTFOLK_CONTRACT[CURRENT_CHAIN_ID],
         nftJson.abi,
         provider
       ) as NFT
@@ -101,7 +104,7 @@ export const getNFTContract = async () => {
 export const getNFTSignerContract = async () => {
   const wallet = await getWallet();
   return new ethers.Contract(
-    NFT_CONTRACT[CURRENT_CHAIN_ID],
+    NFTFOLK_CONTRACT[CURRENT_CHAIN_ID],
     nftJson.abi,
     wallet.getSigner()
   ) as NFT;
@@ -112,7 +115,7 @@ export const getNFTGenesisContract = async () => {
   const contract = await getFromCache(
     async () =>
       new ethers.Contract(
-        GENESIS_CONTRACT[CURRENT_CHAIN_ID],
+        FOLKVANGR_CONTRACT[CURRENT_CHAIN_ID],
         genesisJson.abi,
         provider
       ) as NFTGenesis
@@ -120,21 +123,12 @@ export const getNFTGenesisContract = async () => {
   return contract;
 };
 
-export const getNFTGenesisSignerContract = async () => {
-  const wallet = await getWallet();
-  return new ethers.Contract(
-    GENESIS_CONTRACT[CURRENT_CHAIN_ID],
-    genesisJson.abi,
-    wallet.getSigner()
-  ) as NFTGenesis;
-};
-
 export const getGNETContract = async () => {
   const provider = await getMainProvider();
   const contract = await getFromCache(
     async () =>
       new ethers.Contract(
-        GNET_CONTRACT[CURRENT_CHAIN_ID],
+        FLD_CONTRACT[CURRENT_CHAIN_ID],
         gnetJson.abi,
         provider
       ) as GNET
@@ -147,7 +141,7 @@ export const getGNETSignerContract = async () => {
   const contract = await getFromCache(
     async () =>
       new ethers.Contract(
-        GNET_CONTRACT[CURRENT_CHAIN_ID],
+        FLD_CONTRACT[CURRENT_CHAIN_ID],
         gnetJson.abi,
         wallet.getSigner()
       ) as GNET
@@ -217,7 +211,7 @@ export const getMainProviderWithSwitcher = async (pickRpc: number) => {
 export const getValhallaContractWithSwitcher = async (pickRpc: number) => {
   const provider = await getMainProviderWithSwitcher(pickRpc);
   const contract = new ethers.Contract(
-    VALHALLA_CONTRACT[CURRENT_CHAIN_ID],
+    FOLKVANGR_CONTRACT[CURRENT_CHAIN_ID],
     valhallaJson.abi,
     provider
   ) as Valhalla;
@@ -228,7 +222,7 @@ export const getValhallaContractWithSwitcher = async (pickRpc: number) => {
 export const getNFTContractWithSwticher = async (pickRpc: number) => {
   const provider = await getMainProviderWithSwitcher(pickRpc);
   const contract = new ethers.Contract(
-    NFT_CONTRACT[CURRENT_CHAIN_ID],
+    NFTFOLK_CONTRACT[CURRENT_CHAIN_ID],
     nftJson.abi,
     provider
   ) as NFT;

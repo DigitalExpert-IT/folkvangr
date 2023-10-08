@@ -21,7 +21,6 @@ import { useAccountMap, useIsRankRewardClaimable } from "hooks/valhalla";
 import { useTranslation } from "react-i18next";
 import { useSummary } from "hooks/user/dashboard/useSummary";
 import { BigNumber } from "ethers";
-import { getGnetRate, prettyBn } from "utils";
 
 export const SectionGnetProject = () => {
   const { t } = useTranslation();

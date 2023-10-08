@@ -82,9 +82,7 @@ const Main = ({ Component, pageProps }: AppProps) => {
   const { colorMode, toggleColorMode } = useColorMode();
   const { t } = useTranslation();
   const nft = useNFTFolkContract();
-  const valhalla = useValhallaContract();
   const swap = useSwapContract();
-  const genesis = useGenesisContract();
   const chain = useChain();
   const switchChain = useSwitchChain();
   const wallet = useWallet();
@@ -98,27 +96,13 @@ const Main = ({ Component, pageProps }: AppProps) => {
   };
 
   useEffect(() => {
-    if (
-      !nft.contract ||
-      !valhalla.contract ||
-      !swap.contract ||
-      !genesis.contract
-    )
-      return;
-    const unsubscribeGenesisEvents = genesis.contract.events?.listenToAllEvents(
-      event => {
-        ee.emit(`genesis-${event.eventName}`, event.data);
-      }
-    );
+    if (!nft.contract || !swap.contract) return;
+
     const unsubscribeNftEvents = nft.contract.events?.listenToAllEvents(
       event => {
         ee.emit(`nft-${event.eventName}`, event.data);
       }
     );
-    const unsubscribeValhallaEvents =
-      valhalla.contract.events?.listenToAllEvents(event => {
-        ee.emit(`valhalla-${event.eventName}`, event.data);
-      });
 
     const unsubscribeSwapEvents = swap.contract.events?.listenToAllEvents(
       event => {
@@ -127,12 +111,10 @@ const Main = ({ Component, pageProps }: AppProps) => {
     );
 
     return () => {
-      unsubscribeGenesisEvents();
       unsubscribeNftEvents();
-      unsubscribeValhallaEvents();
       unsubscribeSwapEvents();
     };
-  }, [nft.contract, valhalla.contract, swap.contract]);
+  }, [nft.contract, swap.contract]);
 
   // enforce dark mode
   useEffect(() => {

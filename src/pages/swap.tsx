@@ -1,12 +1,4 @@
-import {
-  Card,
-  CardBody,
-  Flex,
-  Heading,
-  Image,
-  Stack,
-  Text,
-} from "@chakra-ui/react";
+import { Card, CardBody, Flex, Heading, Image, Stack } from "@chakra-ui/react";
 import { FormSwap, LayoutMainV2 } from "components";
 import { t } from "i18next";
 
