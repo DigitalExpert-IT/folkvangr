@@ -61,17 +61,9 @@ export const FormSwap = () => {
     t("form.message.swapSucces")
   );
 
-  const getTax = (val: BigNumber) => {
-    const feePercentage = 10000;
-    // This percentage is to provide a swap tolerance range,
-    // in order to avoid a lack of result from swaps
-    const tolerancePercentage = 3000;
-
+  const afterTax = (val: BigNumber) => {
     if (!val) return toBn("0");
-
-    // tolerance 503 === 0.00503 or 0.503%
-    // check div 1e5 shouldbe 509 / 1e5
-    return val.mul(feePercentage + tolerancePercentage).div(1e5);
+    return val.mul(toBn("10", 18)).div(toBn("9", 18));
   };
 
   const inputMax = () => {
@@ -79,17 +71,14 @@ export const FormSwap = () => {
     let result;
 
     if (currency === "FLD") {
-      if (!balanceUSDT?.value || balanceFLD?.value)
-        return setValue("amountTop", "0");
+      if (!balanceUSDT?.value) return setValue("amountTop", "0");
 
-      const tax = getTax(balanceUSDT.value);
-      result = balanceUSDT.value.sub(tax);
+      result = balanceUSDT.value;
     } else {
       if (!balanceFLD?.value || balanceFLD?.value.isZero())
         return setValue("amountTop", "0");
 
-      const tax = getTax(balanceFLD?.value);
-      result = balanceFLD?.value.sub(tax);
+      result = balanceFLD.value.mul(toBn("9", 18)).div(toBn("10", 18));
     }
 
     setValue("amountTop", fromBn(result, 18));
@@ -141,11 +130,9 @@ export const FormSwap = () => {
 
     const amountTopBn = toBn(amountTop, 18);
 
-    let tax = toBn("0", 18);
+    if (!symbol) return afterTax(amountTopBn);
 
-    if (!symbol) tax = getTax(amountTopBn);
-
-    return amountTopBn.add(tax);
+    return amountTopBn;
   }, [watchAmountTop]);
 
   const onSubmit = handleSubmit(async data => {
@@ -154,7 +141,6 @@ export const FormSwap = () => {
     } else {
       execUSDT(amountAfterFee);
     }
-    debugger;
   });
 
   return (
@@ -327,6 +313,7 @@ export const FormSwap = () => {
               _hover={{
                 bg: "linear-gradient(92deg, #135186 4.65%, #0B4649 96.4%)",
               }}
+              isDisabled={amountAfterFee <= toBn("0", 18)}
             >
               {t("common.swap")}
             </Button>
@@ -353,9 +340,6 @@ export const FormSwap = () => {
         order={{ base: 1, md: 2 }}
       >
         <Box zIndex={1}>
-          {/* <Text as="h3" textAlign="center" mb="3">
-            {t("common.balance")}
-          </Text> */}
           <Stack
             direction="column"
             p={2}
@@ -381,9 +365,10 @@ export const FormSwap = () => {
                 color={"whiteAlpha.700"}
                 textAlign={"center"}
               >
-                {/* TODO: already delete if this calculation good */}
-                {/* {fromBn(balanceGNET ?? 0, 9)} GNET */}
-                {prettyBn(balanceFLD?.value, 18)} FLD
+                {Number(fromBn(balanceFLD?.value ?? toBn("0", 18), 18)) < 1
+                  ? fromBn(balanceFLD?.value ?? toBn("0", 18), 18)
+                  : prettyBn(balanceFLD?.value, 18)}{" "}
+                FLD
               </Text>
             </Stack>
             <HStack
@@ -435,7 +420,10 @@ export const FormSwap = () => {
                 color={"whiteAlpha.700"}
                 textAlign={"center"}
               >
-                {fromBn(balanceUSDT?.value ?? toBn("0"), 18)} USDT
+                {Number(fromBn(balanceUSDT?.value ?? toBn("0", 18), 18)) < 1
+                  ? fromBn(balanceUSDT?.value ?? toBn("0", 18), 18)
+                  : prettyBn(balanceUSDT?.value, 18)}{" "}
+                USDT
               </Text>
             </Stack>
             <HStack

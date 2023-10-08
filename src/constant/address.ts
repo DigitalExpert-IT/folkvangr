@@ -14,7 +14,7 @@ export const FOLKVANGR_CONTRACT = {
 
 export const FLD_CONTRACT = {
   "0x38": "",
-  "0x61": "0xaa247924f99093de3e4c9Da8E8569370033d8e77",
+  "0x61": "0xe69358B51eDB038a07B24674A14D21e7dA1e19DC",
 };
 
 export const NFTFOLK_CONTRACT = {
@@ -45,10 +45,10 @@ export const GNET_CONTRACT = {
 
 export const SWAP_CONTRACT = {
   "0x38": "",
-  "0x61": "0x103D249f0fAF71E760c59c936ce45315E53922bf",
+  "0x61": "0x23aaf0d69e61C86f2caB2B62D30c6Fd0dAB104F8",
 };
 
 export const USDT_CONTRACT = {
   "0x38": "",
-  "0x61": "0xE6DF753f67C6045c5F9B270fFA7D25dB9371Ec55",
+  "0x61": "0xae730A437E4A189b00A8851A531Ec315B04c7BB4",
 };

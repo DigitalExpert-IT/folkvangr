@@ -1,17 +1,40 @@
 import { CURRENT_CHAIN_ID } from "lib/contractFactory";
 import { useFLDContract } from "./useFLDContract";
-import { useWallet } from "./useWallet";
 import { BigNumber } from "ethers";
 import { useUSDTContract } from "./useUSDTContract";
 import { SWAP_CONTRACT } from "constant/address";
 import { useSwapContract } from "./useSwapContract";
 import useAccountBalance from "./useAccountBalance";
+import ee from "ee";
+import { useEffect } from "react";
 
 export const useSwap = () => {
-  const { address } = useWallet();
-  const { contract: fld, isInitialLoading: isLoadingFLD } = useFLDContract();
-  const { contract: usdt, isInitialLoading: isLoadingUSDT } = useUSDTContract();
+  const {
+    contract: fld,
+    refetch: refetchFLD,
+    isInitialLoading: isLoadingFLD,
+    isRefetching: isRefetchingFLD,
+  } = useFLDContract();
+  const {
+    contract: usdt,
+    refetch: refetchUSDT,
+    isInitialLoading: isLoadingUSDT,
+    isRefetching: isRefetchingUSDT,
+  } = useUSDTContract();
   const { contract: swap, isInitialLoading: isLoadingSwap } = useSwapContract();
+
+  const refetch = async () => {
+    refetchFLD();
+    refetchUSDT();
+  };
+
+  useEffect(() => {
+    ee.addListener("swap-SwapToken", refetch);
+
+    return () => {
+      ee.removeListener("swap-SwapToken", refetch);
+    };
+  }, [swap]);
 
   const {
     balanceFLD,
@@ -45,7 +68,7 @@ export const useSwap = () => {
     if (allowance.value > amount) return;
     const tx = await fld.erc20.setAllowance(
       SWAP_CONTRACT[CURRENT_CHAIN_ID],
-      Number(amount) * 5
+      amount.mul(5).toString()
     );
     return tx.receipt;
   };
@@ -57,7 +80,6 @@ export const useSwap = () => {
   };
 
   const swapUSDT = async (amount: BigNumber) => {
-    debugger;
     await approveFLD(amount);
     const tx = await swap?.call("swapToUSDT", [amount]);
     return tx;
@@ -67,6 +89,11 @@ export const useSwap = () => {
     swapFLD,
     swapUSDT,
     isInitializing:
-      isLoadingFLD && isLoadingSwap && isLoadingUSDT && isLoadingAccountBalance,
+      isLoadingFLD &&
+      isLoadingSwap &&
+      isLoadingUSDT &&
+      isLoadingAccountBalance &&
+      isRefetchingFLD &&
+      isRefetchingUSDT,
   };
 };
