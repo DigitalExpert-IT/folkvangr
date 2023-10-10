@@ -112,7 +112,7 @@ const Registerv2 = () => {
                 </CardBody>
               </Card>
             }
-            targetDate={new Date("October 15, 2023 23:59:00 UTC")}
+            targetDate={new Date("October 16, 2023 23:59:00 UTC")}
           />
         </Stack>
       </Stack>
