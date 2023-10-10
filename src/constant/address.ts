@@ -7,21 +7,6 @@ export const VALHALLA_CONTRACT = {
   "0x29a": "0x7c86590bDd5804f7aE1f233BDd994FED534cbC0F",
 };
 
-export const FOLKVANGR_CONTRACT = {
-  "0x38": "",
-  "0x61": "0xb9F84aB4f04Fa0AF5b4b671002a900Bf0E1F21D3",
-};
-
-export const FLD_CONTRACT = {
-  "0x38": "",
-  "0x61": "0xe69358B51eDB038a07B24674A14D21e7dA1e19DC",
-};
-
-export const NFTFOLK_CONTRACT = {
-  "0x38": "",
-  "0x61": "0x2c89f21688eCe3Dd859dCDb15ec76B6A14AEd288",
-};
-
 export const NFT_CONTRACT = {
   "0x89": "0x16e8449e787F5b1B3c871894A93ccD72E678fEb6",
   "0x13881": "0x9D918F7BF29cEc56Af515F2fA2689cf67aFc8061",
@@ -43,12 +28,29 @@ export const GNET_CONTRACT = {
   "0x29a": "0x112F2b8e8b3Cdc70a2b569be5Ef7342827718C6B",
 };
 
+// this Contract for Falcon Defi using
+
+export const FOLKVANGR_CONTRACT = {
+  "0x38": "",
+  "0x61": "0xBc07007AA0cB3EBD20975Cb3A3bF109044b5D2b2",
+};
+
+export const FLD_CONTRACT = {
+  "0x38": "",
+  "0x61": "0x7fd64E3ca3D0F68662bDF9E7e2b018Ce8b75549a",
+};
+
+export const NFTFOLK_CONTRACT = {
+  "0x38": "",
+  "0x61": "0xeeF1Cd1Ff625d1DaB364E04Aa7D1944B10bC9b3f",
+};
+
 export const SWAP_CONTRACT = {
   "0x38": "",
-  "0x61": "0x23aaf0d69e61C86f2caB2B62D30c6Fd0dAB104F8",
+  "0x61": "0xF8D70E55d9f770a9E620161C44Af656324586bB5",
 };
 
 export const USDT_CONTRACT = {
   "0x38": "",
-  "0x61": "0xae730A437E4A189b00A8851A531Ec315B04c7BB4",
+  "0x61": "0xFC6e3AE566Be4124A488D43A26b8f536b4b5c93a",
 };

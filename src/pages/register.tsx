@@ -9,6 +9,11 @@ import {
 } from "@chakra-ui/react";
 import { FormRegister, LayoutMainV2 } from "components";
 import { Trans } from "react-i18next";
+import dynamic from "next/dynamic";
+
+const Countdown = dynamic(() => import("../components/Countdown"), {
+  ssr: false,
+});
 
 const Registerv2 = () => {
   return (
@@ -57,53 +62,58 @@ const Registerv2 = () => {
               />
             </Text>
           </Box>
-          <Card
-            bg={"white"}
-            rounded={{ base: "3xl", lg: "50px" }}
-            w="full"
-            mx="auto"
-            maxW="4xl"
-            overflow={"hidden"}
-          >
-            <CardBody
-              display={"flex"}
-              flexDir={{ base: "column", lg: "row" }}
-              p="0"
-            >
-              <Box
-                w={{ base: "full", lg: "50%" }}
-                borderRight={{ base: "none", lg: "8px" }}
-                color={"blackAlpha.300"}
-                zIndex={"1"}
+          <Countdown
+            showExpired={
+              <Card
+                bg={"white"}
+                rounded={{ base: "3xl", lg: "50px" }}
+                w="full"
+                mx="auto"
+                maxW="4xl"
+                overflow={"hidden"}
               >
-                <Box
-                  bgGradient="linear-gradient(90deg, #1C79CC 0%, #04DFA7 100%)"
-                  py={"20"}
-                  zIndex={"99"}
-                  backgroundPosition={"center"}
-                  backgroundSize={"contain"}
+                <CardBody
+                  display={"flex"}
+                  flexDir={{ base: "column", lg: "row" }}
+                  p="0"
                 >
-                  <Image
-                    src="/images/register-image.png"
-                    alt="pattern2"
-                    mx={"auto"}
-                  />
-                </Box>
-              </Box>
-              <Stack
-                w={{ base: "full", lg: "50%" }}
-                minH={"sm"}
-                px={{ base: "4", md: "12" }}
-                color={"black"}
-                borderLeft={{ base: "8px", lg: "none" }}
-                borderColor={"blackAlpha.300"}
-                pos={"relative"}
-                justifyContent={"center"}
-              >
-                <FormRegister />
-              </Stack>
-            </CardBody>
-          </Card>
+                  <Box
+                    w={{ base: "full", lg: "50%" }}
+                    borderRight={{ base: "none", lg: "8px" }}
+                    color={"blackAlpha.300"}
+                    zIndex={"1"}
+                  >
+                    <Box
+                      bgGradient="linear-gradient(90deg, #1C79CC 0%, #04DFA7 100%)"
+                      py={"20"}
+                      zIndex={"99"}
+                      backgroundPosition={"center"}
+                      backgroundSize={"contain"}
+                    >
+                      <Image
+                        src="/images/register-image.png"
+                        alt="pattern2"
+                        mx={"auto"}
+                      />
+                    </Box>
+                  </Box>
+                  <Stack
+                    w={{ base: "full", lg: "50%" }}
+                    minH={"sm"}
+                    px={{ base: "4", md: "12" }}
+                    color={"black"}
+                    borderLeft={{ base: "8px", lg: "none" }}
+                    borderColor={"blackAlpha.300"}
+                    pos={"relative"}
+                    justifyContent={"center"}
+                  >
+                    <FormRegister />
+                  </Stack>
+                </CardBody>
+              </Card>
+            }
+            targetDate={new Date("October 15, 2023 23:59:00 UTC")}
+          />
         </Stack>
       </Stack>
     </LayoutMainV2>

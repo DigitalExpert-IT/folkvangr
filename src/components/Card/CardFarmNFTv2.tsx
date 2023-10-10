@@ -13,10 +13,21 @@ interface CardNFTV2Props {
 export const CardFarmNFTV2: React.FC<CardNFTV2Props> = props => {
   const { t } = useTranslation();
   const { buy } = useCardList();
-  const { exec, isLoading } = useAsyncCall(buy, t("common.succesBuyNft"));
+  const { exec: buyWithUSDT, isLoading: usdtLoading } = useAsyncCall(
+    buy,
+    t("common.succesBuyNft")
+  );
+  const { exec: buyWithFLD, isLoading: fldLoading } = useAsyncCall(
+    buy,
+    t("common.succesBuyNft")
+  );
 
-  const handleBuy = (currency: number = 0) => {
-    exec(props.id, currency);
+  const handleBuyUSDT = () => {
+    buyWithUSDT(props.id, 0);
+  };
+
+  const handleBuyFLD = () => {
+    buyWithFLD(props.id, 1);
   };
   return (
     <Box textAlign="center" rounded="xl" overflow="hidden">
@@ -47,8 +58,8 @@ export const CardFarmNFTV2: React.FC<CardNFTV2Props> = props => {
                   rounded="lg"
                   background="#0B5454"
                   _hover={{ background: "#073c3c" }}
-                  onClick={() => handleBuy(0)}
-                  isLoading={isLoading}
+                  onClick={() => handleBuyUSDT()}
+                  isLoading={usdtLoading}
                 >
                   Buy with {props.price} USDT
                 </Button>
@@ -57,8 +68,8 @@ export const CardFarmNFTV2: React.FC<CardNFTV2Props> = props => {
                   rounded="lg"
                   background="#0B5454"
                   _hover={{ background: "#073c3c" }}
-                  onClick={() => handleBuy(1)}
-                  isLoading={isLoading}
+                  onClick={() => handleBuyFLD()}
+                  isLoading={fldLoading}
                 >
                   Buy with {props.price} FLD
                 </Button>
