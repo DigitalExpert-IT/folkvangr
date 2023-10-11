@@ -49,7 +49,7 @@ export const PROMOTION_IMAGE_DATAV2 = [
     subtitle: t("pages.home.sectionFeature.fullAutomation.subtitle"),
     bgColor: "#005AB8",
     imgCenter: false,
-    // bgImg:
+    // bgImg:constant/home
     //   "https://ik.imagekit.io/msxxxaegj/folkvangr/feature6-bg.png?updatedAt=1695013929319",
   },
   {
@@ -139,6 +139,7 @@ export interface IRankBonus {
 
 export interface IRankNetwork {
   rank: string;
+  level: string;
   sponsor: string;
   matching: string;
   turnover: string;
@@ -153,84 +154,96 @@ export interface ITokenomics {
 
 export const RANKNETWORK = [
   {
-    rank: "Rank 1 / Level 1",
+    rank: "Rank 1",
+    level: "Level 1",
     sponsor: "10%",
     matching: "20%",
     turnover: "",
     personalBuy: "10",
   },
   {
-    rank: "Rank 2 / Level 2",
+    rank: "Rank 2",
+    level: "Level 2",
     sponsor: "",
     matching: "10%",
     turnover: "500",
     personalBuy: "100",
   },
   {
-    rank: "Rank 3 / Level 3",
+    rank: "Rank 3",
+    level: "Level 3",
     sponsor: "",
     matching: "10%",
     turnover: "2000",
     personalBuy: "100",
   },
   {
-    rank: "Rank 4 / Level 4",
+    rank: "Rank 4",
+    level: "Level 4",
     sponsor: "",
     matching: "10%",
     turnover: "8000",
     personalBuy: "100",
   },
   {
-    rank: "Rank 5 / Level 5",
+    rank: "Rank 5",
+    level: "Level 5",
     sponsor: "",
     matching: "10%",
     turnover: "15000",
     personalBuy: "500",
   },
   {
-    rank: "Rank 6 / Level 6",
+    rank: "Rank 6",
+    level: "Level 6",
     sponsor: "",
     matching: "10%",
     turnover: "30000",
     personalBuy: "600",
   },
   {
-    rank: "Rank 7 / Level 7",
+    rank: "Rank 7",
+    level: "Level 7",
     sponsor: "",
     matching: "5%",
     turnover: "45000",
     personalBuy: "1000",
   },
   {
-    rank: "Rank 8 / Level 8",
+    rank: "Rank 8",
+    level: "Level 8",
     sponsor: "",
     matching: "5%",
     turnover: "65000",
     personalBuy: "1000",
   },
   {
-    rank: "Rank 9 / Level 9",
+    rank: "Rank 9",
+    level: "Level 9",
     sponsor: "",
     matching: "5%",
     turnover: "75000",
     personalBuy: "2000",
   },
   {
-    rank: "Rank 10 / Level 10",
+    rank: "Rank 10",
+    level: "Level 10",
     sponsor: "",
     matching: "5%",
     turnover: "85000",
     personalBuy: "2000",
   },
   {
-    rank: "Rank 11 / Level 11",
+    rank: "Rank 11",
+    level: "Level 11",
     sponsor: "",
     matching: "5%",
     turnover: "100000",
     personalBuy: "2500",
   },
   {
-    rank: "Rank 12 / Level 12",
+    rank: "Rank 12",
+    level: "Level 12",
     sponsor: "",
     matching: "5%",
     turnover: "120000",

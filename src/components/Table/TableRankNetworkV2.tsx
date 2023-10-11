@@ -16,7 +16,7 @@ const columns = [
       <Stack
         direction="row"
         align="center"
-        w={{ base: 40, md: 80 }}
+        w={{ base: 40, md: "10em" }}
         whiteSpace="pre-wrap"
       >
         <Icon
@@ -36,17 +36,39 @@ const columns = [
     ),
     header: t("common.rank") ?? "",
   }),
+
   columnHelper.accessor("turnover", {
     cell: info => (
       <Text
         fontSize={{ base: "sm", md: "xl" }}
         textTransform="capitalize"
-        textAlign="center"
+        textAlign="left"
       >
         {info.getValue()}
       </Text>
     ),
     header: t("common.turnover") ?? "",
+  }),
+
+  columnHelper.accessor("level", {
+    cell: info => (
+      <Stack
+        direction="row"
+        w={{ base: 20, md: 20 }}
+        whiteSpace="pre-wrap"
+        justify="center"
+
+      >
+        <Text
+          fontSize={{ base: "sm", md: "xl" }}
+          textTransform="capitalize"
+          color="gray.300"
+        >
+          {info.getValue()}
+        </Text>
+      </Stack>
+    ),
+    header: t("common.level") ?? "",
   }),
   columnHelper.accessor("sponsor", {
     cell: info => (
