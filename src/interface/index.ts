@@ -1,5 +1,3 @@
-import { User } from "@prisma/client";
-
 export interface INFTItem {
   id: string;
   to: string;
@@ -20,7 +18,7 @@ export interface INFTItem {
   farmRewardPerSecond: number;
 }
 
-export interface IUserWithNft extends User {
+export interface IUserWithNft {
   NFTs: INFTItem[];
   totalNft: number;
   totalInvest: number;

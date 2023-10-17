@@ -7,13 +7,10 @@ import Head from "next/head";
 import { useSwapContract } from "hooks";
 import type { AppProps } from "next/app";
 import { getActiveChain } from "lib/chain";
-// import { trustWallet } from "wallets/Trust";
 import NiceModal from "@ebay/nice-modal-react";
 import { useTranslation } from "react-i18next";
 import { PROJECT_NAME } from "constant/siteConfig";
 import { useNFTFolkContract } from "hooks/useNFTFolkContract";
-import { useGenesisContract } from "hooks/useGenesisContract";
-import { useValhallaContract } from "hooks/useValhallaContract";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import {
@@ -92,7 +89,7 @@ const Main = ({ Component, pageProps }: AppProps) => {
   const handleSwitchChain = () => {
     try {
       switchChain(targetChain?.chainId);
-    } catch (error) {}
+    } catch (error) { }
   };
 
   useEffect(() => {
