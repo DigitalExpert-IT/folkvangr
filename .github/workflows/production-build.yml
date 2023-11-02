@@ -15,7 +15,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
-            adeyahya/gn
+            tuxpower27/falcondefi
           tags: |
             latest
             type=schedule
