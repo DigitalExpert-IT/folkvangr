@@ -29,7 +29,6 @@ ARG THIRDWEB_ID
 
 ENV NEXT_PUBLIC_CHAIN_ID=${CHAIN_ID}
 ENV NEXT_PUBLIC_THIRDWEB=${THIRDWEB_ID}
-ENV NEXT_PUBLIC_TELEGRAM_INVITE_LINK=${TELEGRAM_INVITE_LINK}
 
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry

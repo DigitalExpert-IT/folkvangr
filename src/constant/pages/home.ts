@@ -372,7 +372,7 @@ export const RANKBONUSV2: Array<IRankBonusV2> = [
   },
   {
     share: "NFT Max Claim",
-    percent: "200%",
+    percent: "500%",
   },
 ];
 
