@@ -59,7 +59,7 @@ export const CardOwnedFarmNFTV2 = (props: OwnedNftType) => {
   return (
     <Box>
       <Box textAlign="center">
-        <Heading>Falcon {id.toNumber()}</Heading>
+        <Heading>Falcon {cardId.add(1).toNumber()}</Heading>
       </Box>
       <Stack
         p="0.5"
@@ -96,11 +96,11 @@ export const CardOwnedFarmNFTV2 = (props: OwnedNftType) => {
                 color="#05D9A8"
                 fontSize="16px"
               >
-                {t("common.globalNetworkFarm") +
-                  " " +
-                  cardId.add(1).toNumber() +
-                  " " +
-                  t("common.remainingFarm")}
+                {
+                  t("common.globalNetworkFarm") + " " + cardId.add(1).toNumber()
+                  // " " +
+                  // t("common.remainingFarm")
+                }
               </Text>
             </Box>
           </Stack>
