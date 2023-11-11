@@ -15,11 +15,14 @@ export const CardProfileRankV2 = () => {
     address,
   ]);
 
+  console.log(data);
+
   const getRank = () => {
     if (data === undefined || personalBuy === undefined) return 0;
     return (
       RANK_LEVEL.find((rank, idx) => {
-        if (idx + 1 === RANK_LEVEL.length) return RANK_LEVEL[idx];
+        if (idx + 1 === RANK_LEVEL.length || data.isLeader)
+          return RANK_LEVEL[idx];
         return (
           (Number(fromBn(data.omzet, 18)) >= rank.omzet &&
             Number(fromBn(data.omzet, 18)) < RANK_LEVEL[idx + 1].omzet) ||

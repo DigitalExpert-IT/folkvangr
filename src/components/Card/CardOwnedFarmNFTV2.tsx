@@ -58,9 +58,6 @@ export const CardOwnedFarmNFTV2 = (props: OwnedNftType) => {
 
   return (
     <Box>
-      <Box textAlign="center">
-        <Heading>Falcon {cardId.add(1).toNumber()}</Heading>
-      </Box>
       <Stack
         p="0.5"
         mt="5"

@@ -102,8 +102,8 @@ dependencies:
     specifier: ^1.1.2
     version: 1.1.2(@ethersproject/bignumber@5.7.0)
   folkvangr:
-    specifier: ^1.0.1
-    version: 1.0.1(@ethersproject/bignumber@5.7.0)(typescript@4.9.3)
+    specifier: ^1.0.2
+    version: 1.0.2(@ethersproject/bignumber@5.7.0)(typescript@4.9.3)
   framer-motion:
     specifier: ^7.6.18
     version: 7.6.18(react-dom@18.2.0)(react@18.2.0)
@@ -7965,8 +7965,8 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /folkvangr@1.0.1(@ethersproject/bignumber@5.7.0)(typescript@4.9.3):
-    resolution: {integrity: sha512-hJkzRg428JhGwX3V1s+vrwkzTr87H5K/6GJIl/wjVrZmaxtzWviS9AmE+obXkgkTLIxPaSwoKXIIFXSL2v5whA==}
+  /folkvangr@1.0.2(@ethersproject/bignumber@5.7.0)(typescript@4.9.3):
+    resolution: {integrity: sha512-dvadMAD8Miw0IZl1GMrkNjRIX4rYGW4wvsmr7InoaIRgvSsFRrOEmopcPJ5FTdDPmyaOoHpDWz4gzVcwWBTAYA==}
     dependencies:
       '@openzeppelin/contracts': 4.9.3
       '@openzeppelin/contracts-upgradeable': 4.9.3
