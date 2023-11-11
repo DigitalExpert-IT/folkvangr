@@ -42,6 +42,7 @@ export const FormSwap = () => {
   const addressUsdt = USDT_CONTRACT[CURRENT_CHAIN_ID];
   const { t } = useTranslation();
   const [symbol, setSymbol] = useState(false);
+  const [fee, setFee] = useState<BigNumber>(toBn("0", 18));
   const { handleSubmit, control, watch, getValues, setValue, resetField } =
     useForm<ISwapToken>();
   const watchCurrency = watch("currency");
@@ -60,11 +61,6 @@ export const FormSwap = () => {
     swap.swapUSDT,
     t("form.message.swapSucces")
   );
-
-  const afterTax = (val: BigNumber) => {
-    if (!val) return toBn("0");
-    return val.mul(toBn("10", 18)).div(toBn("9", 18));
-  };
 
   const inputMax = () => {
     const { currency } = getValues();
@@ -94,6 +90,7 @@ export const FormSwap = () => {
     // after change the currency
     resetField("amountTop");
     resetField("amountBottom");
+    setFee(toBn("0", 18));
   }, [watchCurrency]);
 
   const handleChangeInput = useCallback(
@@ -102,20 +99,35 @@ export const FormSwap = () => {
       const value = field === "amountTop" ? amountTop : amountBottom;
 
       // define what the top and bottom fields are
-      const fieldCurrency: IFieldCurrency = {
-        amountTop: currency === "FLD" ? "USDT" : "FLD",
-        amountBottom: currency === "FLD" ? "FLD" : "USDT",
-      };
       const fieldTarget = field === "amountTop" ? "amountBottom" : "amountTop";
-      const currencyTarget = fieldCurrency[fieldTarget];
 
       let swapResult = "";
 
-      if (currencyTarget === "FLD") {
+      if (!value) {
+        setFee(toBn("0", 18));
+      }
+
+      let swapFee = toBn("0", 18);
+
+      if (currency === "FLD") {
         swapResult = fromBn(getUsdtRate(value ? value : "0"), 18);
       }
-      if (currencyTarget === "USDT") {
-        swapResult = fromBn(getFLDRate(value ? value : "0"), 18);
+      if (currency === "USDT") {
+        if (fieldTarget === "amountTop") {
+          if (value) {
+            swapFee = toBn(value, 18).mul(toBn("10", 18)).div(toBn("90", 18));
+            setFee(swapFee);
+          }
+
+          swapResult = fromBn(getFLDRate(value ? value : "0").add(swapFee), 18);
+        } else {
+          if (value) {
+            swapFee = toBn(value, 18).mul(toBn("10", 18)).div(toBn("100", 18));
+            setFee(swapFee);
+          }
+
+          swapResult = fromBn(getFLDRate(value ? value : "0").sub(swapFee), 18);
+        }
       }
 
       setValue(fieldTarget, swapResult);
@@ -123,23 +135,21 @@ export const FormSwap = () => {
     []
   );
 
-  const amountAfterFee = useMemo(() => {
+  const isDisableButtonSwap = useMemo(() => {
     const { amountTop } = getValues();
 
-    if (!amountTop) return toBn("0", 18);
+    if (!amountTop) return false;
 
-    const amountTopBn = toBn(amountTop, 18);
-
-    if (!symbol) return afterTax(amountTopBn);
-
-    return amountTopBn;
+    return toBn(amountTop, 18) <= toBn("0", 18);
   }, [watchAmountTop]);
 
   const onSubmit = handleSubmit(async data => {
+    const { amountTop } = getValues();
+
     if (data.currency === "FLD") {
-      exec(amountAfterFee);
+      exec(toBn(amountTop, 18));
     } else {
-      execUSDT(amountAfterFee);
+      execUSDT(toBn(amountTop, 18));
     }
   });
 
@@ -217,8 +227,8 @@ export const FormSwap = () => {
             color={"whiteAlpha.700"}
             textAlign={"center"}
           >
-            {t("form.helperText.afterFee", {
-              value: fromBn(amountAfterFee, 18),
+            {t("form.helperText.fee", {
+              value: fromBn(fee, 18),
               symbol: symbol ? "USDT" : "FLD",
             })}
           </Text>
@@ -313,7 +323,7 @@ export const FormSwap = () => {
               _hover={{
                 bg: "linear-gradient(92deg, #135186 4.65%, #0B4649 96.4%)",
               }}
-              isDisabled={amountAfterFee <= toBn("0", 18)}
+              isDisabled={isDisableButtonSwap}
             >
               {t("common.swap")}
             </Button>

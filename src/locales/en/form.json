@@ -18,6 +18,7 @@
     "referrer": "Please enter your referral address",
     "quantity": "please enter Quantity",
     "balance": "Balance {{balanceOf}} {{symbol}}",
-    "afterFee": "After Fee {{value}} {{symbol}}"
+    "afterFee": "After Fee {{value}} {{symbol}}",
+    "fee": "Fee {{value}} {{symbol}}"
   }
 }
