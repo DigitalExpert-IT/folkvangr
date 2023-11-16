@@ -88,13 +88,14 @@ export const SectionTeamV3: React.FC<IOurTeamV3> = props => {
           <Text textTransform="capitalize" fontSize={{ base: "sm", md: "xl" }}>
             {props.occupation}
           </Text>
-          <Stack direction="row" justify={{ base: "center", md: "left" }}>
+          {/* hide due to request */}
+          {/* <Stack direction="row" justify={{ base: "center", md: "left" }}>
             {props.social.map((item, idx) => (
               <Link key={idx} href={item.link} target="_blank">
                 <Icon as={item.icon} w={5} h={5} />
               </Link>
             ))}
-          </Stack>
+          </Stack> */}
         </Box>
       </Stack>
     </Stack>

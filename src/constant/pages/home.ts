@@ -112,7 +112,6 @@ export const PARTNERSHIP = [
     name: "partner2",
     image:
       "https://ik.imagekit.io/msxxxaegj/folkvangr/solidproofV2.png?updatedAt=1695015631926",
-    link: "https://github.com/solidproof/projects/tree/main/GNET",
   },
   {
     name: "partner3",
