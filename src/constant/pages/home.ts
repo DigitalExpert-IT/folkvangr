@@ -155,15 +155,15 @@ export const RANKNETWORK = [
   {
     rank: "Rank 1",
     level: "Level 1",
-    sponsor: "10%",
+    sponsor: "5%",
     matching: "20%",
     turnover: "",
-    personalBuy: "10",
+    personalBuy: "20",
   },
   {
     rank: "Rank 2",
     level: "Level 2",
-    sponsor: "",
+    sponsor: "3%",
     matching: "10%",
     turnover: "500",
     personalBuy: "100",
@@ -171,7 +171,7 @@ export const RANKNETWORK = [
   {
     rank: "Rank 3",
     level: "Level 3",
-    sponsor: "",
+    sponsor: "2%",
     matching: "10%",
     turnover: "2000",
     personalBuy: "100",
@@ -355,7 +355,11 @@ export const RANKBONUS: Array<IRankBonus> = [
 export const RANKBONUSV2: Array<IRankBonusV2> = [
   {
     share: "Contract Pool",
-    percent: "75%",
+    percent: "35%",
+  },
+  {
+    share: "Bullrun builders",
+    percent: "30%",
   },
   {
     share: "Marketing",

@@ -16,7 +16,7 @@ export const LayoutMainV2: React.FC<MainProps> = ({ children }) => {
         description="The Falcon Defi aims to revolutionize the world of network marketing by decentralizing millions of users through web3 applications"
       />
       <Navbar />
-      <Link href="https://t.me/falcondefiofficial" target="_blank">
+      {/* <Link href="https://t.me/falcondefiofficial" target="_blank">
         <Box position="fixed" zIndex={100} bottom="5" right="0">
           <Image
             src={"/assets/telegram_community.png"}
@@ -24,7 +24,7 @@ export const LayoutMainV2: React.FC<MainProps> = ({ children }) => {
             w={{ base: "150px", md: "200px" }}
           />
         </Box>
-      </Link>
+      </Link> */}
       {children}
       <LayoutFooterV2 />
     </Box>
