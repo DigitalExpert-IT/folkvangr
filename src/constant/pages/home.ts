@@ -198,7 +198,7 @@ export const RANKNETWORK = [
     sponsor: "",
     matching: "10%",
     turnover: "30000",
-    personalBuy: "600",
+    personalBuy: "500",
   },
   {
     rank: "Rank 7",
