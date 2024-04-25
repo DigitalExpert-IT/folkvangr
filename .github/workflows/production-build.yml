@@ -15,7 +15,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
-            tuxpower27/falcondefi
+            tuxinity/falcon
           tags: |
             latest
             type=schedule
@@ -55,5 +55,5 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            cd /var/www/folkvangr/
+            cd ~/Dev/falcon/
             bash deploy.sh
