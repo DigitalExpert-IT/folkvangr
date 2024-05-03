@@ -100,7 +100,7 @@ export const CardProfileBonus = () => {
             <Stack>
               <Text>{t("common.matchingBonus")}</Text>
               <Text>
-                {`${matchingReward.data && fromBn(matchingReward.data, 6)} ${
+                {`${matchingReward.data && fromBn(matchingReward.data, 18)} ${
                   fld.data?.symbol
                 }`}
               </Text>
